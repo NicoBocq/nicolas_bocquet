@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NicoBocq - Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Nicolas Bocquet, Full Stack JS Developer based in Paris. Building accessible, pixel-perfect, and performant web experiences.">
+    <meta name="author" content="Nicolas Bocquet">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nicolasbocquet.com/">
+    <meta property="og:title" content="NicoBocq - Full Stack JS Developer">
+    <meta property="og:description" content="Building accessible, pixel-perfect, and performant web experiences.">
+    <meta property="og:image" content="https://nicolasbocquet.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nicolasbocquet.com/">
+    <meta property="twitter:title" content="NicoBocq - Full Stack JS Developer">
+    <meta property="twitter:description" content="Building accessible, pixel-perfect, and performant web experiences.">
+    <meta property="twitter:image" content="https://nicolasbocquet.com/og-image.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+        :root {
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Space Grotesk', sans-serif;
+
+            /* Light Theme Defaults */
+            --color-bg: #ffffff;
+            --color-text: #000000;
+            --color-text-rgb: 0, 0, 0;
+            --color-border: #000000;
+            --color-meta: #555555;
+            --spacing-unit: 1rem;
+        }
+
+
+
+
+        [data-theme="dark"] {
+            --color-bg: #0a0a0a;
+            --color-text: #f0f0f0;
+            --color-text-rgb: 240, 240, 240;
+            --color-border: #f0f0f0;
+            --color-meta: #888888;
+        }
+
+        /* --- Reset & Base --- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- Typography Helpers --- */
+        .font-mono {
+            font-family: var(--font-mono);
+        }
+
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            margin-bottom: 6rem;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Center vertically */
+            border-bottom: 1px solid var(--color-border);
+            /* Back to thin elegant border */
+            padding-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Removed .header-top as it is no longer needed */
+
+        .header-left {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-family: var(--font-main);
+            font-size: 2rem;
+            /* Was 1.5rem */
+            font-weight: 300;
+            /* Light */
+            letter-spacing: -0.02em;
+            margin: 0;
+            text-transform: uppercase;
+            transition: text-shadow 0.3s ease;
+            cursor: default;
+            /* Hint that it's interactive-ish */
+        }
+
+        header h1:hover {
+            /* Stronger glow */
+            text-shadow: 0 0 25px rgba(var(--color-text-rgb), 0.6);
+        }
+
+        .firstname {
+            font-weight: 300;
+        }
+
+        .lastname {
+            font-family: var(--font-main);
+            font-weight: 700;
+            /* Black */
+        }
+
+        .separator {
+            opacity: 0.5;
+            font-weight: 300;
+        }
+
+        header .role {
+            font-size: 1.125rem;
+            /* Was 1rem */
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--color-text);
+            cursor: pointer;
+            padding: 0;
+            text-transform: uppercase;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        /* --- Stack List --- */
+        .stack-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stack-list li {
+            font-size: 1.25rem;
+            border-left: 2px solid var(--color-border);
+            padding-left: 1.5rem;
+            padding-bottom: 0.5rem;
+            transition: border-left-width 0.2s ease, border-color 0.3s ease;
+        }
+
+        .stack-list li:hover {
+            border-left-width: 6px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* --- Spotlight Effect Utilities --- */
+        .spotlight-group:hover .spotlight-item {
+            opacity: 0.5;
+            /* Was 0.3 - less aggressive dimming */
+            /* filter: blur(2px); Removed blur for cleaner look */
+        }
+
+        .spotlight-group .spotlight-item {
+            transition: opacity 0.4s ease, transform 0.3s ease;
+        }
+
+        .spotlight-group .spotlight-item:hover {
+            opacity: 1;
+            /* filter: blur(0); */
+            transform: scale(1.01);
+            /* Was 1.02 - very subtle pop */
+        }
+
+        /* Glow effect for dark mode mainly */
+        .spotlight-group .spotlight-item:hover h3,
+        .spotlight-group .spotlight-item:hover h4,
+        .stack-list .spotlight-item:hover {
+            /* Softer glow, less spread */
+            text-shadow: 0 0 15px rgba(var(--color-text-rgb), 0.5);
+        }
+
+        /* --- Accordion --- */
+        .accordion {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+
+        .accordion-trigger {
+            padding: 3rem 0;
+            cursor: pointer;
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            transition: padding 0.3s ease;
+        }
+
+        .accordion-trigger:hover {
+            padding-left: 2rem;
+        }
+
+        .accordion-number {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.6;
+        }
+
+        .accordion-trigger h3 {
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            margin: 0;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .accordion-item.is-open .accordion-content {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+
+        .accordion-inner {
+            overflow: hidden;
+        }
+
+        /* --- Content Styling --- */
+        .content-wrapper {
+            padding-left: calc(2rem + 1rem);
+            /* Align with text after hover indent approx */
+            max-width: 800px;
+        }
+
+        .theme-toggle::after {
+            content: '[ LIGHT ]';
+        }
+
+        [data-theme="dark"] .theme-toggle::after {
+            content: '[ DARK ]';
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle::after {
+                content: '[ LT ]';
+            }
+
+            [data-theme="dark"] .theme-toggle::after {
+                content: '[ DK ]';
+            }
+
+            .content-wrapper {
+                padding-left: 0;
+            }
+
+            header {
+                position: relative;
+                display: block;
+                /* Disable flex to handle absolute positioning easier */
+                padding-right: 4rem;
+                /* Space for the toggle */
+            }
+
+            .header-left {
+                display: block;
+                /* Stack name and role */
+            }
+
+            header h1 {
+                margin-bottom: 0.25rem;
+            }
+
+            .theme-toggle {
+                position: absolute;
+                top: 2rem;
+                /* Match header padding-top */
+                right: 0;
+            }
+
+            .separator {
+                display: inline-block;
+                margin-right: 0.5rem;
+            }
+        }
+
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 60ch;
+        }
+
+        /* --- Projects List --- */
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .project-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-left: 2px solid var(--color-border);
+            padding-left: 1.5rem;
+            transition: border-left-width 0.2s ease, border-color 0.3s ease;
+        }
+
+        .project-item:hover {
+            border-left-width: 6px;
+        }
+
+        .project-meta {
+            font-size: 0.875rem;
+            color: var(--color-meta);
+        }
+
+        .project-item h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.02em;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .project-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 6rem;
+            padding-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .contact-list a {
+            font-size: 1rem;
+            text-decoration: none;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        .contact-list a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--color-text);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .contact-list a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <div class="header-left">
+                <h1><span class="firstname">Nicolas</span> <span class="lastname">Bocquet</span></h1>
+                <span class="separator">—</span>
+                <span class="role font-mono">Full Stack JS</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"></button>
+        </header>
+
+        <main>
+            <ul class="accordion spotlight-group">
+                <li class="accordion-item spotlight-item">
+                    <div class="accordion-trigger">
+                        <h3>About</h3>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="content-wrapper">
+                                <p>I build accessible, pixel-perfect, and performant web experiences. Currently focused
+                                    on React ecosystem and clean UI architectures.</p>
+                                <p class="font-mono" style="font-size: 0.9rem; margin-top: 2rem;">
+                                    > CURRENT_STATUS: AVAILABLE_FOR_FREELANCE<br>
+                                    > LOCATION: PARIS, FR
+                                </p>
+                            </div>
+                            <div style="height: 4rem;"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="accordion-item spotlight-item">
+                    <div class="accordion-trigger">
+                        <h3>Projects</h3>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="content-wrapper">
+                                <ul class="project-list spotlight-group">
+                                    <!-- Content rendered via JS -->
+                                </ul>
+                            </div>
+                            <div style="height: 4rem;"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="accordion-item spotlight-item">
+                    <div class="accordion-trigger">
+                        <h3>Stack</h3>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="content-wrapper">
+                                <ul class="stack-list font-mono spotlight-group">
+                                    <!-- Content rendered via JS -->
+                                </ul>
+                            </div>
+                            <div style="height: 4rem;"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </main>
+
+        <footer id="contact">
+            <div class="font-mono" style="font-size: 0.875rem;">© 2024</div>
+            <ul class="contact-list font-mono">
+                <li><a href="#" id="emailLink" data-user="contact" data-domain="nicolasbocquet.com"
+                        aria-label="Copy Email Address">EMAIL</a></li>
+                <li><a href="#" aria-label="GitHub Profile">GITHUB</a></li>
+                <li><a href="#" aria-label="LinkedIn Profile">LINKEDIN</a></li>
+                <li><a href="resume.html" aria-label="View Resume">RESUME</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Render Projects
+            const projectList = document.querySelector('.project-list');
+            if (projectList && typeof PORTFOLIO_DATA !== 'undefined') {
+                projectList.innerHTML = ''; // Clear existing content
+                PORTFOLIO_DATA.projects.forEach(project => {
+                    const li = document.createElement('li');
+                    li.className = 'project-item spotlight-item';
+                    li.innerHTML = `
+                        <a href="${project.link}">
+                            <div class="project-meta font-mono">${project.year} — ${project.type}</div>
+                            <h4>${project.title}</h4>
+                            <p>${project.description}</p>
+                        </a>
+                    `;
+                    projectList.appendChild(li);
+                });
+            }
+
+            // Render Stack
+            const stackList = document.querySelector('.stack-list');
+            if (stackList && typeof PORTFOLIO_DATA !== 'undefined') {
+                stackList.innerHTML = ''; // Clear existing content
+                PORTFOLIO_DATA.stack.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'spotlight-item';
+                    li.textContent = item;
+                    stackList.appendChild(li);
+                });
+            }
+
+            const emailLink = document.getElementById('emailLink');
+
+            if (emailLink) {
+                emailLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const user = this.getAttribute('data-user');
+                    const domain = this.getAttribute('data-domain');
+                    const email = `${user}@${domain}`;
+
+                    navigator.clipboard.writeText(email).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'COPIED!';
+
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy:', err);
+                        // Fallback: try to open mailto
+                        window.location.href = `mailto:${email}`;
+                    });
+                });
+            }
+
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const trigger = item.querySelector('.accordion-trigger');
+                trigger.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('is-open');
+
+                    accordionItems.forEach(i => i.classList.remove('is-open'));
+
+                    if (!isOpen) {
+                        item.classList.add('is-open');
+                    }
+                });
+            });
+
+            const themeToggle = document.getElementById('themeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+            } else if (currentTheme === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+            } else if (prefersDarkScheme.matches) {
+                document.body.setAttribute('data-theme', 'dark');
+            }
+
+            themeToggle.addEventListener('click', function () {
+                let theme = 'light';
+                if (document.body.getAttribute('data-theme') === 'light') {
+                    theme = 'dark';
+                } else {
+                    theme = 'light';
+                }
+                document.body.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            });
+
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', (e) => {
+                const newTheme = e.matches ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

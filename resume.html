@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicolas Bocquet - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+    :root {
+      --font-main: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', sans-serif;
+      --color-text: #000000;
+      --color-dim: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--color-text);
+      line-height: 1.5;
+      margin: 0;
+      padding: 4rem;
+      max-width: 210mm;
+      /* A4 width */
+      margin: 0 auto;
+      background: white;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid black;
+      padding-bottom: 0.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .role {
+      font-family: var(--font-mono);
+      font-size: 1.125rem;
+      font-weight: 400;
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    .meta {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-dim);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    p,
+    li {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Layout */
+    .header {
+      margin-bottom: 3rem;
+    }
+
+    .contact-info {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .contact-info a {
+      color: black;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .experience-item {
+      margin-bottom: 2rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+    }
+
+    /* Print Optimizations */
+    @media print {
+      body {
+        padding: 2rem;
+        /* Less padding for print */
+      }
+
+      @page {
+        margin: 0;
+        size: auto;
+      }
+
+      .no-print {
+        display: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+
+    .back-link {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      font-family: var(--font-mono);
+      text-decoration: none;
+      color: black;
+      border: 1px solid black;
+      padding: 0.5rem 1rem;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-link no-print">← Back to Portfolio</a>
+
+  <div class="header">
+    <h1>Nicolas Bocquet</h1>
+    <span class="role">Full Stack TypeScript Developer</span>
+    <div class="contact-info">
+      <a href="mailto:contact@nicolasbocquet.com">contact@nicolasbocquet.com</a>
+      <span>Paris, FR</span>
+      <a href="https://nicolasbocquet.com">nicolasbocquet.com</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="experience-item">
+      <h3>Full Stack TypeScript Developer</h3>
+      <span class="meta">INFORCA S.A.M | Aug 2022 - Present | Remote / Monaco</span>
+      <ul>
+        <li><strong>SaaS Coaching Platform</strong> (Next.js 16, TypeScript, PostgreSQL): Built a platform with
+          role-based interfaces, automated PDF generation, and Stripe subscription management.</li>
+        <li><strong>PIM (Product Information Management)</strong>: Developed a monorepo solution (Next.js / NestJS /
+          PostgreSQL) for a fashion B2C client.</li>
+        <li><strong>Rally App (iOS/Android)</strong>: Built a B2B React Native CLI application for regularity rallies.
+        </li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Front-end Developer</h3>
+      <span class="meta">Alltricks.com | Jan 2022 - Aug 2022 | Bouc-Bel-Air</span>
+      <ul>
+        <li>Developed e-commerce features using React, Next.js, and Redux Toolkit.</li>
+        <li>Migrated legacy codebase to TypeScript.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Front-end Developer</h3>
+      <span class="meta">Internethic | Apr 2020 - Dec 2021 | Marseille</span>
+      <ul>
+        <li>Developed a B2B application (Vue.js, Tailwind).</li>
+        <li>Created a custom component library and dedicated stores for API consumption.</li>
+        <li>Implemented Unit Testing and Storybook documentation.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Front-end Web Developer</h3>
+      <span class="meta">High Testing R&D | Apr 2019 - Mar 2020 | Marseille</span>
+      <ul>
+        <li>Developed map-based applications using OpenLayers and Vue.js (Vuex, Vuetify).</li>
+        <li>Integrated designs on Django CMS / Symfony.</li>
+        <li>Created wireframes on Figma.</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Digital Project Manager & Journalist / Developer</h3>
+      <span class="meta">La Provence | Jun 2007 - Mar 2019 | Marseille</span>
+      <p><em>Evolution from Developer to Project Manager and Journalist over 12 years.</em></p>
+      <ul>
+        <li><strong>Journalist & Digital Content Lead (2016-2019)</strong>: Trained the newsroom on digital challenges
+          (Data Journalism, Social Media). Defined editorial strategies for paid content and open data integration.</li>
+        <li><strong>Digital Project Manager (2010-2016)</strong>: Managed web/mobile projects (LaProvence.com redesigns,
+          Election mapping apps). Handled specs, UX/UI, and SEO.</li>
+        <li><strong>Web Developer (2007-2010)</strong>: Front-end development (CSS, PHP, JS) and editorial animations.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <span>JavaScript (ES6+)</span>
+      <span>TypeScript</span>
+      <span>React / Next.js</span>
+      <span>React Native</span>
+      <span>Node.js / NestJS</span>
+      <span>PostgreSQL / Prisma</span>
+      <span>Tailwind CSS</span>
+      <span>Redux / Zustand</span>
+      <span>Vue.js</span>
+      <span>Git / CI/CD</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="experience-item">
+      <h3>Data Journalism Module</h3>
+      <span class="meta">Aix-Marseille University | 2014 - 2018</span>
+    </div>
+    <div class="experience-item">
+      <h3>Web Development</h3>
+      <span class="meta">Self-taught & Professional Experience | Since 2001</span>
+    </div>
+  </section>
+
+</body>
+
+</html>
