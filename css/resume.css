@@ -180,6 +180,19 @@ li {
     text-decoration: none;
     color: black;
   }
+
+  .header {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+  }
+
+  .resume-image {
+    display: block !important;
+    width: 100px !important;
+    /* Slightly smaller for print if needed */
+    height: 100px !important;
+  }
 }
 
 /* Refactored Classes */
