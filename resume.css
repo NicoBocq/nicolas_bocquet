@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+:root {
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', sans-serif;
+  --color-text: #000000;
+  --color-dim: #666666;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+  padding: 4rem;
+  max-width: 210mm;
+  margin: 0 auto;
+  background: white;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+h2 {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-dim);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+p,
+li {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.nav-links {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-link,
+.print-btn {
+  font-family: var(--font-mono);
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  background: white;
+  cursor: pointer;
+}
+
+.contact-info {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.contact-info a {
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.experience-item {
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.back-link:hover,
+.print-btn:hover {
+  background: black;
+  color: white;
+}
+
+@media print {
+  body {
+    padding: 2rem;
+  }
+
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  .no-print,
+  .nav-links,
+  .print-btn,
+  .back-link {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+/* Refactored Classes */
+.about-container {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.skill-category {
+  margin-bottom: 1rem;
+}
+
+.skill-label {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.skill-content {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: #333;
+}
