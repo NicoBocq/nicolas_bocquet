@@ -22,6 +22,15 @@ const PORTFOLIO_DATA = {
             link: "#"
         }
     ],
+    opensource: [
+        {
+            title: "prisma-searchparams-mapper",
+            description: "Typesafe utility to map URL search params to Prisma where clauses. Simplifies filtering in Next.js apps.",
+            link: "https://www.npmjs.com/package/prisma-searchparams-mapper",
+            role: "AUTHOR",
+            year: "2025"
+        }
+    ],
     profile: {
         firstname: "Nicolas",
         lastname: "Bocquet",

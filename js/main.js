@@ -43,27 +43,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const experienceList = document.getElementById('main-experience-list');
-    if (experienceList && typeof PORTFOLIO_DATA !== 'undefined') {
+    if (experienceList && typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.resume.experience) {
         experienceList.innerHTML = '';
         PORTFOLIO_DATA.resume.experience.forEach(job => {
             const li = document.createElement('li');
             li.className = 'project-item spotlight-item';
-
-            let detailsHtml = '';
-            if (job.details && job.details.length > 0) {
-                detailsHtml = '<ul class="details-list">' +
-                    job.details.map(d => `<li class="details-item">${d}</li>`).join('') +
-                    '</ul>';
-            }
-
             li.innerHTML = `
-                <a href="resume.html" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="project-meta font-mono">${job.period}</div>
-                    <h4 style="margin-bottom: 0.25rem;">${job.role} <span class="company-tag">${job.company}</span></h4>
-                    ${detailsHtml}
-                </a>
+                <div class="project-meta font-mono">
+                    <span>${job.period}</span>
+                    <span class="company-tag">[ ${job.company} ]</span>
+                </div>
+                <h4>${job.role}</h4>
+                ${job.description ? `<p style="font-size: 1rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${job.description}</p>` : ''}
+                ${job.details && job.details.length > 0 ? `
+                    <ul class="details-list">
+                        ${job.details.map(d => `<li class="details-item">${d}</li>`).join('')}
+                    </ul>
+                ` : ''}
             `;
             experienceList.appendChild(li);
+        });
+    }
+
+    const opensourceList = document.getElementById('opensource-list');
+    if (opensourceList && typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.opensource) {
+        PORTFOLIO_DATA.opensource.forEach(project => {
+            const li = document.createElement('li');
+            li.className = 'project-item spotlight-item';
+            li.innerHTML = `
+                <a href="${project.link}" target="_blank">
+                    <div class="project-meta font-mono">
+                        <span>${project.year}</span>
+                        <span class="company-tag">[ NPM ]</span>
+                    </div>
+                    <h4>${project.title}</h4>
+                    <p style="font-size: 1rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${project.description}</p>
+                </a>
+            `;
+            opensourceList.appendChild(li);
         });
     }
 
