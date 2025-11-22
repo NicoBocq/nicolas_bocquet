@@ -82,6 +82,24 @@ li {
 
 .header {
   margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.header-text {
+  flex: 1;
+}
+
+.resume-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 2px;
+  filter: grayscale(100%) contrast(120%);
+  display: none;
+  /* Hidden by default until loaded */
 }
 
 .nav-links {
@@ -187,4 +205,32 @@ li {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: #333;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem;
+    padding-top: 6rem;
+  }
+
+  .nav-links {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid #eee;
+    z-index: 100;
+  }
+
+  .header {
+    flex-direction: column-reverse;
+    gap: 1.5rem;
+  }
+
+  .resume-image {
+    width: 80px;
+    height: 80px;
+  }
 }

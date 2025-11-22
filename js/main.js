@@ -14,11 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const aboutContainer = document.getElementById('about-container');
     if (aboutContainer && typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.bio && PORTFOLIO_DATA.profile) {
-        // Create wrapper for flex layout
         const wrapper = document.createElement('div');
         wrapper.className = 'about-wrapper';
 
-        // Text content
         const text = document.createElement('div');
         text.className = 'about-text';
         const bioContent = Array.isArray(PORTFOLIO_DATA.bio.long) 
@@ -32,13 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </p>
         `;
 
-        // Image Container (Hidden by default)
-        const imgContainer = document.createElement('div');
-        imgContainer.className = 'about-image-container';
-        imgContainer.innerHTML = `<img src="img/profile.jpeg" alt="${PORTFOLIO_DATA.profile.firstname} ${PORTFOLIO_DATA.profile.lastname}" class="profile-image">`;
-
         wrapper.appendChild(text);
-        wrapper.appendChild(imgContainer);
         aboutContainer.appendChild(wrapper);
     }
 
@@ -151,9 +143,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!isOpen) {
                 item.classList.add('is-open');
                 
-                // Scroll to top behavior
                 setTimeout(() => {
-                    const headerOffset = 100; // Adjust based on header height
+                    const headerOffset = 100; 
                     const elementPosition = item.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       
@@ -161,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         top: offsetPosition,
                         behavior: "smooth"
                     });
-                }, 300); // Slight delay to allow transition to start
+                }, 300);
             }
         });
     });

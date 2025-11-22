@@ -4,11 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (profile) {
         document.getElementById('resume-name').textContent = `${profile.firstname} ${profile.lastname}`;
         document.getElementById('resume-role').textContent = profile.role;
-        document.getElementById('resume-location').textContent = profile.location;
 
         const emailLink = document.getElementById('resume-email');
         emailLink.textContent = profile.email;
         emailLink.href = `mailto:${profile.email}`;
+
+        const img = document.getElementById('resume-image');
+        if (img) {
+            img.src = 'img/profile.jpeg';
+            img.style.display = 'block';
+        }
     }
 
     const aboutContainer = document.getElementById('about-container');
