@@ -14,13 +14,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const aboutContainer = document.getElementById('about-container');
     if (aboutContainer && typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.bio && PORTFOLIO_DATA.profile) {
-        aboutContainer.innerHTML = `
-            <p>${PORTFOLIO_DATA.bio.long}</p>
+        // Create wrapper for flex layout
+        const wrapper = document.createElement('div');
+        wrapper.className = 'about-wrapper';
+
+        // Text content
+        const text = document.createElement('div');
+        text.className = 'about-text';
+        const bioContent = Array.isArray(PORTFOLIO_DATA.bio.long) 
+            ? PORTFOLIO_DATA.bio.long.map(p => `<p>${p}</p>`).join('') 
+            : `<p>${PORTFOLIO_DATA.bio.long}</p>`;
+            
+        text.innerHTML = bioContent + `
             <p class="font-mono status-block">
                 > CURRENT_STATUS: LOOKING_FOR_OPPORTUNITIES<br>
                 > LOCATION: ${PORTFOLIO_DATA.profile.location.toUpperCase()}
             </p>
         `;
+
+        // Image Container (Hidden by default)
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'about-image-container';
+        imgContainer.innerHTML = `<img src="img/profile.jpeg" alt="${PORTFOLIO_DATA.profile.firstname} ${PORTFOLIO_DATA.profile.lastname}" class="profile-image">`;
+
+        wrapper.appendChild(text);
+        wrapper.appendChild(imgContainer);
+        aboutContainer.appendChild(wrapper);
     }
 
     const experienceList = document.getElementById('main-experience-list');

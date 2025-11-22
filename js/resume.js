@@ -6,10 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('resume-role').textContent = profile.role;
         document.getElementById('resume-location').textContent = profile.location;
 
-        const websiteLink = document.getElementById('resume-website');
-        websiteLink.textContent = profile.domain;
-        websiteLink.href = `https://${profile.domain}`;
-
         const emailLink = document.getElementById('resume-email');
         emailLink.textContent = profile.email;
         emailLink.href = `mailto:${profile.email}`;
