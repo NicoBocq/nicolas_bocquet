@@ -47,6 +47,7 @@ const PORTFOLIO_DATA = {
             "NODE.JS / NESTJS", "POSTGRESQL / PRISMA",
             "VUE.JS", "TAILWIND CSS",
             "REDUX / ZUSTAND", "WEBGL / THREE.JS",
+            "TESTING (VITEST / PLAYWRIGHT)",
             "GIT / CI/CD / MONOREPO", "FIGMA / UI DESIGN"
         ],
         ai: [

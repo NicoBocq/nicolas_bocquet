@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const categories = [
             { key: 'soft', label: 'SOFT SKILLS' },
+            { key: 'ai', label: 'AI CODING' },
             { key: 'tech', label: 'TECH' },
-            { key: 'ai', label: 'AI CODING' }
         ];
 
         categories.forEach(cat => {
@@ -150,6 +150,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!isOpen) {
                 item.classList.add('is-open');
+                
+                // Scroll to top behavior
+                setTimeout(() => {
+                    const headerOffset = 100; // Adjust based on header height
+                    const elementPosition = item.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }, 300); // Slight delay to allow transition to start
             }
         });
     });
