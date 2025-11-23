@@ -99,7 +99,6 @@ li {
   border-radius: 2px;
   filter: grayscale(100%) contrast(120%);
   display: none;
-  /* Hidden by default until loaded */
 }
 
 .nav-links {
@@ -190,12 +189,10 @@ li {
   .resume-image {
     display: block !important;
     width: 100px !important;
-    /* Slightly smaller for print if needed */
     height: 100px !important;
   }
 }
 
-/* Refactored Classes */
 .about-container {
   margin-bottom: 2rem;
   font-size: 1rem;

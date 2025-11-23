@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         top: offsetPosition,
                         behavior: "smooth"
                     });
-                }, 300);
+                }, 100);
             }
         });
     });
