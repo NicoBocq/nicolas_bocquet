@@ -95,8 +95,8 @@ const DataLoader = {
         if (format === 'resume') {
             const categories = [
                 { key: 'soft', label: 'Soft Skills' },
+                { key: 'ai', label: 'AI Coding' },
                 { key: 'tech', label: 'Tech' },
-                { key: 'ai', label: 'AI Coding' }
             ];
 
             categories.forEach(cat => {
