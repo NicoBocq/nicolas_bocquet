@@ -142,17 +142,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!isOpen) {
                 item.classList.add('is-open');
-                
+
                 setTimeout(() => {
-                    const headerOffset = 100; 
+                    const isMobile = window.innerWidth <= 768;
+                    const headerOffset = isMobile ? 20 : 100;
                     const elementPosition = item.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: "smooth"
                     });
-                }, 100);
+                }, 550);
             }
         });
     });

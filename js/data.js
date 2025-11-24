@@ -12,7 +12,7 @@ const PORTFOLIO_DATA = {
         firstname: "Nicolas",
         lastname: "Bocquet",
         role: "Full Stack TypeScript Developer",
-        shortRole: "Full Stack JS",
+        shortRole: "Full Stack TypeScript",
         email: "nicolas.fow@gmail.com",
         location: "Marseille, FR",
         domain: "nicolasbocquet.com"
