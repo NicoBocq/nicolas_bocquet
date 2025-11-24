@@ -38,16 +38,16 @@
                 <span class="separator">—</span>
                 <span class="role font-mono" id="profile-role"></span>
             </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"></button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false"></button>
         </header>
 
-        <main>
+        <main id="main-content">
             <ul class="accordion spotlight-group">
                 <li class="accordion-item spotlight-item">
-                    <div class="accordion-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="about-content" id="about-trigger">
                         <h3>About</h3>
-                    </div>
-                    <div class="accordion-content">
+                    </button>
+                    <div class="accordion-content" id="about-content" role="region" aria-labelledby="about-trigger">
                         <div class="accordion-inner">
                             <div id="about-container" class="about-container"></div>
                             <div class="spacer-4rem"></div>
@@ -55,10 +55,10 @@
                     </div>
                 </li>
                 <li class="accordion-item spotlight-item">
-                    <div class="accordion-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="experience-content" id="experience-trigger">
                         <h3>Experience</h3>
-                    </div>
-                    <div class="accordion-content">
+                    </button>
+                    <div class="accordion-content" id="experience-content" role="region" aria-labelledby="experience-trigger">
                         <div class="accordion-inner">
                             <div class="content-wrapper">
                                 <ul class="project-list spotlight-group" id="main-experience-list"></ul>
@@ -68,10 +68,10 @@
                     </div>
                 </li>
                 <li class="accordion-item spotlight-item">
-                    <div class="accordion-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="projects-content" id="projects-trigger">
                         <h3>Projects</h3>
-                    </div>
-                    <div class="accordion-content">
+                    </button>
+                    <div class="accordion-content" id="projects-content" role="region" aria-labelledby="projects-trigger">
                         <div class="accordion-inner">
                             <div class="content-wrapper">
                                 <ul class="project-list" id="opensource-list">
@@ -82,10 +82,10 @@
                     </div>
                 </li>
                 <li class="accordion-item spotlight-item">
-                    <div class="accordion-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="skills-content" id="skills-trigger">
                         <h3>Skills</h3>
-                    </div>
-                    <div class="accordion-content">
+                    </button>
+                    <div class="accordion-content" id="skills-content" role="region" aria-labelledby="skills-trigger">
                         <div class="accordion-inner">
                             <div class="content-wrapper" id="skills-container"></div>
                             <div class="spacer-4rem"></div>
@@ -99,8 +99,8 @@
             <ul class="contact-list font-mono">
                 <li><a href="#" id="emailLink" data-user="contact" data-domain="1h12.com"
                         aria-label="Copy Email Address">EMAIL</a></li>
-                <li><a href="https://github.com/NicoBocq" aria-label="GitHub Profile">GITHUB</a></li>
-                <li><a href="https://www.linkedin.com/in/bocquetnicolas" aria-label="LinkedIn Profile">LINKEDIN</a></li>
+                <li><a href="https://github.com/NicoBocq" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile (opens in new tab)">GITHUB</a></li>
+                <li><a href="https://www.linkedin.com/in/bocquetnicolas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LINKEDIN</a></li>
                 <li class="separator footer-separator">|</li>
                 <li><a href="resume.html" aria-label="View Resume" class="resume-link">RESUME</a></li>
             </ul>
@@ -108,6 +108,7 @@
     </div>
 
     <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
 </body>
 
