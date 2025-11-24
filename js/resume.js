@@ -1,99 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const { resume, bio, profile } = PORTFOLIO_DATA;
+    DataLoader.loadProfile({
+        name: document.getElementById('resume-name'),
+        useShortRole: false
+    }, document.getElementById('resume-role'), document.getElementById('resume-email'));
 
-    if (profile) {
-        document.getElementById('resume-name').textContent = `${profile.firstname} ${profile.lastname}`;
-        document.getElementById('resume-role').textContent = profile.role;
-
-        const emailLink = document.getElementById('resume-email');
-        emailLink.textContent = profile.email;
-        emailLink.href = `mailto:${profile.email}`;
-
-        const img = document.getElementById('resume-image');
-        if (img) {
-            img.src = 'img/profile.jpeg';
-            img.style.display = 'block';
-        }
+    const img = document.getElementById('resume-image');
+    if (img) {
+        img.src = 'img/profile.jpeg';
+        img.style.display = 'block';
     }
 
-    const aboutContainer = document.getElementById('about-container');
-    if (aboutContainer && bio) {
-        aboutContainer.innerHTML = `<p>${bio.short}</p>`;
-    }
+    DataLoader.loadBio(document.getElementById('about-container'), 'short');
 
-    const experienceContainer = document.getElementById('experience-list');
-    resume.experience.forEach(job => {
-        const div = document.createElement('div');
-        div.className = 'experience-item';
-
-        let detailsHtml = '';
-        if (job.description) {
-            detailsHtml += `<p><em>${job.description}</em></p>`;
-        }
-        if (job.details && job.details.length > 0) {
-            detailsHtml += '<ul>' + job.details.map(d => `<li>${d}</li>`).join('') + '</ul>';
-        }
-
-        div.innerHTML = `
-            <h3>${job.role}</h3>
-            <span class="meta">${job.company} | ${job.period} | ${job.location}</span>
-            ${detailsHtml}
-        `;
-        experienceContainer.appendChild(div);
-    });
+    DataLoader.loadExperience(document.getElementById('experience-list'));
 
     const skillsContainer = document.getElementById('skills-list');
-    if (PORTFOLIO_DATA.skills) {
-        const categories = [
-            { key: 'soft', label: 'Soft Skills' },
-            { key: 'tech', label: 'Tech' },
-            { key: 'ai', label: 'AI Coding' }
-        ];
-
-        skillsContainer.innerHTML = '';
+    DataLoader.loadSkills(skillsContainer, 'resume');
+    if (skillsContainer) {
         skillsContainer.style.display = 'block';
-
-        categories.forEach(cat => {
-            if (PORTFOLIO_DATA.skills[cat.key]) {
-                const div = document.createElement('div');
-                div.className = 'skill-category';
-
-                const label = document.createElement('strong');
-                label.className = 'skill-label';
-                label.textContent = cat.label;
-                div.appendChild(label);
-
-                const content = document.createElement('div');
-                content.className = 'skill-content';
-                content.textContent = PORTFOLIO_DATA.skills[cat.key].join(' · ');
-                div.appendChild(content);
-
-                skillsContainer.appendChild(div);
-            }
-        });
     }
 
-    const teachingContainer = document.getElementById('teaching-list');
-    if (resume.teaching) {
-        resume.teaching.forEach(job => {
-            const div = document.createElement('div');
-            div.className = 'experience-item';
-            div.innerHTML = `
-                <h3>${job.role}</h3>
-                <span class="meta">${job.school} | ${job.period}</span>
-            `;
-            teachingContainer.appendChild(div);
-        });
-    }
+    DataLoader.loadTeaching(document.getElementById('teaching-list'));
 
-    const educationContainer = document.getElementById('education-list');
-    resume.education.forEach(edu => {
-        const div = document.createElement('div');
-        div.className = 'experience-item';
-        div.innerHTML = `
-            <h3>${edu.degree}</h3>
-            <span class="meta">${edu.school} | ${edu.period}</span>
-        `;
-        educationContainer.appendChild(div);
-    });
+    DataLoader.loadEducation(document.getElementById('education-list'));
 });
