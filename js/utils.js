@@ -1,3 +1,4 @@
+// biome-ignore lint/correctness/noUnusedVariables: <no need to export the module>
 const DataLoader = {
     loadProfile(profileElement, roleElement, emailElement) {
         if (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.profile) {
@@ -222,7 +223,7 @@ const DataLoader = {
                 <a href="${project.link}" target="_blank">
                     <div class="project-meta font-mono">
                         <span>${project.year}</span>
-                        <span class="company-tag">[ NPM ]</span>
+                        <span class="company-tag">[ ${project.type} ]</span>
                     </div>
                     <h4>${project.title}</h4>
                     <p style="font-size: 1rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${project.description}</p>

@@ -1,10 +1,19 @@
+/** biome-ignore-all lint/correctness/noUnusedVariables: <no need to export the module> */
+
 const PORTFOLIO_DATA = {
     opensource: [
+       {
+            title: "Chromacut",
+            description: "Turn AI generations into transparent PNGs",
+            link: "https://chromacut.1h12.com",
+            type: "APP",
+            year: "2025"
+       },
         {
             title: "prisma-searchparams-mapper",
             description: "Typesafe utility to map URL search params to Prisma where clauses. Simplifies filtering in Next.js apps.",
             link: "https://www.npmjs.com/package/prisma-searchparams-mapper",
-            role: "AUTHOR",
+            type: "NPM PACKAGE",
             year: "2025"
         }
     ],
