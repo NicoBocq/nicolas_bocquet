@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+@import url('fonts.css');
 
 :root {
-  --font-main: 'Inter', sans-serif;
-  --font-mono: 'Space Grotesk', sans-serif;
   --color-bg: #ffffff;
   --color-text: #000000;
   --color-text-rgb: 0, 0, 0;
   --color-border: #000000;
   --color-meta: #555555;
-  --spacing-unit: 1rem;
 }
 
 [data-theme="dark"] {
