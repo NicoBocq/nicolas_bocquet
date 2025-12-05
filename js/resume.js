@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     DataLoader.loadProfile({
         name: document.getElementById('resume-name'),
         useShortRole: false
-    }, document.getElementById('resume-role'), document.getElementById('resume-email'));
+    }, document.getElementById('resume-role'), document.getElementById('resume-email'), document.getElementById('resume-website'));
 
     const img = document.getElementById('resume-image');
     if (img) {

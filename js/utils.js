@@ -1,6 +1,6 @@
 // biome-ignore lint/correctness/noUnusedVariables: <no need to export the module>
 const DataLoader = {
-    loadProfile(profileElement, roleElement, emailElement) {
+    loadProfile(profileElement, roleElement, emailElement, websiteElement) {
         if (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.profile) {
             const p = PORTFOLIO_DATA.profile;
 
@@ -26,6 +26,11 @@ const DataLoader = {
                 emailElement.href = `mailto:${email}`;
                 emailElement.dataset.user = email.split('@')[0];
                 emailElement.dataset.domain = email.split('@')[1];
+            }
+
+            if (websiteElement && p.domain) {
+                websiteElement.textContent = p.domain;
+                websiteElement.href = `https://${p.domain}`;
             }
 
             return p;

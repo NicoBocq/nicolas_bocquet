@@ -24,11 +24,11 @@ const PORTFOLIO_DATA = {
         shortRole: "Full Stack TypeScript",
         email: "nicolas.fow@gmail.com",
         location: "Marseille, FR",
-        domain: "nicolasbocquet.com"
+        domain: "1h12.com"
     },
     skills: {
         tech: [
-            "JAVASCRIPT (ES6+)", "TYPESCRIPT",
+            "JAVASCRIPT / TYPESCRIPT",
             "REACT / NEXT.JS", "REACT NATIVE",
             "NODE.JS / NESTJS", "POSTGRESQL / PRISMA",
             "VUE.JS", "TAILWIND CSS",
