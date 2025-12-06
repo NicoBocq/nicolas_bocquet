@@ -3,6 +3,13 @@
 const PORTFOLIO_DATA = {
     opensource: [
        {
+            title: "Spritewave",
+            description: "Free online spritesheet generator. Animate, pack and export your sprites",
+            link: "https://spritewave.1h12.com",
+            type: "APP",
+            year: "2025"
+       },
+       {
             title: "Chromacut",
             description: "Turn AI generations into transparent PNGs",
             link: "https://chromacut.1h12.com",
