@@ -1,7 +1,7 @@
 # Nicolas Bocquet - Portfolio
 
 Minimalist, typography-focused portfolio.
-**Live Demo:** [https://nicobocq.github.io/nicolas_bocquet](https://nicobocq.github.io/nicolas_bocquet)
+**Live Demo:** [https://1h12.com](https://1h12.com)
 
 ## Tech Stack
 
