@@ -18,7 +18,7 @@ const PORTFOLIO_DATA = {
        },
         {
             title: "prisma-searchparams-mapper",
-            description: "Typesafe utility to map URL search params to Prisma where clauses. Simplifies filtering in Next.js apps.",
+            description: "Typesafe utility to map URL search params to Prisma request.",
             link: "https://www.npmjs.com/package/prisma-searchparams-mapper",
             type: "NPM PACKAGE",
             year: "2025"
