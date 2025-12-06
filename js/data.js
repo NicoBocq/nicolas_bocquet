@@ -4,7 +4,7 @@ const PORTFOLIO_DATA = {
     opensource: [
        {
             title: "Spritewave",
-            description: "Free online spritesheet generator. Animate, pack and export your sprites",
+            description: "Spritesheet generator. Preview, pack and export sprites",
             link: "https://spritewave.1h12.com",
             type: "APP",
             year: "2025"
