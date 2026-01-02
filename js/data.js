@@ -2,6 +2,13 @@
 
 const PORTFOLIO_DATA = {
     opensource: [
+        {
+            title: "Carnet Secret",
+            description: "Game: Ten trials to walk in the footsteps of Arsène Lupin",
+            link: "https://carnet-secret.1h12.com",
+            type: "APP",
+            year: "2025"
+        },
        {
             title: "Spritewave",
             description: "Spritesheet generator. Preview, pack and export sprites",
