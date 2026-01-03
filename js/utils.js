@@ -205,7 +205,6 @@ const DataLoader = {
 
             text.innerHTML = `${bioContent}
                 <p class="font-mono status-block">
-                    > CURRENT_STATUS: LOOKING_FOR_OPPORTUNITIES<br>
                     > LOCATION: ${PORTFOLIO_DATA.profile.location.toUpperCase()}
                 </p>
             `;
