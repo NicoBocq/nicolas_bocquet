@@ -29,6 +29,13 @@ const PORTFOLIO_DATA = {
             link: "https://www.npmjs.com/package/prisma-searchparams-mapper",
             type: "NPM PACKAGE",
             year: "2025"
+        },
+        {
+            title: "mm°dex",
+            description: "Weather app: rank the reel feel",
+            link: "https://mmdex.1h12.com",
+            type: "APP",
+            year: "2024"
         }
     ],
     profile: {
