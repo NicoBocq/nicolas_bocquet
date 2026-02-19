@@ -167,9 +167,7 @@ li {
   .nav-links,
   .print-btn,
   .back-link {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
+    display: none;
   }
 
   a {
@@ -178,15 +176,15 @@ li {
   }
 
   .header {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   .resume-image {
-    display: block !important;
-    width: 100px !important;
-    height: 100px !important;
+    display: block;
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -214,7 +212,7 @@ li {
   color: #333;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   body {
     padding: 1.5rem;
     padding-top: 6rem;
