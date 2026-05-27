@@ -1,5 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- JSON-LD ---
+
+    function injectJsonLd() {
+        const d = DataLoader._data;
+        const p = d.profile;
+
+        const skills = [
+            ...d.skills.tech,
+            ...d.skills.ai,
+            ...d.skills.soft
+        ].flatMap(s => s.split(' / ')).map(s =>
+            s.trim().toLowerCase().replace(/\b\w/g, c => c.toUpperCase())
+        );
+
+        const currentJob = d.resume.experience[0];
+        const education  = d.resume.education[0];
+
+        const schema = {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name:       `${p.firstname} ${p.lastname}`,
+            givenName:  p.firstname,
+            familyName: p.lastname,
+            jobTitle:   p.role,
+            description: d.bio.short,
+            url:        `https://${p.domain}`,
+            email:      p.email,
+            address: {
+                '@type':           'PostalAddress',
+                addressLocality:   'Marseille',
+                addressCountry:    'FR'
+            },
+            sameAs: [
+                'https://github.com/NicoBocq',
+                'https://www.linkedin.com/in/bocquetnicolas'
+            ],
+            knowsAbout: skills,
+            worksFor: {
+                '@type': 'Organization',
+                name:    currentJob.company
+            },
+            alumniOf: {
+                '@type': 'EducationalOrganization',
+                name:    education.school
+            },
+            hasOccupation: {
+                '@type':        'Occupation',
+                name:           p.role,
+                occupationLocation: {
+                    '@type': 'City',
+                    name:    'Marseille'
+                },
+                skills: d.skills.tech.join(', ')
+            }
+        };
+
+        let el = document.getElementById('json-ld-person');
+        if (!el) {
+            el = document.createElement('script');
+            el.type = 'application/ld+json';
+            el.id   = 'json-ld-person';
+            document.head.appendChild(el);
+        }
+        el.textContent = JSON.stringify(schema);
+    }
+
     // --- Lang ---
 
     const langToggle = document.getElementById('langToggle');
@@ -18,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         DataLoader.loadOpenSource(document.getElementById('opensource-list'));
         DataLoader.loadSkills(document.getElementById('skills-container'), 'main');
         DataLoader.applyI18n();
+        injectJsonLd();
     }
 
     const currentLang = DataLoader.detectLang();

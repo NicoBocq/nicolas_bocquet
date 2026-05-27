@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://1h12.com/sitemap.xml
+LLMs: https://1h12.com/llms.txt

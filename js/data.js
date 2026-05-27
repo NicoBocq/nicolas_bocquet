@@ -7,18 +7,30 @@ const PORTFOLIO_DATA = {
         email: "nicolas.fow@gmail.com",
         location: "Marseille, FR",
         domain: "1h12.com",
-        role:      { en: "Full Stack TypeScript Developer", fr: "Développeur Full Stack TypeScript" },
-        shortRole: "Full Stack TypeScript"
+        role:      "Product Engineer · TypeScript / React / Node",
+        shortRole: "Product Engineer",
+        status: {
+            en: "Open to opportunities · CDI · Remote or Marseille area",
+            fr: "À l'écoute des opportunités · CDI · Remote ou région marseillaise"
+        }
     },
 
     bio: {
         short: {
-            en: "Full Stack TypeScript Developer based in Marseille. Expert in React/Next.js ecosystem with a background in digital project management. Passionate about clean code, UX/UI, and product vision.",
-            fr: "Développeur Full Stack TypeScript basé à Marseille. Expert de l'écosystème React/Next.js avec un parcours en gestion de projet digital. Passionné par le clean code, l'UX/UI et la vision produit."
+            en: "Web developer since 2001. 12 years in journalism and project management. Back to development in 2019, building products end to end.",
+            fr: "Développeur web depuis 2001. 12 ans de journalisme et de gestion de projet. Retour aux sources en 2019, pour construire des produits de bout en bout."
         },
         long: {
-            en: "Full Stack TypeScript Developer with a unique background in journalism and digital project management. Based in Marseille, I combine technical expertise (React, Next.js, Node.js) with a sharp eye for UX/UI and a product-oriented mindset. I build robust, user-centric web applications and enjoy mentoring teams on modern web standards.",
-            fr: "Développeur Full Stack TypeScript avec un parcours unique en journalisme et gestion de projet digital. Basé à Marseille, je combine expertise technique (React, Next.js, Node.js) avec un œil aiguisé pour l'UX/UI et un état d'esprit orienté produit. Je construis des applications web robustes et centrées sur l'utilisateur et j'apprécie accompagner les équipes sur les standards du web moderne."
+            en: [
+                "Started as a web developer in 2001, with a focus on UI integration and design. Then came 12 years at La Provence (regional daily newspaper): journalist, project manager, and eventually digital lead. Returned to development in 2019, carrying a decade of product thinking, data culture, and UX instincts built from the other side of the screen.",
+                "That path changed how I build. I think in products before I think in features. I read data before I write code. And I take UX seriously because I've seen firsthand what bad information architecture does to real users.",
+                "Today I build TypeScript applications at INFORCA — SaaS platforms, React Native apps, PIM systems — with the same question driving every decision: does this actually work for the person using it?"
+            ],
+            fr: [
+                "Développeur web dès 2001, orienté intégration et design. Puis 12 ans à La Provence (quotidien régional) : journaliste, chef de projet numérique, puis responsable numérique. Retour aux sources en 2019, avec dix ans de culture produit, de lecture de la donnée et d'instincts UX forgés côté utilisateur.",
+                "Ce parcours a changé ma façon de construire. Je pense produit avant de penser feature. Je lis la donnée avant d'écrire le code. Et je prends l'UX au sérieux parce que j'ai vu de près ce que fait une mauvaise architecture de l'information sur de vrais utilisateurs.",
+                "Aujourd'hui je construis des applications TypeScript chez INFORCA (plateformes SaaS, apps React Native, systèmes PIM) avec la même question qui guide chaque décision : est-ce que ça fonctionne vraiment pour la personne qui l'utilise ?"
+            ]
         }
     },
 
@@ -30,12 +42,17 @@ const PORTFOLIO_DATA = {
             "VUE.JS", "TAILWIND CSS",
             "REDUX / ZUSTAND", "WEBGL / THREE.JS",
             "TESTING (VITEST / PLAYWRIGHT)",
-            "GIT / CI/CD / MONOREPO", "FIGMA / UI DESIGN"
+            "GIT / CI/CD / MONOREPO", "DOCKER / COOLIFY",
+            "FIGMA / UI DESIGN"
         ],
         ai: ["CLAUDE CODE CLI", "CODEX", "ANTIGRAVITY"],
+        languages: [
+            { name: "Français", level: { en: "Native",       fr: "Langue maternelle" } },
+            { name: "English",  level: { en: "Professional", fr: "Professionnel"     } }
+        ],
         soft: {
-            en: ["USER CENTRIC", "SHARP UX/UI & DESIGN EYE", "PROJECT OWNERSHIP & VISION", "HIGH QUALITY DELIVERY", "TEAM LEADERSHIP", "MENTORING", "PROBLEM SOLVING"],
-            fr: ["CENTRÉ UTILISATEUR", "OEIL UX/UI & DESIGN AIGUISÉ", "PROPRIÉTÉ & VISION PRODUIT", "LIVRAISON HAUTE QUALITÉ", "LEADERSHIP D'ÉQUIPE", "MENTORAT", "RÉSOLUTION DE PROBLÈMES"]
+            en: ["PRODUCT BEFORE FEATURES", "UX-OBSESSIVE", "OBSESSIVE ABOUT THE LAST 10%", "END-TO-END OWNERSHIP", "TEAM GROWTH & MENTORING", "ASYNC-FIRST, REMOTE-READY", "COMPLEXITY UNTANGLER"],
+            fr: ["PRODUIT AVANT FEATURE", "UX-OBSESSIVE", "OBSESSIONNEL DES DERNIERS 10%", "OWNERSHIP DE BOUT EN BOUT", "CROISSANCE D'ÉQUIPE & MENTORAT", "ASYNC-FIRST, REMOTE-READY", "DÉMÊLEUR DE COMPLEXITÉ"]
         }
     },
 
@@ -86,13 +103,15 @@ const PORTFOLIO_DATA = {
                 location: "Remote / Monaco",
                 details: {
                     en: [
-                        "<strong>SaaS Coaching Platform</strong> (Next.js 16, TypeScript, PostgreSQL): Built a platform with role-based interfaces, automated PDF generation, and Stripe subscription management.",
-                        "<strong>PIM (Product Information Management)</strong>: Developed a monorepo solution (Next.js / NestJS / PostgreSQL) for a fashion B2C client.",
+                        "<strong>PIM (Product Information Management)</strong>: Monorepo for a fashion B2C client handling 1M+ products. Two Next.js apps with role-based UIs, two backend instances (API + async worker), job queue with pg-boss, full infra on Coolify with Docker Compose.",
+                        "<strong>AI Fashion Photo Studio</strong>: Batch photo processing pipeline built on top of the PIM, raw hanger photo import, ghost mannequin generation, and AI-powered model shots (Gemini) for front and back views, industrializing product photography at scale.",
+                        "<strong>SaaS Coaching Platform</strong> (Next.js 16, TypeScript, PostgreSQL): Built a platform for 300 coaches and coachees with role-based interfaces, automated PDF generation, and Stripe subscription management.",
                         "<strong>Rally App (iOS/Android)</strong>: Built a B2B React Native CLI application for regularity rallies."
                     ],
                     fr: [
-                        "<strong>Plateforme de coaching SaaS</strong> (Next.js 16, TypeScript, PostgreSQL) : Construction d'une plateforme avec des interfaces basées sur les rôles, génération automatisée de PDF et gestion des abonnements Stripe.",
-                        "<strong>PIM (Product Information Management)</strong> : Développement d'une solution monorepo (Next.js / NestJS / PostgreSQL) pour un client B2C dans le secteur de la mode.",
+                        "<strong>PIM (Product Information Management)</strong> : Monorepo pour un client B2C mode gérant 1M+ produits. Deux apps Next.js avec interfaces par rôle, deux instances backend (API + worker asynchrone), queue de jobs avec pg-boss, infra complète sur Coolify avec Docker Compose.",
+                        "<strong>Studio Photo Fashion IA</strong> : Pipeline de traitement batch construit sur le PIM — import de photos brutes sur cintre, génération de visuels ghost mannequin, et génération de modèles portés par IA (Gemini) en vues face et dos, industrialisant la production photo produit.",
+                        "<strong>Plateforme de coaching SaaS</strong> (Next.js 16, TypeScript, PostgreSQL) : Construction d'une plateforme pour 300 coachs et coachés avec des interfaces basées sur les rôles, génération automatisée de PDF et gestion des abonnements Stripe.",
                         "<strong>App Rallye (iOS/Android)</strong> : Création d'une application React Native CLI B2B pour les rallyes de régularité."
                     ]
                 }
@@ -104,11 +123,11 @@ const PORTFOLIO_DATA = {
                 location: "Bouc-Bel-Air",
                 details: {
                     en: [
-                        "<strong>E-commerce Optimization</strong>: Developed high-performance features for a major e-commerce site using React, Next.js, and Redux Toolkit.",
+                        "<strong>E-commerce Optimization</strong>: Developed high-performance features for France's leading sports outdoor e-commerce platform using React, Next.js, and Redux Toolkit.",
                         "<strong>Codebase Modernization</strong>: Led the migration of legacy modules to TypeScript, improving maintainability and type safety."
                     ],
                     fr: [
-                        "<strong>Optimisation E-commerce</strong> : Développement de fonctionnalités haute performance pour un site e-commerce majeur utilisant React, Next.js et Redux Toolkit.",
+                        "<strong>Optimisation E-commerce</strong> : Développement de fonctionnalités haute performance pour le leader français du e-commerce sport outdoor, avec React, Next.js et Redux Toolkit.",
                         "<strong>Modernisation de la base de code</strong> : Direction de la migration de modules legacy vers TypeScript, améliorant la maintenabilité et la sécurité du typage."
                     ]
                 }
@@ -150,20 +169,20 @@ const PORTFOLIO_DATA = {
                 }
             },
             {
-                role:        { en: "Digital Project Manager & Journalist", fr: "Chef de projet digital & Journaliste" },
+                role:        { en: "Digital Project Manager & Journalist", fr: "Chef de projet numérique & Journaliste" },
                 company:     "La Provence",
                 period:      { en: "Jun 2007 - Mar 2019",                  fr: "Juin 2007 - Mars 2019" },
                 location:    "Marseille",
-                description: { en: "12-year tenure evolving from Web Developer to Digital Lead.", fr: "12 ans d'évolution, passant de Développeur Web à Responsable Digital." },
+                description: { en: "12-year tenure evolving from Web Developer to Digital Lead.", fr: "12 ans d'évolution, passant de Développeur Web à Responsable Numérique." },
                 details: {
                     en: [
-                        "<strong>Journalist (2016-2019)</strong>: Authored articles focused on History, Heritage, and Data Journalism. Trained the newsroom on digital strategies.",
+                        "<strong>Journalist (2016-2019)</strong>: Articles on History, Heritage and Data Journalism. Hosted a web series, created new editorial formats (data journalism, video). Trained the newsroom on digital strategies.",
                         "<strong>Digital Project Manager (2010-2016)</strong>: Led major web/mobile redesigns (LaProvence.com) and election mapping apps. Managed specs, UX/UI, and SEO.",
                         "<strong>Web Developer (2007-2010)</strong>: Handled front-end development (CSS, PHP, JS) and created interactive editorial modules."
                     ],
                     fr: [
-                        "<strong>Journaliste (2016-2019)</strong> : Rédaction d'articles axés sur l'Histoire, le Patrimoine et le Data Journalisme. Formation de la rédaction aux stratégies numériques.",
-                        "<strong>Chef de projet digital (2010-2016)</strong> : Direction de refontes web/mobiles majeures (LaProvence.com) et d'applications de cartographie électorale. Gestion des spécifications, de l'UX/UI et du SEO.",
+                        "<strong>Journaliste (2016-2019)</strong> : Articles sur l'Histoire, le Patrimoine et le Data Journalisme. Animation d'une websérie, création de nouveaux formats éditoriaux (data journalisme, vidéo). Formation de la rédaction aux stratégies numériques.",
+                        "<strong>Chef de projet numérique (2010-2016)</strong> : Direction de refontes web/mobiles majeures (LaProvence.com) et d'applications de cartographie électorale. Gestion des spécifications, de l'UX/UI et du SEO.",
                         "<strong>Développeur Web (2007-2010)</strong> : Développement front-end (CSS, PHP, JS) et création de modules éditoriaux interactifs."
                     ]
                 }
@@ -175,12 +194,12 @@ const PORTFOLIO_DATA = {
                 location: "Marseille",
                 details: {
                     en: [
-                        "<strong>Full Stack Development</strong>: Created custom websites using PHP, JavaScript, and HTML/CSS for various clients.",
-                        "<strong>Early Web Standards</strong>: Focused on semantic HTML and emerging CSS standards."
+                        "<strong>UI Integration & Design</strong>: Built custom websites with a strong focus on visual integration and front-end design, using HTML/CSS, JavaScript, and PHP.",
+                        "<strong>Early Web Standards</strong>: Laid the foundation in semantic HTML, accessible markup, and emerging CSS standards."
                     ],
                     fr: [
-                        "<strong>Développement Full Stack</strong> : Création de sites web sur mesure utilisant PHP, JavaScript et HTML/CSS pour divers clients.",
-                        "<strong>Débuts des standards web</strong> : Focus sur le HTML sémantique et les standards CSS émergents."
+                        "<strong>Intégration UI & Design</strong> : Création de sites web sur mesure avec un fort accent sur l'intégration visuelle et le design front-end, en HTML/CSS, JavaScript et PHP.",
+                        "<strong>Standards du web naissant</strong> : Apprentissage du HTML sémantique, du balisage accessible et des standards CSS émergents."
                     ]
                 }
             }
@@ -218,12 +237,14 @@ const PORTFOLIO_DATA = {
             experience: { en: "Experience", fr: "Expérience" },
             skills:     { en: "Skills",     fr: "Compétences" },
             teaching:   { en: "Teaching",   fr: "Enseignement" },
-            education:  { en: "Education",  fr: "Formation" }
+            education:  { en: "Education",  fr: "Formation"    },
+            languages:  { en: "Languages",  fr: "Langues"      }
         },
         skillLabels: {
-            soft: { en: "Soft Skills", fr: "Savoir-être" },
-            ai:   { en: "AI Coding",   fr: "Codage IA" },
-            tech: "Tech"
+            soft:      { en: "Soft Skills", fr: "Savoir-être" },
+            ai:        { en: "AI Coding",   fr: "Codage IA"   },
+            tech:      "Tech",
+            languages: { en: "Languages",   fr: "Langues"     }
         },
         nav: {
             back:  { en: "← Back",              fr: "← Retour" },

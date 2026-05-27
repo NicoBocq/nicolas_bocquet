@@ -130,11 +130,11 @@ li {
 }
 
 .lang-toggle::after {
-  content: 'EN';
+  content: 'FR';
 }
 
 [data-lang="fr"] .lang-toggle::after {
-  content: 'FR';
+  content: 'EN';
 }
 
 .contact-info {

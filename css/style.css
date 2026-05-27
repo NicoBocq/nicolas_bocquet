@@ -167,11 +167,11 @@ header .role {
 }
 
 .lang-toggle::after {
-  content: '[ EN ]';
+  content: '[ FR ]';
 }
 
 [data-lang="fr"] .lang-toggle::after {
-  content: '[ FR ]';
+  content: '[ EN ]';
 }
 
 .lang-toggle:hover,

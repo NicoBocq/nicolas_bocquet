@@ -1,0 +1,52 @@
+# Nicolas Bocquet
+
+> Product Engineer based in Marseille, France. TypeScript / React / Node. 12 years in journalism and project management before switching to development in 2019. Builds products, not just features.
+
+## About
+
+Started as a web developer in 2001, with a focus on UI integration and design. Then spent 12 years at La Provence as journalist, project manager, and eventually digital lead. Returned to development in 2019, carrying a decade of product thinking, data culture, and UX instincts built from the other side of the screen. Currently building TypeScript applications at INFORCA (SaaS platforms, React Native apps, PIM systems).
+
+- Location: Marseille, France
+- Status: Open to opportunities · CDI · Remote or Marseille area
+- Languages: French (native), English (professional)
+- Contact: nicolas.fow@gmail.com
+
+## Skills
+
+**Frontend**: JavaScript / TypeScript, React / Next.js, React Native, Vue.js, Tailwind CSS, Redux / Zustand, WebGL / Three.js
+**Backend**: Node.js / NestJS, PostgreSQL, Drizzle / Prisma
+**Tooling**: Git / CI/CD / Monorepo, Docker / Coolify, Figma / UI Design, Testing (Vitest / Playwright)
+**AI Coding**: Claude Code CLI, Codex
+
+**Soft skills**: User-centric, Sharp UX/UI & design eye, Project ownership & vision, High quality delivery, Team leadership, Mentoring, Problem solving
+
+## Experience
+
+- **INFORCA S.A.M** (Aug 2022 – Present) — Product Engineer — Remote / Monaco. PIM monorepo managing 1M+ products for a fashion B2C client (two Next.js apps, two backend instances, pg-boss queue, Coolify / Docker Compose infra). AI Fashion Photo Studio built on the PIM: batch pipeline from raw hanger photos to ghost mannequin and AI-generated model shots (Gemini), front and back views. SaaS coaching platform for 300 coaches and coachees (Next.js 16, TypeScript, PostgreSQL, Stripe). B2B React Native rally app.
+- **Alltricks.com** (Jan 2022 – Aug 2022) — Front-end Developer — Bouc-Bel-Air. High-performance features for France's leading sports outdoor e-commerce platform, using React / Next.js / Redux Toolkit. Legacy TypeScript migration.
+- **Internethic** (Apr 2020 – Dec 2021) — Front-end Developer — Marseille. Complex B2B SaaS with Vue.js / Tailwind. Custom design system and component library. Unit testing and Storybook workflows.
+- **High Testing R&D** (Apr 2019 – Mar 2020) — Front-end Web Developer — Marseille. Interactive map applications with OpenLayers and Vue.js. Pixel-perfect UI integration on Django CMS / Symfony.
+- **La Provence** (Jun 2007 – Mar 2019) — Digital Project Manager & Journalist — Marseille. 12-year tenure evolving from Web Developer to Digital Lead. Led major web/mobile redesigns, election mapping apps, and data journalism projects.
+- **Freelance** (2001 – 2007) — Web Developer — Marseille. Custom websites with PHP, JavaScript, HTML/CSS.
+
+## Education
+
+- Master Communication : Concepteur Multimédia — Avignon University (1999 – 2001)
+- Data Journalism Module Instructor — Aix-Marseille University (2014 – 2018)
+- Journalism & Social Media Module Instructor — European Institute of Journalism, Marseille (2013 – 2015)
+
+## Projects
+
+- [Carnet Secret](https://carnet-secret.1h12.com) — Game: ten trials to walk in the footsteps of Arsène Lupin (2025)
+- [Spritewave](https://spritewave.1h12.com) — Spritesheet generator: preview, pack and export sprites (2025)
+- [Chromacut](https://chromacut.1h12.com) — Turn AI generations into transparent PNGs (2025)
+- [prisma-searchparams-mapper](https://www.npmjs.com/package/prisma-searchparams-mapper) — Typesafe utility to map URL search params to Prisma requests (2025)
+- [mm°dex](https://mmdex.1h12.com) — Weather app: rank the real feel (2024)
+
+## Links
+
+- [Portfolio](https://1h12.com)
+- [Resume (EN)](https://1h12.com/resume.html?lang=en)
+- [CV (FR)](https://1h12.com/resume.html?lang=fr)
+- [GitHub](https://github.com/NicoBocq)
+- [LinkedIn](https://www.linkedin.com/in/bocquetnicolas)

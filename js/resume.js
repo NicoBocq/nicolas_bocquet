@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         DataLoader.loadTeaching(document.getElementById('teaching-list'));
         DataLoader.loadEducation(document.getElementById('education-list'));
+        DataLoader.loadLanguages(document.getElementById('languages-list'));
         DataLoader.applyI18n();
     }
 

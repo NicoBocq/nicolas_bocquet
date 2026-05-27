@@ -65,6 +65,7 @@ const DataLoader = {
 
     loadBio(container, format = 'short') {
         if (!container) return;
+        container.innerHTML = '';
         const bio = this._data.bio;
         const profile = this._data.profile;
 
@@ -80,7 +81,8 @@ const DataLoader = {
                 : `<p>${bio.long}</p>`;
             text.innerHTML = `${bioContent}
                 <p class="font-mono status-block">
-                    > LOCATION: ${profile.location.toUpperCase()}
+                    > LOCATION: ${profile.location.toUpperCase()}<br>
+                    > STATUS: ${profile.status.toUpperCase()}
                 </p>`;
             wrapper.appendChild(text);
             container.appendChild(wrapper);
@@ -174,6 +176,22 @@ const DataLoader = {
                 });
                 container.appendChild(ul);
             });
+
+            if (skills.languages?.length) {
+                const header = document.createElement('h4');
+                header.className = 'font-mono skills-category-title';
+                header.textContent = labels.languages.toUpperCase();
+                container.appendChild(header);
+                const ul = document.createElement('ul');
+                ul.className = 'stack-list spotlight-group';
+                skills.languages.forEach(lang => {
+                    const li = document.createElement('li');
+                    li.className = 'spotlight-item';
+                    li.textContent = `${lang.name} (${lang.level})`;
+                    ul.appendChild(li);
+                });
+                container.appendChild(ul);
+            }
         }
     },
 
@@ -216,6 +234,17 @@ const DataLoader = {
                 </a>
             `;
             container.appendChild(li);
+        });
+    },
+
+    loadLanguages(container) {
+        if (!container) return;
+        container.innerHTML = '';
+        this._data.skills.languages.forEach(lang => {
+            const div = document.createElement('div');
+            div.className = 'experience-item';
+            div.innerHTML = `<h3>${lang.name}</h3><span class="meta">${lang.level}</span>`;
+            container.appendChild(div);
         });
     },
 

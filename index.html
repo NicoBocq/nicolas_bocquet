@@ -4,25 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Bocquet - Full Stack JS Developer</title>
+    <title>Nicolas Bocquet - Product Engineer</title>
     <meta name="description"
-        content="Nicolas Bocquet, Full Stack TypeScript Developer based in Marseille. Expert in React/Next.js ecosystem, clean code, and UX/UI.">
+        content="Nicolas Bocquet, Product Engineer based in Marseille. TypeScript / React / Node. 12 years in journalism and project management before coding.">
     <meta name="author" content="Nicolas Bocquet">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://1h12.com">
-    <meta property="og:title" content="Nicolas Bocquet - Full Stack TypeScript Developer">
+    <meta property="og:title" content="Nicolas Bocquet - Product Engineer">
     <meta property="og:description"
-        content="Expert in React/Next.js ecosystem, clean code, and UX/UI. Based in Marseille.">
+        content="Product Engineer based in Marseille. TypeScript / React / Node. Builds products, not just features.">
     <meta property="og:image" content="https://1h12.com/img/og-image.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://1h12.com">
-    <meta property="twitter:title" content="Nicolas Bocquet - Full Stack JS Developer">
+    <meta property="twitter:title" content="Nicolas Bocquet - Product Engineer">
     <meta property="twitter:description"
-        content="Nicolas Bocquet, Full Stack TypeScript Developer based in Marseille. Expert in React/Next.js ecosystem, clean code, and UX/UI.">
+        content="Nicolas Bocquet, Product Engineer based in Marseille. TypeScript / React / Node. 12 years in journalism and project management before coding.">
     <meta property="twitter:image" content="https://1h12.com/img/og-image.png">
 
+    <link rel="alternate" hreflang="en"        href="https://1h12.com/?lang=en">
+    <link rel="alternate" hreflang="fr"        href="https://1h12.com/?lang=fr">
+    <link rel="alternate" hreflang="x-default" href="https://1h12.com/">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -40,8 +43,8 @@
             <div class="header-right">
                 <span class="logo-mark font-mono">1h12</span>
                 <div class="header-controls">
-                    <button class="lang-toggle" id="langToggle" aria-label="Toggle language"></button>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false"></button>
+                    <button class="lang-toggle" id="langToggle" aria-label="Toggle language" type="button"></button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" type="button"></button>
                 </div>
             </div>
         </header>
@@ -49,7 +52,7 @@
         <main id="main-content">
             <ul class="accordion spotlight-group">
                 <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="about-content" id="about-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="about-content" id="about-trigger" type="button">
                         <h3 data-i18n="sections.about">About</h3>
                     </button>
                     <div class="accordion-content" id="about-content" role="region" aria-labelledby="about-trigger">
@@ -60,7 +63,7 @@
                     </div>
                 </li>
                 <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="experience-content" id="experience-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="experience-content" id="experience-trigger" type="button">
                         <h3 data-i18n="sections.experience">Experience</h3>
                     </button>
                     <div class="accordion-content" id="experience-content" role="region" aria-labelledby="experience-trigger">
@@ -73,7 +76,7 @@
                     </div>
                 </li>
                 <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="projects-content" id="projects-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="projects-content" id="projects-trigger" type="button">
                         <h3 data-i18n="sections.projects">Projects</h3>
                     </button>
                     <div class="accordion-content" id="projects-content" role="region" aria-labelledby="projects-trigger">
@@ -87,7 +90,7 @@
                     </div>
                 </li>
                 <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="skills-content" id="skills-trigger">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="skills-content" id="skills-trigger" type="button">
                         <h3 data-i18n="sections.skills">Skills</h3>
                     </button>
                     <div class="accordion-content" id="skills-content" role="region" aria-labelledby="skills-trigger">
