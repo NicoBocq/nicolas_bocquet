@@ -105,9 +105,17 @@ li {
   right: 2rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .back-link,
+.lang-toggle,
 .print-btn {
   font-family: var(--font-mono);
   text-decoration: none;
@@ -119,6 +127,14 @@ li {
   transition: all 0.2s;
   background: white;
   cursor: pointer;
+}
+
+.lang-toggle::after {
+  content: 'EN';
+}
+
+[data-lang="fr"] .lang-toggle::after {
+  content: 'FR';
 }
 
 .contact-info {
@@ -148,6 +164,7 @@ li {
 }
 
 .back-link:hover,
+.lang-toggle:hover,
 .print-btn:hover {
   background: black;
   color: white;

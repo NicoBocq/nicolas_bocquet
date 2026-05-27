@@ -88,19 +88,20 @@ header {
 
 .header-left {
   display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
 }
 
 header h1 {
   font-family: var(--font-main);
-  font-size: 2rem;
-  letter-spacing: -0.02em;
+  font-size: 2.75rem;
+  letter-spacing: -0.03em;
   margin: 0;
   text-transform: uppercase;
   transition: text-shadow 0.3s ease;
   cursor: default;
+  line-height: 1;
 }
 
 header h1:hover {
@@ -115,19 +116,43 @@ header h1:hover {
   font-weight: 900;
 }
 
-.separator {
-  opacity: 0.5;
-  font-weight: 300;
-}
-
 header .role {
-  font-size: 1.125rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  opacity: 0.8;
+  opacity: 0.55;
 }
 
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.logo-mark {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  cursor: default;
+  user-select: none;
+  transition: text-shadow 0.3s ease;
+}
+
+.logo-mark:hover {
+  text-shadow: 0 0 20px rgba(var(--color-text-rgb), 0.5);
+}
+
+.header-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.lang-toggle,
 .theme-toggle {
   background: none;
   border: none;
@@ -139,6 +164,26 @@ header .role {
   text-transform: uppercase;
   opacity: 0.6;
   transition: opacity 0.2s ease;
+}
+
+.lang-toggle::after {
+  content: '[ EN ]';
+}
+
+[data-lang="fr"] .lang-toggle::after {
+  content: '[ FR ]';
+}
+
+.lang-toggle:hover,
+.theme-toggle:hover {
+  opacity: 1;
+}
+
+.lang-toggle:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+  opacity: 1;
 }
 
 .theme-toggle:hover {
@@ -159,6 +204,7 @@ header .role {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
+  align-items: start;
 }
 
 .stack-list li {
@@ -221,6 +267,26 @@ main {
   text-align: left;
   color: inherit;
   font: inherit;
+  position: relative;
+}
+
+.accordion-trigger::after {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 0.35;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.accordion-item.is-open .accordion-trigger::after {
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.7;
 }
 
 .accordion-trigger:hover {
@@ -276,7 +342,13 @@ main {
 
 .content-wrapper {
   padding-left: calc(2rem + 1rem);
-  max-width: 800px;
+  max-width: 960px;
+}
+
+.project-description {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-toggle::after {
@@ -318,6 +390,33 @@ p {
 .project-meta {
   font-size: 0.875rem;
   color: var(--color-meta);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.project-type {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 0.15em 0.45em;
+  opacity: 0.45;
+  align-self: flex-start;
+  transition: border-color 0.3s ease;
+}
+
+.company-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.meta-period {
+  font-size: 0.8rem;
+  opacity: 0.55;
 }
 
 .project-item h4 {
@@ -420,19 +519,13 @@ footer {
   margin-bottom: 0.25rem;
 }
 
-.company-tag {
-  font-weight: 400;
-  opacity: 0.5;
-  font-size: 0.75em;
-  text-transform: uppercase;
-  margin-left: 0.5rem;
-}
 
 .skills-category-title {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  margin-bottom: 0.5rem;
-  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  opacity: 0.65;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  letter-spacing: 0.08em;
 }
 
 .footer-separator {
@@ -446,6 +539,25 @@ footer {
 .status-block {
   font-size: 0.9rem;
   margin-top: 2rem;
+}
+
+@media (min-width: 1100px) {
+  #main-experience-list .project-item {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    column-gap: 3rem;
+    align-items: start;
+  }
+
+  #main-experience-list .project-meta {
+    padding-top: 0.4rem;
+  }
+
+  #main-experience-list .project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -464,27 +576,23 @@ footer {
 
   header {
     position: relative;
-    display: block;
-    padding-right: 4rem;
-  }
-
-  .header-left {
-    display: block;
+    padding-right: 5rem;
   }
 
   header h1 {
-    margin-bottom: 0.25rem;
+    font-size: 2rem;
   }
 
-  .theme-toggle {
+  .header-right {
     position: absolute;
     top: 2rem;
     right: 0;
+    align-items: flex-end;
+    gap: 0.75rem;
   }
 
-  .separator {
-    display: inline-block;
-    margin-right: 0.5rem;
+  .logo-mark {
+    font-size: 1.125rem;
   }
 
   footer {

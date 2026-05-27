@@ -35,17 +35,22 @@
             <div class="header-left">
                 <h1><span class="firstname" id="profile-firstname"></span> <span class="lastname"
                         id="profile-lastname"></span></h1>
-                <span class="separator">—</span>
                 <span class="role font-mono" id="profile-role"></span>
             </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false"></button>
+            <div class="header-right">
+                <span class="logo-mark font-mono">1h12</span>
+                <div class="header-controls">
+                    <button class="lang-toggle" id="langToggle" aria-label="Toggle language"></button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false"></button>
+                </div>
+            </div>
         </header>
 
         <main id="main-content">
             <ul class="accordion spotlight-group">
                 <li class="accordion-item spotlight-item">
                     <button class="accordion-trigger" aria-expanded="false" aria-controls="about-content" id="about-trigger">
-                        <h3>About</h3>
+                        <h3 data-i18n="sections.about">About</h3>
                     </button>
                     <div class="accordion-content" id="about-content" role="region" aria-labelledby="about-trigger">
                         <div class="accordion-inner">
@@ -56,7 +61,7 @@
                 </li>
                 <li class="accordion-item spotlight-item">
                     <button class="accordion-trigger" aria-expanded="false" aria-controls="experience-content" id="experience-trigger">
-                        <h3>Experience</h3>
+                        <h3 data-i18n="sections.experience">Experience</h3>
                     </button>
                     <div class="accordion-content" id="experience-content" role="region" aria-labelledby="experience-trigger">
                         <div class="accordion-inner">
@@ -69,7 +74,7 @@
                 </li>
                 <li class="accordion-item spotlight-item">
                     <button class="accordion-trigger" aria-expanded="false" aria-controls="projects-content" id="projects-trigger">
-                        <h3>Projects</h3>
+                        <h3 data-i18n="sections.projects">Projects</h3>
                     </button>
                     <div class="accordion-content" id="projects-content" role="region" aria-labelledby="projects-trigger">
                         <div class="accordion-inner">
@@ -83,7 +88,7 @@
                 </li>
                 <li class="accordion-item spotlight-item">
                     <button class="accordion-trigger" aria-expanded="false" aria-controls="skills-content" id="skills-trigger">
-                        <h3>Skills</h3>
+                        <h3 data-i18n="sections.skills">Skills</h3>
                     </button>
                     <div class="accordion-content" id="skills-content" role="region" aria-labelledby="skills-trigger">
                         <div class="accordion-inner">
