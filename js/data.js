@@ -45,7 +45,7 @@ const PORTFOLIO_DATA = {
             "GIT / CI/CD / MONOREPO", "DOCKER / COOLIFY",
             "FIGMA / UI DESIGN"
         ],
-        ai: ["CLAUDE CODE CLI", "CODEX", "ANTIGRAVITY"],
+        ai: ["CLAUDE CODE CLI", "CODEX", "AGENTIC WORKFLOWS", "PROMPT ENGINEERING"],
         languages: [
             { name: "Français", level: { en: "Native",       fr: "Langue maternelle" } },
             { name: "English",  level: { en: "Professional", fr: "Professionnel"     } }
