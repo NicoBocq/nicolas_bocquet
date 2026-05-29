@@ -143,14 +143,14 @@ const PORTFOLIO_DATA = {
 				location: "Remote / Monaco",
 				details: {
 					en: [
-						"<strong>PIM (Product Information Management)</strong>: Monorepo for a fashion B2C client handling 1M+ products. Two Next.js apps with role-based UIs, two backend instances (API + async worker), job queue with pg-boss, full infra on Coolify with Docker Compose.",
+						"<strong>PIM (Product Information Management)</strong>: Monorepo for a fashion B2B client handling 1M+ products. Two Next.js apps with role-based UIs, two backend instances (API + async worker), job queue with pg-boss, full infra on Coolify with Docker Compose.",
 						"<strong>AI Fashion Photo Studio</strong>: Batch photo processing pipeline built on top of the PIM, raw hanger photo import, ghost mannequin generation, and AI-powered model shots (Gemini) for front and back views, industrializing product photography at scale.",
 						"<strong>SaaS Coaching Platform</strong> (Next.js 16, TypeScript, PostgreSQL): Built a platform for 300 coaches and coachees with role-based interfaces, automated PDF generation, and Stripe subscription management.",
 						"<strong>Rally App (iOS/Android)</strong>: Built a B2B React Native CLI application for regularity rallies.",
 					],
 					fr: [
-						"<strong>PIM (Product Information Management)</strong> : Monorepo pour un client B2C mode gérant 1M+ produits. Deux apps Next.js avec interfaces par rôle, deux instances backend (API + worker asynchrone), queue de jobs avec pg-boss, infra complète sur Coolify avec Docker Compose.",
-						"<strong>Studio Photo Fashion IA</strong> : Pipeline de traitement batch construit sur le PIM — import de photos brutes sur cintre, génération de visuels ghost mannequin, et génération de modèles portés par IA (Gemini) en vues face et dos, industrialisant la production photo produit.",
+						"<strong>PIM (Product Information Management)</strong> : Monorepo pour un client B2B mode gérant 1M+ produits. Deux apps Next.js avec interfaces par rôle, deux instances backend (API + worker asynchrone), queue de jobs avec pg-boss, infra complète sur Coolify avec Docker Compose.",
+						"<strong>Studio Photo Fashion IA</strong> : Pipeline de traitement batch construit sur le PIM, import de photos brutes sur cintre, génération de visuels ghost mannequin, et génération de modèles portés par IA (Gemini) en vues face et dos, industrialisant la production photo produit.",
 						"<strong>Plateforme de coaching SaaS</strong> (Next.js 16, TypeScript, PostgreSQL) : Construction d'une plateforme pour 300 coachs et coachés avec des interfaces basées sur les rôles, génération automatisée de PDF et gestion des abonnements Stripe.",
 						"<strong>App Rallye (iOS/Android)</strong> : Création d'une application React Native CLI B2B pour les rallyes de régularité.",
 					],
