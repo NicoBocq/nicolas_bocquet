@@ -51,7 +51,7 @@ const PORTFOLIO_DATA = {
 			"DOCKER / COOLIFY",
 			"FIGMA / UI DESIGN",
 		],
-		ai: ["CLAUDE CODE CLI", "CODEX", "AGENTIC WORKFLOWS", "PROMPT ENGINEERING"],
+		ai: ["CLAUDE CODE", "CODEX", "AGENTIC WORKFLOWS"],
 		languages: [
 			{ name: "Français", level: { en: "Native", fr: "Langue maternelle" } },
 			{ name: "English", level: { en: "Professional", fr: "Professionnel" } },
