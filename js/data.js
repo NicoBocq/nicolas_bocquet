@@ -17,19 +17,19 @@ const PORTFOLIO_DATA = {
 
 	bio: {
 		short: {
-			en: "Web developer since 2001. 12 years in journalism and project management. Back to development in 2019, building products end to end.",
-			fr: "Développeur web depuis 2001. 12 ans de journalisme et de gestion de projet. Retour aux sources en 2019, pour construire des produits de bout en bout.",
+			en: "Web developer since 1999. 12 years in journalism and project management. Back to development in 2019, building products end to end.",
+			fr: "Développeur web depuis 1999. 12 ans de journalisme et de gestion de projet. Retour aux sources en 2019, pour construire des produits de bout en bout.",
 		},
 		long: {
 			en: [
-				"Started as a web developer in 2001, with a focus on UI integration and design. Then came 12 years at La Provence (regional daily newspaper): journalist, project manager, and eventually digital lead. Returned to development in 2019, carrying a decade of product thinking, data culture, and UX instincts built from the other side of the screen.",
-				"That path changed how I build. I think in products before I think in features. I read data before I write code. And I take UX seriously because I've seen firsthand what bad information architecture does to real users.",
-				"Today I build TypeScript applications at INFORCA — SaaS platforms, React Native apps, PIM systems — with the same question driving every decision: does this actually work for the person using it?",
+				"Started as a web developer in 1999, with a focus on UI integration and design. Then came 12 years at La Provence (regional daily newspaper): project manager, then journalist. Returned to development in 2019.",
+				"That path changed how I build. I think in products before I think in features. I read data before I write code. And I take UX seriously. I've seen what happens when you don't.",
+				"Today I build TypeScript applications at INFORCA (CRM, PIM, SaaS) with the same question driving every decision: does this actually work for the person using it?",
 			],
 			fr: [
-				"Développeur web dès 2001, orienté intégration et design. Puis 12 ans à La Provence (quotidien régional) : journaliste, chef de projet numérique, puis responsable numérique. Retour aux sources en 2019, avec dix ans de culture produit, de lecture de la donnée et d'instincts UX forgés côté utilisateur.",
-				"Ce parcours a changé ma façon de construire. Je pense produit avant de penser feature. Je lis la donnée avant d'écrire le code. Et je prends l'UX au sérieux parce que j'ai vu de près ce que fait une mauvaise architecture de l'information sur de vrais utilisateurs.",
-				"Aujourd'hui je construis des applications TypeScript chez INFORCA (plateformes SaaS, apps React Native, systèmes PIM) avec la même question qui guide chaque décision : est-ce que ça fonctionne vraiment pour la personne qui l'utilise ?",
+				"Développeur web dès 1999, orienté intégration et design. Puis 12 ans à La Provence (quotidien régional) : chef de projet numérique, puis journaliste. Retour aux sources en 2019.",
+				"Ce parcours a changé ma façon de construire. Je pense produit avant de penser feature. Je lis la donnée avant d'écrire le code. Et je prends l'UX au sérieux. J'ai vu ce que ça coûte de la négliger.",
+				"Aujourd'hui je construis des applications TypeScript chez INFORCA (CRM, PIM, SaaS) avec la même question qui guide chaque décision : est-ce que ça fonctionne vraiment pour la personne qui l'utilise ?",
 			],
 		},
 	},
