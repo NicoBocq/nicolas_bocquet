@@ -80,9 +80,19 @@ const PORTFOLIO_DATA = {
 
 	opensource: [
 		{
+			title: "Bulle",
+			link: "https://bulle.1h12.com",
+			stack: ["Go", "PostgreSQL", "Next.js", "Connect RPC"],
+			year: "2026",
+			description: {
+				en: "Share films & series within closed communities, react and discuss in threads",
+				fr: "Partager films & séries dans des communautés fermées, réagir et discuter en fils",
+			},
+		},
+		{
 			title: "Carnet Secret",
 			link: "https://carnet-secret.1h12.com",
-			type: "APP",
+			stack: ["Phaser", "React", "TypeScript", "Zustand"],
 			year: "2025",
 			description: {
 				en: "Game: Ten trials to walk in the footsteps of Arsène Lupin",
@@ -90,29 +100,19 @@ const PORTFOLIO_DATA = {
 			},
 		},
 		{
-			title: "Spritewave",
-			link: "https://spritewave.1h12.com",
-			type: "APP",
-			year: "2025",
-			description: {
-				en: "Spritesheet generator. Preview, pack and export sprites",
-				fr: "Générateur de spritesheet. Aperçu, assemblage et exportation de sprites",
-			},
-		},
-		{
 			title: "Chromacut",
 			link: "https://chromacut.1h12.com",
-			type: "APP",
+			stack: ["React", "TypeScript", "IMG.LY", "Radix UI"],
 			year: "2025",
 			description: {
-				en: "Turn AI generations into transparent PNGs",
-				fr: "Transformez les générations IA en PNG transparents",
+				en: "Turn AI generations into transparent PNGs, background removal in the browser",
+				fr: "Transformez les générations IA en PNG transparents, détourage dans le navigateur",
 			},
 		},
 		{
 			title: "prisma-searchparams-mapper",
 			link: "https://www.npmjs.com/package/prisma-searchparams-mapper",
-			type: "NPM PACKAGE",
+			stack: ["TypeScript", "Prisma", "Zero-dependency"],
 			year: "2025",
 			description: {
 				en: "Typesafe utility to map URL search params to Prisma request.",
@@ -122,7 +122,7 @@ const PORTFOLIO_DATA = {
 		{
 			title: "mm°dex",
 			link: "https://mmdex.1h12.com",
-			type: "APP",
+			stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
 			year: "2024",
 			description: {
 				en: "Weather app: rank the reel feel",

@@ -322,15 +322,12 @@ p {
   gap: 0.2rem;
 }
 
-.project-type {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid currentColor;
-  padding: 0.15em 0.45em;
-  opacity: 0.45;
-  align-self: flex-start;
-  transition: border-color 0.3s ease;
+.project-stack {
+  font-size: 0.8rem;
+  color: var(--color-meta);
+  letter-spacing: 0.02em;
+  margin: 0.75rem 0 0;
+  max-width: none;
 }
 
 .company-name {

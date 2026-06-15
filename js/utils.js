@@ -232,14 +232,15 @@ const DataLoader = {
 		this._data.opensource.forEach((project) => {
 			const li = document.createElement("li");
 			li.className = "project-item spotlight-item";
+			const stack = (project.stack || []).join(" · ");
 			li.innerHTML = `
                 <a href="${project.link}" target="_blank" rel="noopener noreferrer">
                     <div class="project-meta font-mono">
                         <span>${project.year}</span>
-                        <span class="project-type">${project.type}</span>
                     </div>
                     <h4>${project.title}</h4>
                     <p class="project-description">${project.description}</p>
+                    ${stack ? `<p class="project-stack font-mono">${stack}</p>` : ""}
                 </a>
             `;
 			container.appendChild(li);
