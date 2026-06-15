@@ -122,69 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// --- Accordion ---
-
-	const accordionItems = document.querySelectorAll(".accordion-item");
-
-	const toggleAccordion = (item, shouldOpen) => {
-		const trigger = item.querySelector(".accordion-trigger");
-		if (shouldOpen) {
-			item.classList.add("is-open");
-			trigger.setAttribute("aria-expanded", "true");
-			setTimeout(() => {
-				const isMobile = window.innerWidth <= 768;
-				const offsetPosition =
-					item.getBoundingClientRect().top +
-					window.pageYOffset -
-					(isMobile ? 20 : 100);
-				window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-			}, 550);
-		} else {
-			item.classList.remove("is-open");
-			trigger.setAttribute("aria-expanded", "false");
-		}
-	};
-
-	accordionItems.forEach((item) => {
-		const trigger = item.querySelector(".accordion-trigger");
-
-		trigger.addEventListener("click", () => {
-			const isOpen = item.classList.contains("is-open");
-			accordionItems.forEach((i) => {
-				toggleAccordion(i, false);
-			});
-			if (!isOpen) toggleAccordion(item, true);
-		});
-
-		trigger.addEventListener("keydown", (e) => {
-			const idx = Array.from(accordionItems).indexOf(item);
-			switch (e.key) {
-				case "ArrowDown":
-					e.preventDefault();
-					(accordionItems[idx + 1] || accordionItems[0])
-						.querySelector(".accordion-trigger")
-						.focus();
-					break;
-				case "ArrowUp":
-					e.preventDefault();
-					(accordionItems[idx - 1] || accordionItems[accordionItems.length - 1])
-						.querySelector(".accordion-trigger")
-						.focus();
-					break;
-				case "Home":
-					e.preventDefault();
-					accordionItems[0].querySelector(".accordion-trigger").focus();
-					break;
-				case "End":
-					e.preventDefault();
-					accordionItems[accordionItems.length - 1]
-						.querySelector(".accordion-trigger")
-						.focus();
-					break;
-			}
-		});
-	});
-
 	// --- Theme ---
 
 	const themeToggle = document.getElementById("themeToggle");

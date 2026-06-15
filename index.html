@@ -50,57 +50,26 @@
         </header>
 
         <main id="main-content">
-            <ul class="accordion spotlight-group">
-                <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="about-content" id="about-trigger" type="button">
-                        <h3 data-i18n="sections.about">About</h3>
-                    </button>
-                    <div class="accordion-content" id="about-content" role="region" aria-labelledby="about-trigger">
-                        <div class="accordion-inner">
-                            <div id="about-container" class="about-container"></div>
-                            <div class="spacer-4rem"></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="experience-content" id="experience-trigger" type="button">
-                        <h3 data-i18n="sections.experience">Experience</h3>
-                    </button>
-                    <div class="accordion-content" id="experience-content" role="region" aria-labelledby="experience-trigger">
-                        <div class="accordion-inner">
-                            <div class="content-wrapper">
-                                <ul class="project-list spotlight-group" id="main-experience-list"></ul>
-                            </div>
-                            <div class="spacer-4rem"></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="projects-content" id="projects-trigger" type="button">
-                        <h3 data-i18n="sections.projects">Projects</h3>
-                    </button>
-                    <div class="accordion-content" id="projects-content" role="region" aria-labelledby="projects-trigger">
-                        <div class="accordion-inner">
-                            <div class="content-wrapper">
-                                <ul class="project-list" id="opensource-list">
-                                </ul>
-                            </div>
-                            <div class="spacer-4rem"></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="accordion-item spotlight-item">
-                    <button class="accordion-trigger" aria-expanded="false" aria-controls="skills-content" id="skills-trigger" type="button">
-                        <h3 data-i18n="sections.skills">Skills</h3>
-                    </button>
-                    <div class="accordion-content" id="skills-content" role="region" aria-labelledby="skills-trigger">
-                        <div class="accordion-inner">
-                            <div class="content-wrapper" id="skills-container"></div>
-                            <div class="spacer-4rem"></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            <section class="section" id="about">
+                <h2 class="section-title" data-i18n="sections.about">About</h2>
+                <div id="about-container" class="about-container"></div>
+            </section>
+            <section class="section" id="experience">
+                <h2 class="section-title" data-i18n="sections.experience">Experience</h2>
+                <div class="content-wrapper">
+                    <ul class="project-list spotlight-group" id="main-experience-list"></ul>
+                </div>
+            </section>
+            <section class="section" id="projects">
+                <h2 class="section-title" data-i18n="sections.projects">Projects</h2>
+                <div class="content-wrapper">
+                    <ul class="project-list" id="opensource-list"></ul>
+                </div>
+            </section>
+            <section class="section" id="skills">
+                <h2 class="section-title" data-i18n="sections.skills">Skills</h2>
+                <div class="content-wrapper" id="skills-container"></div>
+            </section>
         </main>
 
         <footer id="contact">
