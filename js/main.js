@@ -75,9 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		DataLoader.loadProfile(
 			{
-				firstname: document.getElementById("profile-firstname"),
-				lastname: document.getElementById("profile-lastname"),
-				useShortRole: true,
+				status: document.getElementById("hero-status"),
+				useShortRole: false,
 			},
 			document.getElementById("profile-role"),
 		);
@@ -88,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 		DataLoader.loadOpenSource(document.getElementById("opensource-list"));
 		DataLoader.loadSkills(document.getElementById("skills-container"), "main");
+		DataLoader.loadStatements(
+			document.getElementById("statement-0"),
+			document.getElementById("statement-1"),
+		);
 		DataLoader.applyI18n();
 		injectJsonLd();
 	}

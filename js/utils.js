@@ -52,6 +52,8 @@ const DataLoader = {
 				: p.role;
 		}
 
+		if (profileElement.status) profileElement.status.textContent = p.status;
+
 		if (emailElement) {
 			emailElement.textContent = p.email;
 			emailElement.href = `mailto:${p.email}`;
@@ -91,6 +93,22 @@ const DataLoader = {
 			wrapper.appendChild(text);
 			container.appendChild(wrapper);
 		}
+	},
+
+	loadStatements(...containers) {
+		const statements = this._data.bio?.statements;
+		if (!Array.isArray(statements)) return;
+		containers.forEach((container, i) => {
+			if (!container) return;
+			const text = statements[i];
+			if (text) {
+				container.textContent = text;
+				container.hidden = false;
+			} else {
+				container.textContent = "";
+				container.hidden = true;
+			}
+		});
 	},
 
 	loadExperience(container) {
