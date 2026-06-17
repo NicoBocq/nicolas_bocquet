@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		DataLoader.loadProfile(
 			{
-				status: document.getElementById("hero-status"),
 				useShortRole: false,
 			},
 			document.getElementById("profile-role"),
@@ -87,10 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 		DataLoader.loadOpenSource(document.getElementById("opensource-list"));
 		DataLoader.loadSkills(document.getElementById("skills-container"), "main");
-		DataLoader.loadStatements(
-			document.getElementById("statement-0"),
-			document.getElementById("statement-1"),
-		);
 		DataLoader.applyI18n();
 		injectJsonLd();
 	}
@@ -123,6 +118,39 @@ document.addEventListener("DOMContentLoaded", () => {
 					window.location.href = `mailto:${email}`;
 				});
 		});
+	}
+
+	// --- Section index (active tracking) ---
+
+	const indexLinks = Array.from(
+		document.querySelectorAll(".section-index a"),
+	);
+	const sections = document.querySelectorAll("main .section");
+
+	if (indexLinks.length && sections.length && "IntersectionObserver" in window) {
+		const linkFor = (id) =>
+			indexLinks.find((a) => a.getAttribute("href") === `#${id}`);
+
+		const setActive = (id) => {
+			indexLinks.forEach((a) => {
+				const isActive = a.getAttribute("href") === `#${id}`;
+				a.classList.toggle("is-active", isActive);
+				if (isActive) a.setAttribute("aria-current", "true");
+				else a.removeAttribute("aria-current");
+			});
+		};
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const visible = entries
+					.filter((e) => e.isIntersecting)
+					.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+				if (visible) setActive(visible.target.id);
+			},
+			{ rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+		);
+
+		sections.forEach((s) => observer.observe(s));
 	}
 
 	// --- Theme ---

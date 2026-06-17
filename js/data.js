@@ -32,16 +32,6 @@ const PORTFOLIO_DATA = {
 				"Aujourd'hui je construis des applications TypeScript chez INFORCA (CRM, PIM, SaaS) avec la même question qui guide chaque décision : est-ce que ça fonctionne vraiment pour la personne qui l'utilise ?",
 			],
 		},
-		statements: {
-			en: [
-				"I think in products before I think in features.",
-				"Does this actually work for the person using it?",
-			],
-			fr: [
-				"Je pense produit avant de penser feature.",
-				"Est-ce que ça fonctionne vraiment pour la personne qui l'utilise ?",
-			],
-		},
 	},
 
 	skills: {
