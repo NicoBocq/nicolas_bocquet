@@ -52,6 +52,8 @@ const DataLoader = {
 				: p.role;
 		}
 
+		if (profileElement.status) profileElement.status.textContent = p.status;
+
 		if (emailElement) {
 			emailElement.textContent = p.email;
 			emailElement.href = `mailto:${p.email}`;
@@ -169,38 +171,27 @@ const DataLoader = {
 				container.appendChild(div);
 			});
 		} else {
-			categories.forEach((cat) => {
+			// Main page: lean, readable stack — tech + AI only, as flowing lists.
+			// Soft skills and languages stay in the data (used by JSON-LD) but are
+			// not surfaced here to keep the section legible and meaningful.
+			const mainCategories = [
+				{ key: "tech", label: labels.tech },
+				{ key: "ai", label: labels.ai },
+			];
+			mainCategories.forEach((cat) => {
 				if (!skills[cat.key]?.length) return;
-				const header = document.createElement("h4");
-				header.className = "font-mono skills-category-title";
-				header.textContent = cat.label.toUpperCase();
-				container.appendChild(header);
-				const ul = document.createElement("ul");
-				ul.className = "stack-list spotlight-group";
-				skills[cat.key].forEach((skill) => {
-					const li = document.createElement("li");
-					li.className = "spotlight-item";
-					li.textContent = skill;
-					ul.appendChild(li);
-				});
-				container.appendChild(ul);
+				const row = document.createElement("div");
+				row.className = "skill-row";
+				const label = document.createElement("span");
+				label.className = "skill-cat font-mono";
+				label.textContent = cat.label.toUpperCase();
+				const items = document.createElement("p");
+				items.className = "skill-items";
+				items.textContent = skills[cat.key].join(" · ");
+				row.appendChild(label);
+				row.appendChild(items);
+				container.appendChild(row);
 			});
-
-			if (skills.languages?.length) {
-				const header = document.createElement("h4");
-				header.className = "font-mono skills-category-title";
-				header.textContent = labels.languages.toUpperCase();
-				container.appendChild(header);
-				const ul = document.createElement("ul");
-				ul.className = "stack-list spotlight-group";
-				skills.languages.forEach((lang) => {
-					const li = document.createElement("li");
-					li.className = "spotlight-item";
-					li.textContent = `${lang.name} (${lang.level})`;
-					ul.appendChild(li);
-				});
-				container.appendChild(ul);
-			}
 		}
 	},
 
@@ -233,6 +224,10 @@ const DataLoader = {
 			const li = document.createElement("li");
 			li.className = "project-item spotlight-item";
 			const stack = (project.stack || []).join(" · ");
+			let host = project.link;
+			try {
+				host = new URL(project.link).host.replace(/^www\./, "");
+			} catch {}
 			li.innerHTML = `
                 <a href="${project.link}" target="_blank" rel="noopener noreferrer">
                     <div class="project-meta font-mono">
@@ -241,6 +236,7 @@ const DataLoader = {
                     <h4>${project.title}</h4>
                     <p class="project-description">${project.description}</p>
                     ${stack ? `<p class="project-stack font-mono">${stack}</p>` : ""}
+                    <span class="project-link font-mono">${host} ↗</span>
                 </a>
             `;
 			container.appendChild(li);

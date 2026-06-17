@@ -34,40 +34,58 @@
 
     <div class="container">
 
-        <header>
-            <div class="header-left">
-                <h1><span class="firstname" id="profile-firstname"></span> <span class="lastname"
-                        id="profile-lastname"></span></h1>
-                <span class="role font-mono" id="profile-role"></span>
-            </div>
-            <div class="header-right">
-                <span class="logo-mark font-mono">1h12</span>
-                <div class="header-controls">
-                    <button class="lang-toggle" id="langToggle" aria-label="Toggle language" type="button"></button>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" type="button"></button>
-                </div>
+        <header class="topbar">
+            <span class="logo-mark font-mono">1h12</span>
+            <div class="header-controls">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language" type="button"></button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" type="button"></button>
             </div>
         </header>
 
+        <nav class="section-index" aria-label="Sections">
+            <a href="#about" data-i18n="sections.about">About</a>
+            <a href="#experience" data-i18n="sections.experience">Experience</a>
+            <a href="#projects" data-i18n="sections.projects">Projects</a>
+            <a href="#skills" data-i18n="sections.skills">Skills</a>
+        </nav>
+
+        <section class="hero" id="hero">
+            <h1 class="hero-name" aria-label="Nicolas Bocquet">
+                <span class="hero-line" data-text="NICOLAS"></span>
+                <span class="hero-line" data-text="BOCQUET"></span>
+            </h1>
+            <p class="hero-role font-mono" id="profile-role"></p>
+        </section>
+
         <main id="main-content">
             <section class="section" id="about">
-                <h2 class="section-title" data-i18n="sections.about">About</h2>
+                <div class="section-head">
+                    <h2 class="section-title" data-i18n="sections.about">About</h2>
+                </div>
                 <div id="about-container" class="about-container"></div>
             </section>
+
             <section class="section" id="experience">
-                <h2 class="section-title" data-i18n="sections.experience">Experience</h2>
+                <div class="section-head">
+                    <h2 class="section-title" data-i18n="sections.experience">Experience</h2>
+                </div>
                 <div class="content-wrapper">
                     <ul class="project-list spotlight-group" id="main-experience-list"></ul>
                 </div>
             </section>
+
             <section class="section" id="projects">
-                <h2 class="section-title" data-i18n="sections.projects">Projects</h2>
+                <div class="section-head">
+                    <h2 class="section-title" data-i18n="sections.projects">Projects</h2>
+                </div>
                 <div class="content-wrapper">
                     <ul class="project-list" id="opensource-list"></ul>
                 </div>
             </section>
             <section class="section" id="skills">
-                <h2 class="section-title" data-i18n="sections.skills">Skills</h2>
+                <div class="section-head">
+                    <h2 class="section-title" data-i18n="sections.skills">Skills</h2>
+                </div>
                 <div class="content-wrapper" id="skills-container"></div>
             </section>
         </main>
@@ -87,6 +105,7 @@
     <script src="js/data.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/hero.js"></script>
     <script defer src="https://analytics.1h12.com/script.js" data-website-id="d6d7c72d-5201-4122-8adb-5b667f87d7b0"></script>
 </body>
 
