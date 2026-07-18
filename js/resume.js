@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		DataLoader.loadSkills(skillsContainer, "resume");
 		if (skillsContainer) skillsContainer.style.display = "block";
 
+		DataLoader.loadProjects(document.getElementById("projects-list"));
 		DataLoader.loadTeaching(document.getElementById("teaching-list"));
 		DataLoader.loadEducation(document.getElementById("education-list"));
 		DataLoader.loadLanguages(document.getElementById("languages-list"));

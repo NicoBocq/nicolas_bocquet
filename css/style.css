@@ -296,6 +296,16 @@ main {
   font-weight: 700;
 }
 
+/* The resume link is a destination, not a section: no index number. */
+.section-index .nav-resume::before {
+  content: none;
+  counter-increment: none;
+}
+
+.section-index .nav-resume {
+  opacity: 0.75;
+}
+
 /* Desktop: fixed vertical rail in a reserved left band */
 @media (min-width: 1100px) {
   .container {
@@ -312,6 +322,12 @@ main {
     top: 50%;
     transform: translateY(-50%);
     z-index: 9;
+  }
+
+  .section-index .nav-resume {
+    margin-top: 0.4rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--color-border);
   }
 }
 
@@ -331,13 +347,29 @@ main {
     overflow-x: auto;
     padding: 0.85rem 0;
     margin: 0;
+    /* Sits directly under the sticky topbar; --topbar-h is measured in main.js. */
+    position: sticky;
+    top: var(--topbar-h, 60px);
+    z-index: 9;
+    background-color: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
     scrollbar-width: none;
-    transition: border-color 0.3s ease;
+    overscroll-behavior-x: contain;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .section-index::-webkit-scrollbar {
     display: none;
+  }
+
+  .section-index .nav-resume {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--color-border);
+  }
+
+  /* Anchor landings must clear both sticky bars. */
+  .section {
+    scroll-margin-top: calc(var(--topbar-h, 60px) + var(--nav-h, 44px));
   }
 }
 
@@ -354,12 +386,13 @@ main {
   margin-bottom: 0.5rem;
 }
 
+/* Like the lang toggle, the label names the state you switch TO, not the current one. */
 .theme-toggle::after {
-  content: '[ LIGHT ]';
+  content: '[ DARK ]';
 }
 
 [data-theme="dark"] .theme-toggle::after {
-  content: '[ DARK ]';
+  content: '[ LIGHT ]';
 }
 
 p {
@@ -610,11 +643,11 @@ footer {
 @media (max-width: 768px) {
 
   .theme-toggle::after {
-    content: '[ LT ]';
+    content: '[ DK ]';
   }
 
   [data-theme="dark"] .theme-toggle::after {
-    content: '[ DK ]';
+    content: '[ LT ]';
   }
 
   .content-wrapper {

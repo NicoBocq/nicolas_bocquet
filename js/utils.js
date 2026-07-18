@@ -228,18 +228,39 @@ const DataLoader = {
 			try {
 				host = new URL(project.link).host.replace(/^www\./, "");
 			} catch {}
-			li.innerHTML = `
-                <a href="${project.link}" target="_blank" rel="noopener noreferrer">
+			const body = `
                     <div class="project-meta font-mono">
                         <span>${project.year}</span>
                     </div>
                     <h4>${project.title}</h4>
                     <p class="project-description">${project.description}</p>
                     ${stack ? `<p class="project-stack font-mono">${stack}</p>` : ""}
-                    <span class="project-link font-mono">${host} ↗</span>
-                </a>
             `;
+			// Projects without a public URL yet render as plain, non-clickable items.
+			li.innerHTML = project.link
+				? `<a href="${project.link}" target="_blank" rel="noopener noreferrer">${body}
+                    <span class="project-link font-mono">${host} ↗</span>
+                </a>`
+				: `<div class="project-item-static">${body}</div>`;
 			container.appendChild(li);
+		});
+	},
+
+	// Compact, print-friendly variant of the project list for the resume.
+	loadProjects(container) {
+		if (!container) return;
+		container.innerHTML = "";
+		this._data.opensource.forEach((project) => {
+			const div = document.createElement("div");
+			div.className = "experience-item";
+			const meta = [project.year, (project.stack || []).join(" · ")]
+				.filter(Boolean)
+				.join(" | ");
+			const title = project.link
+				? `<a href="${project.link}" target="_blank" rel="noopener noreferrer">${project.title}</a>`
+				: project.title;
+			div.innerHTML = `<h3>${title}</h3><span class="meta">${meta}</span><p>${project.description}</p>`;
+			container.appendChild(div);
 		});
 	},
 

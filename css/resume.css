@@ -46,6 +46,16 @@ h3 {
   margin: 0;
 }
 
+/* Project titles link out, but stay monochrome like the rest of the CV. */
+h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h3 a:hover {
+  text-decoration: underline;
+}
+
 .role {
   font-family: var(--font-mono);
   font-size: 1.125rem;

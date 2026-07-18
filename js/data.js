@@ -4,7 +4,7 @@ const PORTFOLIO_DATA = {
 	profile: {
 		firstname: "Nicolas",
 		lastname: "Bocquet",
-		email: "nicolas.fow@gmail.com",
+		email: "nicolas@1h12.com",
 		location: "Marseille, FR",
 		domain: "1h12.com",
 		role: "Product Engineer · TypeScript / React / Node",
@@ -80,6 +80,16 @@ const PORTFOLIO_DATA = {
 
 	opensource: [
 		{
+			title: "GoodPitch",
+			link: "https://goodpitch.1h12.com",
+			stack: ["TanStack Start", "PostgreSQL"],
+			year: "2026",
+			description: {
+				en: "Procedural quiz generation from a film's pitch",
+				fr: "Génération de quiz procédural à partir du pitch d'un film",
+			},
+		},
+		{
 			title: "Bulle",
 			link: "https://bulle.1h12.com",
 			stack: ["Go", "PostgreSQL", "Next.js", "Connect RPC"],
@@ -97,16 +107,6 @@ const PORTFOLIO_DATA = {
 			description: {
 				en: "Game: Ten trials to walk in the footsteps of Arsène Lupin",
 				fr: "Jeu : Dix épreuves pour marcher dans les pas d'Arsène Lupin",
-			},
-		},
-		{
-			title: "Chromacut",
-			link: "https://chromacut.1h12.com",
-			stack: ["React", "TypeScript", "IMG.LY", "Radix UI"],
-			year: "2025",
-			description: {
-				en: "Turn AI generations into transparent PNGs, background removal in the browser",
-				fr: "Transformez les générations IA en PNG transparents, détourage dans le navigateur",
 			},
 		},
 		{
@@ -300,6 +300,7 @@ const PORTFOLIO_DATA = {
 			about: { en: "About", fr: "À propos" },
 			experience: { en: "Experience", fr: "Expérience" },
 			skills: { en: "Skills", fr: "Compétences" },
+			projects: { en: "Projects", fr: "Projets" },
 			teaching: { en: "Teaching", fr: "Enseignement" },
 			education: { en: "Education", fr: "Formation" },
 			languages: { en: "Languages", fr: "Langues" },

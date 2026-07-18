@@ -122,21 +122,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// --- Section index (active tracking) ---
 
+	const sectionIndex = document.querySelector(".section-index");
+	const topbar = document.querySelector(".topbar");
 	const indexLinks = Array.from(
-		document.querySelectorAll(".section-index a"),
+		document.querySelectorAll('.section-index a[href^="#"]'),
 	);
 	const sections = document.querySelectorAll("main .section");
 
+	// Both bars are sticky on mobile: publish their heights so CSS can offset
+	// the nav and the anchor scroll-margin without hardcoded guesses.
+	const measureBars = () => {
+		const root = document.documentElement;
+		if (topbar) root.style.setProperty("--topbar-h", `${topbar.offsetHeight}px`);
+		if (sectionIndex)
+			root.style.setProperty("--nav-h", `${sectionIndex.offsetHeight}px`);
+	};
+
+	measureBars();
+	window.addEventListener("resize", measureBars, { passive: true });
+
 	if (indexLinks.length && sections.length && "IntersectionObserver" in window) {
-		const linkFor = (id) =>
-			indexLinks.find((a) => a.getAttribute("href") === `#${id}`);
+		// Keep the active item visible in the horizontal rail (mobile only —
+		// the desktop rail is a vertical column that never overflows).
+		const centerActive = (link) => {
+			if (!sectionIndex) return;
+			const overflow = sectionIndex.scrollWidth - sectionIndex.clientWidth;
+			if (overflow <= 0) return;
+			const target =
+				link.offsetLeft - (sectionIndex.clientWidth - link.offsetWidth) / 2;
+			sectionIndex.scrollTo({
+				left: Math.max(0, Math.min(target, overflow)),
+				behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+					? "auto"
+					: "smooth",
+			});
+		};
 
 		const setActive = (id) => {
 			indexLinks.forEach((a) => {
 				const isActive = a.getAttribute("href") === `#${id}`;
 				a.classList.toggle("is-active", isActive);
-				if (isActive) a.setAttribute("aria-current", "true");
-				else a.removeAttribute("aria-current");
+				if (isActive) {
+					a.setAttribute("aria-current", "true");
+					centerActive(a);
+				} else a.removeAttribute("aria-current");
 			});
 		};
 
