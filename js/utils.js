@@ -267,7 +267,7 @@ const DataLoader = {
 			// Projects without a public URL yet render as plain, non-clickable items.
 			li.innerHTML = project.link
 				? `<a href="${project.link}" target="_blank" rel="noopener noreferrer">${body}
-                    <span class="project-link font-mono">${host} ↗</span>
+                    <span class="project-link font-mono">${host}</span>
                 </a>`
 				: `<div class="project-item-static">${body}</div>`;
 			container.appendChild(li);

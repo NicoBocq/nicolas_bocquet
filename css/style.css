@@ -6,6 +6,8 @@
   --color-text-rgb: 0, 0, 0;
   --color-border: #000000;
   --color-meta: #555555;
+  /* Seconds-hand red: hover/active states only — never flat, never in the favicon. */
+  --color-accent: #e8402a;
 }
 
 [data-theme="dark"] {
@@ -370,6 +372,7 @@ main {
   .section-index a.is-active::before {
     width: 18px;
     opacity: 1;
+    background: var(--color-accent);
   }
 }
 
@@ -500,11 +503,12 @@ p {
   border-radius: 2px;
   background: currentColor;
   margin-top: 3px;
+  transition: background-color 0.2s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .project-item:hover .project-link {
-    opacity: 0.6;
+  .project-item:hover .project-link::after {
+    background: var(--color-accent);
   }
 }
 
