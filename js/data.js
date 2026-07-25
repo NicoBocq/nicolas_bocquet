@@ -140,6 +140,7 @@ const PORTFOLIO_DATA = {
 				},
 				company: "INFORCA S.A.M",
 				period: { en: "Aug 2022 - Present", fr: "Août 2022 - Présent" },
+				start: "2022-08",
 				location: "Remote / Monaco",
 				details: {
 					en: [
@@ -160,6 +161,8 @@ const PORTFOLIO_DATA = {
 				role: { en: "Front-end Developer", fr: "Développeur Front-end" },
 				company: "Alltricks.com",
 				period: { en: "Jan 2022 - Aug 2022", fr: "Janv 2022 - Août 2022" },
+				start: "2022-01",
+				end: "2022-08",
 				location: "Bouc-Bel-Air",
 				details: {
 					en: [
@@ -176,6 +179,8 @@ const PORTFOLIO_DATA = {
 				role: { en: "Front-end Developer", fr: "Développeur Front-end" },
 				company: "Internethic",
 				period: { en: "Apr 2020 - Dec 2021", fr: "Avril 2020 - Déc 2021" },
+				start: "2020-04",
+				end: "2021-12",
 				location: "Marseille",
 				details: {
 					en: [
@@ -197,6 +202,8 @@ const PORTFOLIO_DATA = {
 				},
 				company: "High Testing R&D",
 				period: { en: "Apr 2019 - Mar 2020", fr: "Avril 2019 - Mars 2020" },
+				start: "2019-04",
+				end: "2020-03",
 				location: "Marseille",
 				details: {
 					en: [
@@ -218,6 +225,8 @@ const PORTFOLIO_DATA = {
 				},
 				company: "La Provence",
 				period: { en: "Jun 2007 - Mar 2019", fr: "Juin 2007 - Mars 2019" },
+				start: "2007-06",
+				end: "2019-03",
 				location: "Marseille",
 				description: {
 					en: "12-year tenure evolving from Web Developer to Digital Lead.",

@@ -34,6 +34,28 @@ const DataLoader = {
 		history.replaceState(null, "", url);
 	},
 
+	// Duration in domain notation ("3a11" = 3 years 11 months), from "YYYY-MM"
+	// bounds; end omitted = present. Entries without start show no duration.
+	_formatDuration(start, end) {
+		if (!start) return "";
+		const [sy, sm] = start.split("-").map(Number);
+		let ey;
+		let em;
+		if (end) {
+			[ey, em] = end.split("-").map(Number);
+		} else {
+			const now = new Date();
+			ey = now.getFullYear();
+			em = now.getMonth() + 1;
+		}
+		const months = (ey - sy) * 12 + (em - sm);
+		if (months < 1) return "";
+		const years = Math.floor(months / 12);
+		if (years === 0) return `${months}m`;
+		const rest = months % 12;
+		return rest === 0 ? `${years}a` : `${years}a${rest}`;
+	},
+
 	// --- Loaders ---
 
 	loadProfile(profileElement, roleElement, emailElement, websiteElement) {
@@ -120,10 +142,11 @@ const DataLoader = {
 		this._data.resume.experience.forEach((job) => {
 			const li = document.createElement("li");
 			li.className = "project-item spotlight-item";
+			const duration = this._formatDuration(job.start, job.end);
 			li.innerHTML = `
                 <div class="project-meta font-mono">
                     <span class="company-name">${job.company}</span>
-                    <span class="meta-period">${job.period}</span>
+                    <span class="meta-period">${job.period}${duration ? ` <span class="meta-duration">· ${duration}</span>` : ""}</span>
                 </div>
                 <div class="project-body">
                     <h4>${job.role}</h4>
@@ -185,9 +208,14 @@ const DataLoader = {
 				const label = document.createElement("span");
 				label.className = "skill-cat font-mono";
 				label.textContent = cat.label.toUpperCase();
-				const items = document.createElement("p");
+				const items = document.createElement("div");
 				items.className = "skill-items";
-				items.textContent = skills[cat.key].join(" · ");
+				skills[cat.key].forEach((s) => {
+					const tag = document.createElement("span");
+					tag.className = "skill-tag";
+					tag.textContent = s;
+					items.appendChild(tag);
+				});
 				row.appendChild(label);
 				row.appendChild(items);
 				container.appendChild(row);

@@ -26,8 +26,8 @@
     <link rel="alternate" hreflang="en"        href="https://1h12.com/?lang=en">
     <link rel="alternate" hreflang="fr"        href="https://1h12.com/?lang=fr">
     <link rel="alternate" hreflang="x-default" href="https://1h12.com/">
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-    <link rel="stylesheet" href="css/style.css?v=20260722">
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg?v=20260725">
+    <link rel="stylesheet" href="css/style.css?v=20260725">
 </head>
 
 <body>
@@ -35,7 +35,13 @@
     <div class="container">
 
         <header class="topbar">
-            <span class="logo-mark font-mono">1h12</span>
+            <span class="logo-mark font-mono">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                    <rect width="100" height="100" rx="22" fill="var(--color-text)"/>
+                    <line x1="50" y1="53" x2="61.8" y2="36.8" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
+                    <line x1="50" y1="53" x2="78.5" y2="43.7" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
+                    <circle cx="50" cy="53" r="6" fill="var(--color-bg)"/>
+                </svg>1h12</span>
             <div class="header-controls">
                 <button class="lang-toggle" id="langToggle" aria-label="Toggle language" type="button"></button>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" type="button"></button>
@@ -100,11 +106,20 @@
                 <li class="separator footer-separator">|</li>
                 <li><a href="resume.html" aria-label="View Resume" class="resume-link" data-i18n="nav.resume">RESUME</a></li>
             </ul>
+            <span class="footer-brand font-mono">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                    <rect width="100" height="100" rx="22" fill="var(--color-text)"/>
+                    <line x1="50" y1="53" x2="61.8" y2="36.8" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
+                    <line x1="50" y1="53" x2="78.5" y2="43.7" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
+                    <circle cx="50" cy="53" r="6" fill="var(--color-bg)"/>
+                </svg>
+                © 2026 — 1h12.com
+            </span>
         </footer>
     </div>
 
-    <script src="js/data.js?v=20260722"></script>
-    <script src="js/utils.js?v=20260722"></script>
+    <script src="js/data.js?v=20260725"></script>
+    <script src="js/utils.js?v=20260725"></script>
     <script src="js/main.js?v=20260722"></script>
     <script src="js/hero.js?v=20260722"></script>
     <script defer src="https://analytics.1h12.com/script.js" data-website-id="d6d7c72d-5201-4122-8adb-5b667f87d7b0"></script>

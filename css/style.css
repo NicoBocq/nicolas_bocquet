@@ -92,12 +92,29 @@ body {
 }
 
 .logo-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--color-text);
   cursor: default;
   user-select: none;
+}
+
+.logo-mark svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.logo-mark svg rect,
+.logo-mark svg line,
+.logo-mark svg circle,
+.footer-brand svg rect,
+.footer-brand svg line,
+.footer-brand svg circle {
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
 .header-controls {
@@ -248,8 +265,9 @@ main {
   margin: 0 0 3rem;
 }
 
+/* Horological numbering: sections read as times on a dial (01:00, 02:00…). */
 .section-head::before {
-  content: counter(section, decimal-leading-zero);
+  content: counter(section, decimal-leading-zero) ":00";
   font-family: var(--font-mono);
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   font-weight: 500;
@@ -328,6 +346,30 @@ main {
     margin-top: 0.4rem;
     padding-top: 1.1rem;
     border-top: 1px solid var(--color-border);
+  }
+
+  /* Dial rail: graduations instead of numbers; the active tick lengthens
+     like the logo's hand. (.nav-resume keeps content: none from above.) */
+  .section-index a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .section-index a::before {
+    content: "";
+    flex: none;
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-text);
+    opacity: 0.45;
+    transition: width 0.2s ease, opacity 0.2s ease, background-color 0.3s ease;
+  }
+
+  .section-index a.is-active::before {
+    width: 18px;
+    opacity: 1;
   }
 }
 
@@ -447,9 +489,17 @@ p {
   letter-spacing: 0.04em;
   text-transform: lowercase;
   color: var(--color-text);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
   transition: opacity 0.2s ease;
+}
+
+/* Rounded underline, echoing the logo's round hand caps. */
+.project-link::after {
+  content: "";
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  margin-top: 3px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -469,6 +519,12 @@ p {
 .meta-period {
   font-size: 0.8rem;
   opacity: 0.55;
+}
+
+/* Duration in domain notation ("3a11" = 3 years 11 months); combined
+   opacity with .meta-period lands at the charte's 0.45. */
+.meta-duration {
+  opacity: 0.8;
 }
 
 .project-item h4 {
@@ -499,6 +555,20 @@ footer {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--color-meta);
+  white-space: nowrap;
+}
+
+.footer-brand svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .contact-list a {
@@ -595,10 +665,21 @@ footer {
 .skill-items {
   margin: 0;
   max-width: none;
-  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1.5px solid var(--color-text);
+  border-radius: 99px;
+  padding: 0.45em 1em;
+  transition: border-color 0.3s ease;
 }
 
 @media (max-width: 768px) {
