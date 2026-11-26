@@ -21,6 +21,10 @@ bun run lint
 
 `bun run build` writes the static site to `dist/`.
 
+## Deployment
+
+The `Dockerfile` builds the site with Bun and serves `dist/` with nginx on port 80, using `nginx.conf` for the cache policy. It is deployed on a self-hosted Coolify instance.
+
 ## Structure
 
 - `src/content/projects/`: one JSON file per project, validated by `src/content.config.ts`

@@ -63,6 +63,6 @@ Tailwind CSS v4 through `@tailwindcss/vite`. Styles are utility classes in the m
 
 ## Deployment
 
-The site needs a build: `bun run build`, then serve `dist/`. Files under `/_astro/` are fingerprinted and can be cached as immutable; the repository no longer sets cache headers.
+Hosted on a self-hosted Coolify instance, built from the `Dockerfile`: a Bun stage runs `bun run build`, then nginx serves `dist/` on port 80 with `nginx.conf`. Cloudflare Pages is no longer used.
 
-Production has been served by Cloudflare Pages (project `nicolas-bocquet`, `nicolas-bocquet.pages.dev`) from the `main` branch, with the custom domains `1h12.com` and `www.1h12.com` attached in the Pages project through proxied CNAME records in Cloudflare DNS. It is not GitHub Pages. A move to a self-hosted Coolify instance is planned, so confirm the current hosting before giving deployment instructions.
+`nginx.conf` sets the cache policy: files under `/_astro/` are fingerprinted and cached as immutable, everything else is revalidated. Check a change to either file by building and running the image locally.

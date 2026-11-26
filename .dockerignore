@@ -1,0 +1,11 @@
+node_modules
+dist
+.astro
+.git
+.env
+.env.*
+.claude
+.husky
+branding
+*.log
+.DS_Store
