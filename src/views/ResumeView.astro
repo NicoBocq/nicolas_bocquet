@@ -15,6 +15,7 @@ const { lang } = Astro.props
 const { bio, method, profile, resume, skills, ui } = resolve(site, lang)
 const projects = await getProjects()
 const other = otherLang(lang)
+const [emailUser, emailDomain] = profile.email.split('@')
 const languages = skills.languages.map((language) => `${language.name} (${language.level})`.toUpperCase())
 const skillRows: [string, string[]][] = [
   [ui.skillLabels.product, skills.product],
@@ -39,7 +40,7 @@ const skillRows: [string, string[]][] = [
       <span class="role" id="resume-role">{profile.shortRole} · {profile.location}</span>
       <span class="status" id="resume-status">{profile.status}</span>
       <div class="contact-info">
-        <a href={`mailto:${profile.email}`} id="resume-email">{profile.email}</a>
+        <a href="#" id="resume-email" data-email-user={emailUser} data-email-domain={emailDomain}></a>
         <a href={`https://${profile.domain}`} id="resume-website">{profile.domain}</a>
       </div>
     </div>
@@ -157,7 +158,9 @@ const skillRows: [string, string[]][] = [
 </Base>
 
 <script>
+  import { fillEmailLinks } from '../scripts/email'
   import { bindLangToggle } from '../scripts/lang'
 
+  fillEmailLinks()
   bindLangToggle()
 </script>
