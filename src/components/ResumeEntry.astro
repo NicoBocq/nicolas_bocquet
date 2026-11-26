@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string
+  meta: string
+  href?: string
+  class?: string
+}
+
+const { title, meta, href, class: className } = Astro.props
+---
+
+<div class:list={['print:break-inside-avoid', className]}>
+  <h3 class="text-doc-lg font-bold">
+    {
+      href ? (
+        <a class="hover:underline" href={href} target="_blank" rel="noopener noreferrer">
+          {title}
+        </a>
+      ) : (
+        title
+      )
+    }
+  </h3>
+  <span class="mb-1.5 block font-mono text-xs text-muted">{meta}</span>
+  <slot />
+</div>

@@ -4,7 +4,7 @@ Personal site: side projects and resume. [https://1h12.com](https://1h12.com)
 
 ## Stack
 
-- **Astro** with static output, **TypeScript**
+- **Astro** with static output, **TypeScript**, **Tailwind CSS v4**
 - Projects as a typed content collection, the rest of the copy as typed site data
 - English at `/`, French at `/fr/`
 - **Bun**, **Biome**, husky and lint-staged
@@ -28,7 +28,7 @@ bun run lint
 - `src/views/`: home, project and resume pages, shared by both languages
 - `src/pages/`: one thin file per route and per language
 - `src/components/`, `src/layouts/`: shared markup and page shell
-- `src/styles/`: site and resume stylesheets
+- `src/styles/`: Tailwind entry with the design tokens, resume print rules, fonts
 - `public/`: files served as-is, including redirects from the former `.html` addresses
 
 ## License

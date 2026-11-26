@@ -14,8 +14,8 @@ const labels = resolve(site.ui.work, lang)
 const { date, status, launched } = project.data
 ---
 
-<div class="entry-meta font-mono">
-  <span class="entry-date">{formatMonth(date, lang)}</span>
+<div class="flex flex-wrap gap-x-6 gap-y-1.5 font-mono text-xs tracking-wide text-muted uppercase">
+  <span class="font-bold text-foreground">{formatMonth(date, lang)}</span>
   <span>{labels[status]}</span>
   {
     launched && (

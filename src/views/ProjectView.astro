@@ -1,7 +1,9 @@
 ---
+import Label from '../components/Label.astro'
 import LiveLink from '../components/LiveLink.astro'
 import ProjectMeta from '../components/ProjectMeta.astro'
 import Shots from '../components/Shots.astro'
+import TextLink from '../components/TextLink.astro'
 import { site } from '../data/site'
 import { type Lang, path, resolve, t } from '../i18n'
 import Site from '../layouts/Site.astro'
@@ -26,38 +28,38 @@ const story = resolve(project.data.story, lang)
 ---
 
 <Site lang={lang} title={`${title} - Nicolas Bocquet`} description={pitch} route={slug} image={ogImage} ogType="article" current={slug}>
-  <main class="project" id="project">
-    <a class="text-link font-mono project-back" href={path(lang)}>{labels.all}</a>
+  <main class="pt-12" id="project">
+    <TextLink class="mb-12" href={path(lang)}>{labels.all}</TextLink>
     <ProjectMeta project={project} lang={lang} />
-    <h1 class="project-title">{title}</h1>
-    <div class="project-body">
-      <div class="project-lead">
-        <p class="project-pitch">{pitch}</p>
+    <h1 class="mt-3.5 text-display-lg font-extrabold">{title}</h1>
+    <div class="mt-8 mb-16 grid gap-12 xl:grid-cols-feature xl:items-start xl:gap-14">
+      <div>
+        <p class="mb-10 max-w-lede text-lede">{pitch}</p>
         <Shots project={project} lang={lang} href={link} external eager />
       </div>
-      <div class="story">
+      <div class="grid gap-10">
         <section>
-          <h2 class="label font-mono">{labels.idea}</h2>
-          <p>{story.idea}</p>
+          <Label as="h2" class="mb-4">{labels.idea}</Label>
+          <p class="mb-3.5 max-w-story text-lg">{story.idea}</p>
         </section>
         <section>
-          <h2 class="label font-mono">{labels.iterations}</h2>
-          <p>{story.iterations}</p>
+          <Label as="h2" class="mb-4">{labels.iterations}</Label>
+          <p class="mb-3.5 max-w-story text-lg">{story.iterations}</p>
         </section>
         <section>
-          <h2 class="label font-mono">{labels.bench}</h2>
-          <p class="bench-question">{t(project.data.question, lang)}</p>
-          <p>{story.bench}</p>
-          <span class="bench-models font-mono">{models}</span>
+          <Label as="h2" class="mb-4">{labels.bench}</Label>
+          <p class="mb-3.5 max-w-question text-question font-bold">{t(project.data.question, lang)}</p>
+          <p class="mb-3.5 max-w-story text-lg">{story.bench}</p>
+          <span class="mt-3.5 block font-mono text-xs tracking-wide text-muted">{models}</span>
         </section>
-        <div class="entry-links font-mono">
+        <div class="flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-xs tracking-wide xl:mt-auto">
           <LiveLink project={project} />
         </div>
       </div>
     </div>
-    <a class="project-next" href={path(lang, next.id)}>
-      <span class="label font-mono">{labels.next}</span>
-      <span class="project-next-title">{next.data.title}</span>
+    <a class="group block border-t pt-10 pb-14 transition-border" href={path(lang, next.id)}>
+      <Label>{labels.next}</Label>
+      <span class="mt-3 block text-display-sm font-bold transition-[font-weight] duration-200 mouse:group-hover:font-black">{next.data.title}</span>
     </a>
   </main>
 </Site>

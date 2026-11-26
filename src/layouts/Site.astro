@@ -3,7 +3,6 @@ import Footer from '../components/Footer.astro'
 import Topbar from '../components/Topbar.astro'
 import type { Lang } from '../i18n'
 import Base from './Base.astro'
-import '../styles/site.css'
 
 interface Props {
   lang: Lang
@@ -17,10 +16,11 @@ interface Props {
 }
 
 const { lang, route = '', current, ...meta } = Astro.props
+const bodyClass = `flex h-full flex-col bg-background text-foreground transition-colors${current ? ' page-project' : ''}`
 ---
 
-<Base lang={lang} route={route} bodyClass={current ? 'page-project' : undefined} {...meta}>
-  <div class="container">
+<Base lang={lang} route={route} htmlClass="h-full" bodyClass={bodyClass} {...meta}>
+  <div class="mx-auto flex w-full max-w-site flex-1 flex-col p-8">
     <Topbar lang={lang} route={route} current={current} />
     <slot />
     <Footer lang={lang} />

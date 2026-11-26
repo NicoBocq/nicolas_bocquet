@@ -2,6 +2,7 @@
 import { site } from '../data/site'
 import { type Lang, path, resolve } from '../i18n'
 import Mark from './Mark.astro'
+import TextLink from './TextLink.astro'
 
 interface Props {
   lang: Lang
@@ -12,20 +13,20 @@ const { career, profile, ui } = resolve(site, lang)
 const [user, domain] = profile.email.split('@')
 ---
 
-<footer id="contact">
-  <ul class="contact-list font-mono">
-    <li><a href="#" id="emailLink" data-user={user} data-domain={domain} aria-label="Copy Email Address">EMAIL</a></li>
+<footer class="flex items-end justify-between gap-8 border-t py-8 transition-border max-md:flex-col max-md:items-start max-md:justify-start max-md:gap-6" id="contact">
+  <ul class="flex flex-wrap gap-8 font-mono max-md:w-full">
+    <li><TextLink variant="hairline" href="#" id="emailLink" data-user={user} data-domain={domain} aria-label="Copy Email Address">EMAIL</TextLink></li>
     <li>
-      <a href="https://github.com/NicoBocq" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile (opens in new tab)">GITHUB</a>
+      <TextLink variant="hairline" href="https://github.com/NicoBocq" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile (opens in new tab)">GITHUB</TextLink>
     </li>
     <li>
-      <a href="https://www.linkedin.com/in/bocquetnicolas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LINKEDIN</a>
+      <TextLink variant="hairline" href="https://www.linkedin.com/in/bocquetnicolas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LINKEDIN</TextLink>
     </li>
-    <li class="separator footer-separator">|</li>
-    <li><a href={path(lang, 'resume')} aria-label="View Resume" class="resume-link">{ui.nav.resume}</a></li>
+    <li class="opacity-30 max-md:hidden">|</li>
+    <li class="max-md:-order-1 max-md:basis-full"><TextLink variant="hairline" href={path(lang, 'resume')} aria-label="View Resume" class="font-bold">{ui.nav.resume}</TextLink></li>
   </ul>
-  <div class="footer-side">
-    <p class="footer-origin" id="origin">{career.origin}</p>
-    <span class="footer-brand font-mono"><Mark />© 2026 — 1h12.com</span>
+  <div class="flex flex-col items-end gap-2.5 max-md:items-start">
+    <p class="text-right text-xs text-muted max-md:text-left" id="origin">{career.origin}</p>
+    <span class="flex items-center gap-2 font-mono text-2xs whitespace-nowrap text-muted"><Mark class="size-4" />© 2026 — 1h12.com</span>
   </div>
 </footer>

@@ -1,5 +1,6 @@
 ---
 import type { Project } from '../projects'
+import TextLink from './TextLink.astro'
 
 interface Props {
   project: Project
@@ -10,10 +11,10 @@ const { link, host } = Astro.props.project.data
 
 {
   link ? (
-    <a class="text-link" href={link} target="_blank" rel="noopener noreferrer">
+    <TextLink href={link} target="_blank" rel="noopener noreferrer">
       {host}
-    </a>
+    </TextLink>
   ) : (
-    <span class="entry-host">{host}</span>
+    <span class="text-muted">{host}</span>
   )
 }

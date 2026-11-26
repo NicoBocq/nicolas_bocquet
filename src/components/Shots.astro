@@ -12,21 +12,42 @@ interface Props {
 }
 
 const LAYOUTS = {
-  phone: { widths: [280, 540, 780], sizes: '(max-width: 699px) 62vw, (max-width: 999px) 31vw, 262px' },
-  wide: { widths: [400, 800, 1600], sizes: '(max-width: 699px) 88vw, (max-width: 999px) 46vw, 395px' },
+  phone: {
+    widths: [280, 540, 780],
+    sizes: '(max-width: 699px) 62vw, (max-width: 999px) 31vw, 262px',
+    grid: 'grid-cols-3 max-sm:auto-cols-phone',
+    shot: 'rounded-2xl',
+  },
+  wide: {
+    widths: [400, 800, 1600],
+    sizes: '(max-width: 699px) 88vw, (max-width: 999px) 46vw, 395px',
+    grid: 'grid-cols-2 max-sm:auto-cols-wide',
+    shot: '',
+  },
 }
 
 const { project, lang, href, external = false, eager = false } = Astro.props
 const { format, shots } = project.data
-const { widths, sizes } = LAYOUTS[format]
+const { widths, sizes, grid, shot: shotClass } = LAYOUTS[format]
 const Tag = href ? 'a' : 'div'
 const link = href ? { href, ...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {}) } : {}
+const scroller =
+  'max-sm:grid-flow-col max-sm:grid-cols-none max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:overscroll-x-contain max-sm:scrollbar-none'
 ---
 
-<Tag class:list={['shots', `shots-${format}`]} {...link}>
+<Tag class:list={['grid gap-4 self-start', grid, scroller]} {...link}>
   {
     shots.map((shot) => (
-      <Image src={shot.src} alt={t(shot.alt, lang)} widths={widths} sizes={sizes} quality={86} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      <Image
+        class:list={['w-full border transition-border max-sm:snap-start', shotClass]}
+        src={shot.src}
+        alt={t(shot.alt, lang)}
+        widths={widths}
+        sizes={sizes}
+        quality={86}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+      />
     ))
   }
 </Tag>
