@@ -1,0 +1,76 @@
+---
+import { DEFAULT_LANG, LANGS, type Lang, path } from '../i18n'
+
+interface Props {
+  lang: Lang
+  title: string
+  description: string
+  route?: string
+  image?: string
+  ogType?: string
+  bodyClass?: string
+  jsonLd?: Record<string, unknown>
+}
+
+const { lang, title, description, route = '', image = '/img/og-image.png', ogType = 'website', bodyClass, jsonLd } = Astro.props
+const url = (target: Lang) => new URL(path(target, route), Astro.site).href
+const imageUrl = new URL(image, Astro.site).href
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Nicolas Bocquet" />
+    <link rel="canonical" href={url(lang)} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={url(lang)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url(lang)} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageUrl} />
+
+    {LANGS.map((code) => <link rel="alternate" hreflang={code} href={url(code)} />)}
+    <link rel="alternate" hreflang="x-default" href={url(DEFAULT_LANG)} />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+
+    <script is:inline define:vars={{ lang, defaultLang: DEFAULT_LANG }}>
+      ;(() => {
+        try {
+          const asked = new URLSearchParams(location.search).get('lang')
+          const explicit = asked === 'fr' || asked === 'en' ? asked : null
+          if (explicit) localStorage.setItem('lang', explicit)
+          const stored = localStorage.getItem('lang')
+          const browser = (navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'en'
+          const wanted = explicit || (lang === defaultLang ? stored || browser : lang)
+          if (wanted === lang) return
+          const bare = lang === defaultLang ? location.pathname : location.pathname.replace(/^\/fr(?=\/|$)/, '') || '/'
+          location.replace((wanted === defaultLang ? '' : `/${wanted}`) + bare + location.hash)
+        } catch {}
+      })()
+    </script>
+    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body class={bodyClass} data-lang={lang}>
+    <script is:inline>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('theme')
+          const theme = stored === 'dark' || stored === 'light' ? stored : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : null
+          if (theme) document.body.setAttribute('data-theme', theme)
+        } catch {}
+      })()
+    </script>
+    <slot />
+    <script is:inline defer src="https://analytics.1h12.com/script.js" data-website-id="d6d7c72d-5201-4122-8adb-5b667f87d7b0"></script>
+  </body>
+</html>

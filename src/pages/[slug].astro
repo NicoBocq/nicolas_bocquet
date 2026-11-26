@@ -1,0 +1,13 @@
+---
+import { getProjects } from '../projects'
+import ProjectView from '../views/ProjectView.astro'
+
+export async function getStaticPaths() {
+  const projects = await getProjects()
+  return projects.map((project) => ({ params: { slug: project.id } }))
+}
+
+const { slug } = Astro.params
+---
+
+<ProjectView lang="en" slug={slug} />

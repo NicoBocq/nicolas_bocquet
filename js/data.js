@@ -7,8 +7,21 @@ const PORTFOLIO_DATA = {
 		email: "nicolas@1h12.com",
 		location: "Marseille, FR",
 		domain: "1h12.com",
-		role: "Product Engineer · TypeScript / React / Node",
 		shortRole: "Product Engineer",
+		tagline: {
+			lead: {
+				en: "This is what I make on the side.",
+				fr: "Ici, ce que je fabrique à côté.",
+			},
+			rest: {
+				en: "Games and apps that started from an urge: to delight my daughter, to fix what annoys me, to see how far the models go.",
+				fr: "Des jeux et des apps partis d'une envie : faire plaisir à ma fille, corriger ce qui m'agace, voir jusqu'où vont les modèles.",
+			},
+		},
+		premise: {
+			en: "None of them is hand-coded. Each one was a test bench for the models of its day.",
+			fr: "Aucun n'est codé à la main. Chacun a servi de banc d'essai aux modèles du moment.",
+		},
 		status: {
 			en: "Open to opportunities · CDI · Remote or Marseille area",
 			fr: "À l'écoute des opportunités · CDI · Remote ou région marseillaise",
@@ -17,8 +30,8 @@ const PORTFOLIO_DATA = {
 
 	bio: {
 		short: {
-			en: "Web developer since 1999. 12 years in journalism and project management. Back to development in 2019, building products end to end.",
-			fr: "Développeur web depuis 1999. 12 ans de journalisme et de gestion de projet. Retour aux sources en 2019, pour construire des produits de bout en bout.",
+			en: "On the web since 1999, including twelve years at La Provence, a regional daily, as digital project manager and then journalist. Since late 2025 I no longer write the code: I decide what to build, direct the agents that write it, and answer for what ships. My job now rests on what can't be delegated: direction, a critical eye, and high standards for UX and UI.",
+			fr: "Dans le web depuis 1999, dont douze ans à La Provence comme chef de projet numérique puis journaliste. Depuis fin 2025, je n'écris plus le code : je décide quoi construire, je dirige les agents qui l'écrivent et je réponds de ce qui part en production. Mon métier tient désormais à ce qui ne se délègue pas : la direction, le regard critique, l'exigence sur l'UX et l'UI.",
 		},
 		long: {
 			en: [
@@ -35,78 +48,296 @@ const PORTFOLIO_DATA = {
 	},
 
 	skills: {
+		product: {
+			en: [
+				"PRODUCT FRAMING",
+				"UX / UI",
+				"DESIGN SYSTEMS",
+				"FIGMA",
+				"SPECIFICATION",
+				"WRITING",
+			],
+			fr: [
+				"CADRAGE PRODUIT",
+				"UX / UI",
+				"DESIGN SYSTEM",
+				"FIGMA",
+				"SPÉCIFICATION",
+				"ÉCRITURE",
+			],
+		},
+		ai: {
+			en: ["CLAUDE CODE", "CODEX", "AGENTIC WORKFLOWS", "GEMINI (IMAGE)"],
+			fr: ["CLAUDE CODE", "CODEX", "WORKFLOWS AGENTIQUES", "GEMINI (IMAGE)"],
+		},
 		tech: [
-			"JAVASCRIPT / TYPESCRIPT",
+			"TYPESCRIPT",
 			"REACT / NEXT.JS",
 			"REACT NATIVE",
 			"NODE.JS / NESTJS",
 			"POSTGRESQL",
-			"DRIZZLE, PRISMA",
-			"VUE.JS",
-			"TAILWIND CSS",
-			"REDUX / ZUSTAND",
-			"WEBGL / THREE.JS",
-			"TESTING (VITEST / PLAYWRIGHT)",
-			"GIT / CI/CD / MONOREPO",
+			"VITEST / PLAYWRIGHT",
 			"DOCKER / COOLIFY",
-			"FIGMA / UI DESIGN",
+			"CI/CD",
 		],
-		ai: ["CLAUDE CODE", "CODEX", "AGENTIC WORKFLOWS"],
 		languages: [
 			{ name: "Français", level: { en: "Native", fr: "Langue maternelle" } },
 			{ name: "English", level: { en: "Professional", fr: "Professionnel" } },
 		],
-		soft: {
-			en: [
-				"PRODUCT BEFORE FEATURES",
-				"UX-OBSESSIVE",
-				"OBSESSIVE ABOUT THE LAST 10%",
-				"END-TO-END OWNERSHIP",
-				"TEAM GROWTH & MENTORING",
-				"ASYNC-FIRST, REMOTE-READY",
-				"COMPLEXITY UNTANGLER",
-			],
-			fr: [
-				"PRODUIT AVANT FEATURE",
-				"UX-OBSESSIVE",
-				"OBSESSIONNEL DES DERNIERS 10%",
-				"OWNERSHIP DE BOUT EN BOUT",
-				"CROISSANCE D'ÉQUIPE & MENTORAT",
-				"ASYNC-FIRST, REMOTE-READY",
-				"DÉMÊLEUR DE COMPLEXITÉ",
-			],
-		},
 	},
 
-	opensource: [
+	projects: [
 		{
+			slug: "quizzard",
+			title: "Quizzard",
+			link: null,
+			host: "quizzard.1h12.com",
+			stack: ["React", "TypeScript", "Vite", "PWA"],
+			year: "2026",
+			date: "2026-11",
+			description: {
+				en: "Game: a pixel-art quiz RPG, playable offline",
+				fr: "Jeu : un RPG de quiz en pixel art, jouable hors ligne",
+			},
+			featured: true,
+			status: "soon",
+			format: "phone",
+			shots: [
+				{
+					src: "img/work/quizzard-1.webp",
+					alt: {
+						en: "Quizzard title screen in pixel art: a wizard facing a ghost",
+						fr: "L'écran titre de Quizzard en pixel art : un magicien face à un fantôme",
+					},
+				},
+				{
+					src: "img/work/quizzard-2.webp",
+					alt: {
+						en: "The world map: five realms around the Quiz Tower",
+						fr: "La carte du monde : cinq royaumes autour de la Tour de Quiz",
+					},
+				},
+				{
+					src: "img/work/quizzard-3.webp",
+					alt: {
+						en: "A fight: the question, the chosen answer and the certainty stake",
+						fr: "Un combat : la question, la réponse choisie et la mise de certitude",
+					},
+				},
+			],
+			pitch: {
+				en: "A pixel-art RPG where you fight by answering questions, then staking how sure you are. Made for my daughter, open to everyone.",
+				fr: "Un RPG en pixel art où l'on se bat en répondant à des questions, puis en misant sa certitude. Fait pour ma fille, ouvert à tout le monde.",
+			},
+			question: {
+				en: "Can one agent check another's work?",
+				fr: "Un agent peut-il relire le travail d'un autre ?",
+			},
+			models: "Claude Fable 5.2 · Opus 5.5 · Haiku 5.5",
+			story: {
+				idea: {
+					en: "A game for my daughter, who is in sixth grade: a role-playing game where every fight is a question, and where you bet on your own answer.",
+					fr: "Un jeu pour ma fille, en 6e : un jeu de rôle où chaque combat est une question, et où l'on parie sur sa propre réponse.",
+				},
+				iterations: {
+					en: "It started as a revision tool for maths and English. Three days in, school questions were handed to the villain and the worlds became general knowledge: it had to be a game before being a holiday workbook.",
+					fr: "Le jeu est parti comme un outil de révision de maths et d'anglais. Au bout de trois jours, les questions de cours ont été confiées au méchant et les mondes sont devenus de la culture générale : il fallait un jeu avant un cahier de vacances.",
+				},
+				bench: {
+					en: "The 620 questions are written by AI. A second agent rereads them without knowing the right answer, and a third tries to prove the facts wrong.",
+					fr: "Les 620 questions sont écrites par IA. Un second agent les relit sans connaître la bonne réponse, et un troisième cherche à prendre les faits en défaut.",
+				},
+			},
+		},
+		{
+			slug: "goodpitch",
 			title: "GoodPitch",
 			link: "https://goodpitch.1h12.com",
 			stack: ["TanStack Start", "PostgreSQL"],
 			year: "2026",
+			date: "2026-07",
 			description: {
 				en: "Procedural quiz generation from a film's pitch",
 				fr: "Génération de quiz procédural à partir du pitch d'un film",
 			},
+			featured: true,
+			status: "live",
+			launched: "2026-07-16",
+			format: "phone",
+			shots: [
+				{
+					src: "img/work/goodpitch-1.webp",
+					alt: {
+						en: "GoodPitch home: the quiz of the day and four more",
+						fr: "L'accueil de GoodPitch : le quiz du jour et quatre autres",
+					},
+				},
+				{
+					src: "img/work/goodpitch-2.webp",
+					alt: {
+						en: "A pitch in progress: one sentence, two names redacted",
+						fr: "Un pitch en cours : une phrase, deux noms masqués",
+					},
+				},
+				{
+					src: "img/work/goodpitch-3.webp",
+					alt: {
+						en: "The final score: 9 titles found out of 10, with the list of films",
+						fr: "Le score final : 9 titres trouvés sur 10, avec la liste des films",
+					},
+				},
+			],
+			pitch: {
+				en: "Guess a film from its official synopsis, revealed sentence by sentence. Five quizzes a day, the same for everyone, one attempt.",
+				fr: "Deviner un film à partir de son synopsis officiel, dévoilé phrase par phrase. Cinq quiz par jour, les mêmes pour tout le monde, un seul essai.",
+			},
+			question: {
+				en: "How long from an idea to a live product?",
+				fr: "Combien de temps entre une idée et un produit en ligne ?",
+			},
+			models: "Claude Fable 5 · Opus 4.8",
+			story: {
+				idea: {
+					en: "It came from a film quiz whose principle I liked more than its execution. I wanted the same game, with nothing in the way.",
+					fr: "L'envie est venue d'un quiz de cinéma dont j'aimais le principe plus que l'exécution. Je voulais le même jeu, sans rien qui gêne.",
+				},
+				iterations: {
+					en: "The first version built fake animated trailers. Three days later only bare text on a flat colour was left, and the game was better for it. The timer and the streak counter went the same way.",
+					fr: "La première version fabriquait de fausses bandes-annonces animées. Trois jours plus tard il ne restait que du texte nu sur un aplat de couleur, et le jeu y a gagné. Le chronomètre et le compteur de séries ont suivi le même chemin.",
+				},
+				bench: {
+					en: "Four days between the first commit and the first published quiz. Since late July the game has published five quizzes a day without me touching it.",
+					fr: "Quatre jours entre le premier commit et le premier quiz publié. Depuis fin juillet, le jeu publie cinq quiz par jour sans que j'y touche.",
+				},
+			},
 		},
 		{
+			slug: "bulle",
 			title: "Bulle",
 			link: "https://bulle.1h12.com",
 			stack: ["Go", "PostgreSQL", "Next.js", "Connect RPC"],
 			year: "2026",
+			date: "2026-06",
 			description: {
 				en: "Share films & series within closed communities, react and discuss in threads",
 				fr: "Partager films & séries dans des communautés fermées, réagir et discuter en fils",
 			},
+			featured: true,
+			status: "live",
+			format: "phone",
+			shots: [
+				{
+					src: "img/work/bulle-1.webp",
+					alt: {
+						en: "A demo circle in Bulle: the list of shared titles",
+						fr: "Une bulle de démonstration : la liste des œuvres partagées",
+					},
+				},
+				{
+					src: "img/work/bulle-2.webp",
+					alt: {
+						en: "A film's page, with its recommendation and reactions",
+						fr: "La fiche d'un film, avec sa recommandation et ses réactions",
+					},
+				},
+				{
+					src: "img/work/bulle-3.webp",
+					alt: {
+						en: "A film's discussion thread, with a hidden spoiler",
+						fr: "Le fil de discussion d'un film, avec un spoiler masqué",
+					},
+				},
+			],
+			pitch: {
+				en: "Talk about films, series, games and books in private, invite-only circles, with one thread per title.",
+				fr: "Parler de films, séries, jeux et livres dans des cercles privés sur invitation, avec un fil par œuvre.",
+			},
+			question: {
+				en: "Can you ship a backend in a language you can't write?",
+				fr: "Peut-on livrer un backend dans un langage qu'on ne sait pas écrire ?",
+			},
+			models: "Claude · Go",
+			story: {
+				idea: {
+					en: "In a group chat, a film recommendation drowns within ten messages and someone ends up giving away the ending. Bulle gives each title its own thread, in a private circle, with spoilers hidden.",
+					fr: "Dans un groupe de messagerie, une recommandation de film se noie en dix messages et quelqu'un finit par raconter la fin. Bulle donne à chaque œuvre son propre fil, dans un cercle privé, avec les spoilers masqués.",
+				},
+				iterations: {
+					en: "Every feature faces one test: could this exist as-is in WhatsApp? Several did not survive: the “seen” status, a discussions hub removed after six days, up and down votes. The spoiler was reworked eight times.",
+					fr: "Chaque fonctionnalité passe un test : est-ce que ça pourrait exister tel quel dans WhatsApp ? Plusieurs n'ont pas survécu : le statut « vu », un hub de discussions retiré au bout de six jours, les votes pour et contre. Le spoiler, lui, a été retravaillé huit fois.",
+				},
+				bench: {
+					en: "I can't write Go. I picked it to see whether Claude could hold a backend I am unable to review line by line. What I control is the API contract and the behaviour, through end-to-end tests.",
+					fr: "Je ne sais pas écrire de Go. J'ai choisi ce langage pour voir si Claude pouvait tenir un backend que je ne peux pas relire ligne à ligne. Ce que je contrôle, c'est le contrat d'API et le comportement, par des tests de bout en bout.",
+				},
+			},
 		},
 		{
-			title: "Carnet Secret",
+			slug: "carnet-secret",
+			title: "Le Carnet Secret",
 			link: "https://carnet-secret.1h12.com",
 			stack: ["Phaser", "React", "TypeScript", "Zustand"],
 			year: "2025",
+			date: "2025-12",
 			description: {
 				en: "Game: Ten trials to walk in the footsteps of Arsène Lupin",
 				fr: "Jeu : Dix épreuves pour marcher dans les pas d'Arsène Lupin",
+			},
+			featured: true,
+			status: "live",
+			format: "wide",
+			shots: [
+				{
+					src: "img/work/carnet-secret-1.webp",
+					alt: {
+						en: "The illustrated title screen: Paris seen from the rooftops",
+						fr: "L'écran d'accueil illustré : Paris vu des toits",
+					},
+				},
+				{
+					src: "img/work/carnet-secret.webp",
+					alt: {
+						en: "The notebook open on the first trial, a map of Paris",
+						fr: "Le carnet ouvert sur la première épreuve, une carte de Paris",
+					},
+				},
+				{
+					src: "img/work/carnet-secret-2.webp",
+					alt: {
+						en: "First trial: a route to memorise on a map of Paris",
+						fr: "Première épreuve : un parcours à mémoriser sur un plan de Paris",
+					},
+				},
+				{
+					src: "img/work/carnet-secret-3.webp",
+					alt: {
+						en: "The Escape: a run across the Paris rooftops, dodging cats",
+						fr: "L'Évasion : une course sur les toits de Paris, entre les chats",
+					},
+				},
+			],
+			pitch: {
+				en: "An illustrated notebook to leaf through: ten trials of logic, memory and skill, each marked out of 10 by Arsène Lupin.",
+				fr: "Un carnet illustré à feuilleter : dix épreuves de logique, de mémoire et d'adresse, notées sur 10 par Arsène Lupin.",
+			},
+			question: {
+				en: "Can an AI illustrate an entire game?",
+				fr: "Une IA peut-elle illustrer un jeu entier ?",
+			},
+			models: "Gemini · Claude Opus 4.5",
+			story: {
+				idea: {
+					en: "It all started with wanting to make my daughter's eyes light up. She is a Lupin fan: I wanted a notebook in which the gentleman thief hands her his trials and marks them himself.",
+					fr: "Tout est parti de l'envie de faire briller les yeux de ma fille. Elle est lupinophile : je voulais un carnet où le gentleman cambrioleur lui confie ses épreuves et les note lui-même.",
+				},
+				iterations: {
+					en: "The game began as a narrative adventure with three houses and an inventory. All of that went. The menu changed three times: a map of Paris, a case file, then a notebook you leaf through, which is at once the rulebook, the report card and the save file.",
+					fr: "Le jeu a d'abord été une aventure narrative avec trois maisons et un inventaire. Tout cela a disparu. Le menu a changé trois fois : une carte de Paris, un dossier d'enquête, puis un carnet que l'on feuillette et qui sert à la fois de règle, de bulletin et de sauvegarde.",
+				},
+				bench: {
+					en: "I am not an illustrator. Gemini produced the sets, the textures and the sepia mood, and Claude wrote the code. I had to build two small tools to cut out and animate the generated images.",
+					fr: "Je ne suis pas illustrateur. Gemini a fabriqué les décors, les textures et l'ambiance sépia, et Claude a écrit le code. J'ai dû construire deux petits outils pour détourer et animer les images générées.",
+				},
 			},
 		},
 		{
@@ -125,35 +356,64 @@ const PORTFOLIO_DATA = {
 			stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
 			year: "2024",
 			description: {
-				en: "Weather app: rank the reel feel",
+				en: "Weather app: rank the real feel",
 				fr: "App météo : évaluez le ressenti réel",
 			},
 		},
 	],
 
+	method: [
+		{
+			en: "I write the rule, not the code.",
+			fr: "J'écris la règle, pas le code.",
+		},
+		{
+			en: "Every feature ships with its test.",
+			fr: "Chaque fonctionnalité arrive avec son test.",
+		},
+		{
+			en: "One agent writes, another checks.",
+			fr: "Un agent écrit, un autre vérifie.",
+		},
+		{
+			en: "Dead ends are written down, so they stay closed.",
+			fr: "Les impasses sont consignées, pour ne pas les rouvrir.",
+		},
+		{
+			en: "I remove what doesn't earn its place.",
+			fr: "Je retire ce qui ne sert pas.",
+		},
+	],
+
+	career: {
+		text: {
+			en: "First website in 1999. Twelve years at La Provence, a regional daily, as digital project manager and then journalist. Back to building products in 2019, at INFORCA today.",
+			fr: "Premier site web en 1999. Douze ans à La Provence, chef de projet numérique puis journaliste. De retour au produit en 2019, aujourd'hui chez INFORCA.",
+		},
+		origin: {
+			en: "1h12 is the title of my graduation short film. I kept the domain.",
+			fr: "1h12, c'est le titre de mon court-métrage de fin d'études. J'ai gardé le domaine.",
+		},
+	},
+
 	resume: {
 		experience: [
 			{
-				role: {
-					en: "Full Stack TypeScript Developer",
-					fr: "Développeur Full Stack TypeScript",
-				},
+				role: "Product Engineer",
 				company: "INFORCA S.A.M",
 				period: { en: "Aug 2022 - Present", fr: "Août 2022 - Présent" },
 				start: "2022-08",
 				location: "Remote / Monaco",
 				details: {
 					en: [
-						"<strong>PIM (Product Information Management)</strong>: Monorepo for a fashion B2B client handling 1M+ products. Two Next.js apps with role-based UIs, two backend instances (API + async worker), job queue with pg-boss, full infra on Coolify with Docker Compose.",
-						"<strong>AI Fashion Photo Studio</strong>: Batch photo processing pipeline built on top of the PIM, raw hanger photo import, ghost mannequin generation, and AI-powered model shots (Gemini) for front and back views, industrializing product photography at scale.",
-						"<strong>SaaS Coaching Platform</strong> (Next.js 16, TypeScript, PostgreSQL): Built a platform for 300 coaches and coachees with role-based interfaces, automated PDF generation, and Stripe subscription management.",
-						"<strong>Rally App (iOS/Android)</strong>: Built a B2B React Native CLI application for regularity rallies.",
+						"<strong>Fashion PIM</strong>: a product information system for a B2B fashion client, over a million products. Two role-based apps, an API and an async worker. I wrote the codebase by hand from 2022; since late 2025 it has kept evolving without me writing a line, through agents I direct. Stack: Next.js, PostgreSQL, pg-boss, Docker, Coolify.",
+						"<strong>AI photo studio</strong>: built on top of the PIM, it starts from the raw hanger shot and batch-produces the ghost mannequin, then the garment worn, front and back (Gemini).",
+						"<strong>Also</strong>: a SaaS coaching platform for 300 coaches and coachees (Stripe subscriptions, automated PDFs) and a React Native mobile app for regularity rallies.",
 					],
 					fr: [
-						"<strong>PIM (Product Information Management)</strong> : Monorepo pour un client B2B mode gérant 1M+ produits. Deux apps Next.js avec interfaces par rôle, deux instances backend (API + worker asynchrone), queue de jobs avec pg-boss, infra complète sur Coolify avec Docker Compose.",
-						"<strong>Studio Photo Fashion IA</strong> : Pipeline de traitement batch construit sur le PIM, import de photos brutes sur cintre, génération de visuels ghost mannequin, et génération de modèles portés par IA (Gemini) en vues face et dos, industrialisant la production photo produit.",
-						"<strong>Plateforme de coaching SaaS</strong> (Next.js 16, TypeScript, PostgreSQL) : Construction d'une plateforme pour 300 coachs et coachés avec des interfaces basées sur les rôles, génération automatisée de PDF et gestion des abonnements Stripe.",
-						"<strong>App Rallye (iOS/Android)</strong> : Création d'une application React Native CLI B2B pour les rallyes de régularité.",
+						"<strong>PIM mode</strong> : système d'information produit pour un client B2B de la mode, plus d'un million de produits. Deux applications par rôle, une API et un worker asynchrone. J'ai écrit la base à la main à partir de 2022 ; depuis fin 2025, elle évolue sans que j'écrive une ligne, avec des agents que je dirige. Stack : Next.js, PostgreSQL, pg-boss, Docker, Coolify.",
+						"<strong>Studio photo IA</strong> : construit sur le PIM, il part de la photo brute sur cintre et produit par lots le mannequin fantôme, puis le vêtement porté, de face et de dos (Gemini).",
+						"<strong>Aussi</strong> : une plateforme SaaS de coaching pour 300 coachs et coachés (abonnements Stripe, PDF générés automatiquement) et une application mobile React Native pour des rallyes de régularité.",
 					],
 				},
 			},
@@ -164,15 +424,9 @@ const PORTFOLIO_DATA = {
 				start: "2022-01",
 				end: "2022-08",
 				location: "Bouc-Bel-Air",
-				details: {
-					en: [
-						"<strong>E-commerce Optimization</strong>: Developed high-performance features for France's leading sports outdoor e-commerce platform using React, Next.js, and Redux Toolkit.",
-						"<strong>Codebase Modernization</strong>: Led the migration of legacy modules to TypeScript, improving maintainability and type safety.",
-					],
-					fr: [
-						"<strong>Optimisation E-commerce</strong> : Développement de fonctionnalités haute performance pour le leader français du e-commerce sport outdoor, avec React, Next.js et Redux Toolkit.",
-						"<strong>Modernisation de la base de code</strong> : Direction de la migration de modules legacy vers TypeScript, améliorant la maintenabilité et la sécurité du typage.",
-					],
+				summary: {
+					en: "E-commerce features for France's leading outdoor sports site (React, Next.js, Redux Toolkit), and the migration of legacy modules to TypeScript.",
+					fr: "Fonctionnalités e-commerce pour le leader français du sport outdoor en ligne (React, Next.js, Redux Toolkit) et migration de modules legacy vers TypeScript.",
 				},
 			},
 			{
@@ -182,17 +436,9 @@ const PORTFOLIO_DATA = {
 				start: "2020-04",
 				end: "2021-12",
 				location: "Marseille",
-				details: {
-					en: [
-						"<strong>B2B SaaS Architecture</strong>: Built a complex Vue.js/Tailwind application with a focus on UX/UI.",
-						"<strong>Design System</strong>: Created a scalable custom component library and dedicated API stores.",
-						"<strong>Quality Assurance</strong>: Implemented comprehensive Unit Testing and Storybook documentation workflows.",
-					],
-					fr: [
-						"<strong>Architecture SaaS B2B</strong> : Construction d'une application complexe en Vue.js/Tailwind avec un focus sur l'UX/UI.",
-						"<strong>Design System</strong> : Création d'une bibliothèque de composants personnalisés évolutive et de stores API dédiés.",
-						"<strong>Assurance Qualité</strong> : Mise en place de flux de travail complets pour les tests unitaires et la documentation Storybook.",
-					],
+				summary: {
+					en: "A B2B SaaS application in Vue.js and Tailwind, with its own component library, documented in Storybook and covered by unit tests.",
+					fr: "Application SaaS B2B en Vue.js et Tailwind, avec sa bibliothèque de composants maison, documentée dans Storybook et couverte par des tests unitaires.",
 				},
 			},
 			{
@@ -205,17 +451,9 @@ const PORTFOLIO_DATA = {
 				start: "2019-04",
 				end: "2020-03",
 				location: "Marseille",
-				details: {
-					en: [
-						"<strong>Data Visualization</strong>: Developed interactive map-based applications using OpenLayers and Vue.js (Vuex, Vuetify).",
-						"<strong>UI Integration</strong>: Bridged design and development with pixel-perfect integration on Django CMS / Symfony.",
-						"<strong>Prototyping</strong>: Created high-fidelity wireframes and prototypes on Figma.",
-					],
-					fr: [
-						"<strong>Visualisation de données</strong> : Développement d'applications cartographiques interactives utilisant OpenLayers et Vue.js (Vuex, Vuetify).",
-						"<strong>Intégration UI</strong> : Liaison entre le design et le développement avec une intégration pixel-perfect sur Django CMS / Symfony.",
-						"<strong>Prototypage</strong> : Création de wireframes et de prototypes haute fidélité sur Figma.",
-					],
+				summary: {
+					en: "Interactive map-based applications (OpenLayers, Vue.js), wireframes and prototypes in Figma, front-end integration on Django CMS and Symfony.",
+					fr: "Applications cartographiques interactives (OpenLayers, Vue.js), maquettes et prototypes sur Figma, intégration sur Django CMS et Symfony.",
 				},
 			},
 			{
@@ -228,20 +466,16 @@ const PORTFOLIO_DATA = {
 				start: "2007-06",
 				end: "2019-03",
 				location: "Marseille",
-				description: {
-					en: "12-year tenure evolving from Web Developer to Digital Lead.",
-					fr: "12 ans d'évolution, passant de Développeur Web à Responsable Numérique.",
-				},
 				details: {
 					en: [
-						"<strong>Journalist (2016-2019)</strong>: Articles on History, Heritage and Data Journalism. Hosted a web series, created new editorial formats (data journalism, video). Trained the newsroom on digital strategies.",
-						"<strong>Digital Project Manager (2010-2016)</strong>: Led major web/mobile redesigns (LaProvence.com) and election mapping apps. Managed specs, UX/UI, and SEO.",
-						"<strong>Web Developer (2007-2010)</strong>: Handled front-end development (CSS, PHP, JS) and created interactive editorial modules.",
+						"<strong>Journalist (2016-2019)</strong>: history, heritage and data journalism. Hosted a web series, created editorial formats (data, video), trained the newsroom in digital practices.",
+						"<strong>Digital project manager (2010-2016)</strong>: web and mobile redesigns of LaProvence.com, election mapping apps. Specifications, UX/UI and SEO.",
+						"<strong>Web developer (2007-2010)</strong>: front-end (CSS, PHP, JS) and interactive editorial modules.",
 					],
 					fr: [
-						"<strong>Journaliste (2016-2019)</strong> : Articles sur l'Histoire, le Patrimoine et le Data Journalisme. Animation d'une websérie, création de nouveaux formats éditoriaux (data journalisme, vidéo). Formation de la rédaction aux stratégies numériques.",
-						"<strong>Chef de projet numérique (2010-2016)</strong> : Direction de refontes web/mobiles majeures (LaProvence.com) et d'applications de cartographie électorale. Gestion des spécifications, de l'UX/UI et du SEO.",
-						"<strong>Développeur Web (2007-2010)</strong> : Développement front-end (CSS, PHP, JS) et création de modules éditoriaux interactifs.",
+						"<strong>Journaliste (2016-2019)</strong> : histoire, patrimoine et data journalisme. Animation d'une websérie, création de formats éditoriaux (data, vidéo), formation de la rédaction au numérique.",
+						"<strong>Chef de projet numérique (2010-2016)</strong> : refontes web et mobile de LaProvence.com, applications de cartographie électorale. Spécifications, UX/UI et SEO.",
+						"<strong>Développeur web (2007-2010)</strong> : front-end (CSS, PHP, JS) et modules éditoriaux interactifs.",
 					],
 				},
 			},
@@ -250,18 +484,12 @@ const PORTFOLIO_DATA = {
 					en: "Web Developer (Freelance)",
 					fr: "Développeur Web (Freelance)",
 				},
-				company: "Indépendant",
+				company: { en: "Self-employed", fr: "Indépendant" },
 				period: "2001 - 2007",
 				location: "Marseille",
-				details: {
-					en: [
-						"<strong>UI Integration & Design</strong>: Built custom websites with a strong focus on visual integration and front-end design, using HTML/CSS, JavaScript, and PHP.",
-						"<strong>Early Web Standards</strong>: Laid the foundation in semantic HTML, accessible markup, and emerging CSS standards.",
-					],
-					fr: [
-						"<strong>Intégration UI & Design</strong> : Création de sites web sur mesure avec un fort accent sur l'intégration visuelle et le design front-end, en HTML/CSS, JavaScript et PHP.",
-						"<strong>Standards du web naissant</strong> : Apprentissage du HTML sémantique, du balisage accessible et des standards CSS émergents.",
-					],
+				summary: {
+					en: "Custom websites, from UI integration to front-end design (HTML/CSS, JavaScript, PHP).",
+					fr: "Sites web sur mesure, de l'intégration au design front-end (HTML/CSS, JavaScript, PHP).",
 				},
 			},
 		],
@@ -300,30 +528,43 @@ const PORTFOLIO_DATA = {
 
 	ui: {
 		sections: {
-			about: { en: "About", fr: "À propos" },
-			experience: { en: "Experience", fr: "Expérience" },
-			projects: { en: "Projects", fr: "Projets" },
-			skills: { en: "Skills", fr: "Compétences" },
+			method: { en: "Method", fr: "Méthode" },
+			career: { en: "Background", fr: "Parcours" },
+		},
+		work: {
+			live: { en: "Live", fr: "En ligne" },
+			soon: { en: "Launching soon", fr: "Bientôt en ligne" },
+			quiz: { en: "Quiz no.", fr: "Quiz n°" },
+			bench: { en: "Test bench", fr: "Banc d'essai" },
+			idea: { en: "The starting idea", fr: "L'idée de départ" },
+			iterations: { en: "The iterations", fr: "Les itérations" },
+			read: { en: "Read the project", fr: "Lire le projet" },
+			all: { en: "All projects", fr: "Tous les projets" },
+			next: { en: "Next project", fr: "Projet suivant" },
 		},
 		resume: {
 			about: { en: "About", fr: "À propos" },
 			experience: { en: "Experience", fr: "Expérience" },
 			skills: { en: "Skills", fr: "Compétences" },
-			projects: { en: "Projects", fr: "Projets" },
+			projects: { en: "Side projects", fr: "Projets personnels" },
+			projectsIntro: {
+				en: "Made on the side, without writing the code. Each one was a test bench for the models of its day; the story behind each is on 1h12.com.",
+				fr: "Faits à côté, sans écrire le code. Chacun a servi de banc d'essai aux modèles du moment ; le récit de chaque projet est sur 1h12.com.",
+			},
 			teaching: { en: "Teaching", fr: "Enseignement" },
 			education: { en: "Education", fr: "Formation" },
 			languages: { en: "Languages", fr: "Langues" },
 		},
 		skillLabels: {
-			soft: { en: "Soft Skills", fr: "Savoir-être" },
-			ai: { en: "AI Coding", fr: "Codage IA" },
+			product: { en: "Product & design", fr: "Produit & design" },
+			ai: { en: "Agents & AI", fr: "Agents & IA" },
 			tech: "Tech",
-			languages: { en: "Languages", fr: "Langues" },
 		},
 		nav: {
 			back:   { en: "← Back",              fr: "← Retour"      },
 			print:  { en: "Print / Save as PDF", fr: "Imprimer / PDF" },
 			resume: { en: "RESUME",              fr: "CV"             },
+			fullResume: { en: "Full resume", fr: "CV complet" },
 		},
 	},
 };

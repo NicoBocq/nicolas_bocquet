@@ -1,0 +1,123 @@
+---
+import LiveLink from '../components/LiveLink.astro'
+import ProjectMeta from '../components/ProjectMeta.astro'
+import Shots from '../components/Shots.astro'
+import { site } from '../data/site'
+import { type Lang, path, resolve, t } from '../i18n'
+import Site from '../layouts/Site.astro'
+import { getProjects } from '../projects'
+
+interface Props {
+  lang: Lang
+}
+
+const HERO_WEIGHTS = [300, 900]
+
+const { lang } = Astro.props
+const { bio, career, profile, resume, skills, ui } = resolve(site, lang)
+const projects = await getProjects()
+const fullName = `${profile.firstname} ${profile.lastname}`
+const heroLines = [profile.firstname, profile.lastname].map((name, index) => ({ letters: [...name.toUpperCase()], weight: HERO_WEIGHTS[index] }))
+
+const knowsAbout = [...skills.tech, ...skills.ai, ...skills.product]
+  .flatMap((skill) => skill.split(' / '))
+  .map((skill) =>
+    skill
+      .trim()
+      .toLowerCase()
+      .replace(/\b\w/g, (char) => char.toUpperCase()),
+  )
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: fullName,
+  givenName: profile.firstname,
+  familyName: profile.lastname,
+  jobTitle: profile.shortRole,
+  description: bio,
+  url: `https://${profile.domain}`,
+  email: profile.email,
+  address: { '@type': 'PostalAddress', addressLocality: 'Marseille', addressCountry: 'FR' },
+  sameAs: ['https://github.com/NicoBocq', 'https://www.linkedin.com/in/bocquetnicolas'],
+  knowsAbout,
+  worksFor: { '@type': 'Organization', name: resume.experience[0]?.company },
+  alumniOf: { '@type': 'EducationalOrganization', name: resume.education[0]?.school },
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: profile.shortRole,
+    occupationLocation: { '@type': 'City', name: 'Marseille' },
+    skills: skills.tech.join(', '),
+  },
+}
+---
+
+<Site lang={lang} title={ui.meta.home.title} description={ui.meta.home.description} jsonLd={jsonLd}>
+  <section class="intro" id="hero">
+    <div>
+      <h1 class="hero-name" aria-label={fullName}>
+        {
+          heroLines.map((line) => (
+            <span class="hero-line">{line.letters.map((letter) => <span class="kinetic-letter" aria-hidden="true" style={`--w: ${line.weight}`}>{letter}</span>)}</span>
+          ))
+        }
+      </h1>
+      <p class="intro-role font-mono" id="profile-role">{profile.shortRole} · {profile.location}</p>
+    </div>
+    <div>
+      <p class="intro-statement" id="profile-tagline"><strong>{profile.tagline.lead}</strong> {profile.tagline.rest}</p>
+      <p class="intro-premise" id="profile-premise">{profile.premise}</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <ol class="journal" id="journal">
+      {
+        projects.map((project, index) => {
+          const page = path(lang, project.id)
+          return (
+            <li class="entry" id={project.id}>
+              <ProjectMeta project={project} lang={lang} />
+              <h2 class="entry-title">
+                <a href={page}>{project.data.title}</a>
+              </h2>
+              <div class="entry-main">
+                <Shots project={project} lang={lang} href={page} eager={index === 0} />
+                <div class="entry-side">
+                  <p class="entry-pitch">{t(project.data.pitch, lang)}</p>
+                  <div class="bench">
+                    <span class="label font-mono">{ui.work.bench}</span>
+                    <p class="bench-question">{t(project.data.question, lang)}</p>
+                    <span class="bench-models font-mono">{project.data.models}</span>
+                  </div>
+                  <div class="entry-links font-mono">
+                    <a class="text-link" href={page}>
+                      {ui.work.read}
+                    </a>
+                    <LiveLink project={project} />
+                  </div>
+                </div>
+              </div>
+            </li>
+          )
+        })
+      }
+    </ol>
+
+    <section class="colophon" id="colophon">
+      <div>
+        <h2 class="label font-mono">{ui.sections.career}</h2>
+        <p>{career.text}</p>
+      </div>
+      <a class="text-link font-mono" href={path(lang, 'resume')}>{ui.nav.fullResume}</a>
+    </section>
+  </main>
+</Site>
+
+<script>
+  import { initHero } from '../scripts/hero'
+  import { trackEntries } from '../scripts/home'
+
+  initHero()
+  trackEntries()
+</script>

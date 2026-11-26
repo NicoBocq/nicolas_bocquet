@@ -1,0 +1,19 @@
+---
+import type { Project } from '../projects'
+
+interface Props {
+  project: Project
+}
+
+const { link, host } = Astro.props.project.data
+---
+
+{
+  link ? (
+    <a class="text-link" href={link} target="_blank" rel="noopener noreferrer">
+      {host}
+    </a>
+  ) : (
+    <span class="entry-host">{host}</span>
+  )
+}

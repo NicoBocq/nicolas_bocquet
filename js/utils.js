@@ -1,6 +1,7 @@
 // biome-ignore lint/correctness/noUnusedVariables: <no need to export the module>
 const DataLoader = {
 	_data: null,
+	_lang: "en",
 
 	// --- Lang resolution ---
 
@@ -13,10 +14,19 @@ const DataLoader = {
 		return "en";
 	},
 
+	_frenchSpacing(value) {
+		if (Array.isArray(value)) return value.map((v) => this._frenchSpacing(v));
+		if (typeof value !== "string") return value;
+		return value.replace(/ ([?!:;»])/g, " $1").replace(/« /g, "« ");
+	},
+
 	_resolve(data, lang) {
 		if (Array.isArray(data)) return data.map((i) => this._resolve(i, lang));
 		if (data && typeof data === "object") {
-			if ("en" in data || "fr" in data) return data[lang] ?? data.en;
+			if ("en" in data || "fr" in data) {
+				const value = data[lang] ?? data.en;
+				return lang === "fr" ? this._frenchSpacing(value) : value;
+			}
 			return Object.fromEntries(
 				Object.entries(data).map(([k, v]) => [k, this._resolve(v, lang)]),
 			);
@@ -25,6 +35,7 @@ const DataLoader = {
 	},
 
 	init(lang) {
+		this._lang = lang;
 		this._data = this._resolve(PORTFOLIO_DATA, lang);
 		document.documentElement.lang = lang;
 		document.body.setAttribute("data-lang", lang);
@@ -34,26 +45,54 @@ const DataLoader = {
 		history.replaceState(null, "", url);
 	},
 
-	// Duration in domain notation ("3a11" = 3 years 11 months), from "YYYY-MM"
-	// bounds; end omitted = present. Entries without start show no duration.
-	_formatDuration(start, end) {
-		if (!start) return "";
-		const [sy, sm] = start.split("-").map(Number);
-		let ey;
-		let em;
-		if (end) {
-			[ey, em] = end.split("-").map(Number);
-		} else {
-			const now = new Date();
-			ey = now.getFullYear();
-			em = now.getMonth() + 1;
-		}
-		const months = (ey - sy) * 12 + (em - sm);
-		if (months < 1) return "";
-		const years = Math.floor(months / 12);
-		if (years === 0) return `${months}m`;
-		const rest = months % 12;
-		return rest === 0 ? `${years}a` : `${years}a${rest}`;
+	_dayNumber(launched) {
+		const today = new Intl.DateTimeFormat("en-CA", {
+			timeZone: "Europe/Paris",
+		}).format(new Date());
+		return (
+			Math.round((Date.parse(today) - Date.parse(launched)) / 86_400_000) + 1
+		);
+	},
+
+	_formatDate(date) {
+		return new Intl.DateTimeFormat(this._lang, {
+			month: "short",
+			year: "numeric",
+		}).format(new Date(`${date}-01T12:00:00`));
+	},
+
+	_featured() {
+		return this._data.projects.filter((project) => project.featured);
+	},
+
+	_meta(project) {
+		const labels = this._data.ui.work;
+		const counter = project.launched
+			? `<span>${labels.quiz} ${this._dayNumber(project.launched)}</span>`
+			: "";
+		return `<span class="entry-date">${this._formatDate(project.date)}</span><span>${labels[project.status]}</span>${counter}`;
+	},
+
+	_shots(project, href, { external = false, eager = false } = {}) {
+		const [width, height] =
+			project.format === "phone" ? [780, 1688] : [1600, 1000];
+		const loading = eager ? "eager" : "lazy";
+		const images = project.shots
+			.map(
+				(shot) =>
+					`<img src="${shot.src}" alt="${shot.alt}" width="${width}" height="${height}" loading="${loading}" decoding="async">`,
+			)
+			.join("");
+		const classes = `shots shots-${project.format}`;
+		if (!href) return `<div class="${classes}">${images}</div>`;
+		const target = external ? ' target="_blank" rel="noopener noreferrer"' : "";
+		return `<a class="${classes}" href="${href}"${target}>${images}</a>`;
+	},
+
+	_liveLink(project) {
+		return project.link
+			? `<a class="text-link" href="${project.link}" target="_blank" rel="noopener noreferrer">${new URL(project.link).host}</a>`
+			: `<span class="entry-host">${project.host}</span>`;
 	},
 
 	// --- Loaders ---
@@ -69,9 +108,7 @@ const DataLoader = {
 			profileElement.name.textContent = `${p.firstname} ${p.lastname}`;
 
 		if (roleElement) {
-			roleElement.textContent = profileElement.useShortRole
-				? p.shortRole
-				: p.role;
+			roleElement.textContent = `${p.shortRole} · ${p.location}`;
 		}
 
 		if (profileElement.status) profileElement.status.textContent = p.status;
@@ -91,136 +128,172 @@ const DataLoader = {
 		return p;
 	},
 
-	loadBio(container, format = "short") {
-		if (!container) return;
-		container.innerHTML = "";
-		const bio = this._data.bio;
-		const profile = this._data.profile;
-
-		if (format === "short") {
-			container.innerHTML = `<p>${bio.short}</p>`;
-		} else {
-			const wrapper = document.createElement("div");
-			wrapper.className = "about-wrapper";
-			const text = document.createElement("div");
-			text.className = "about-text";
-			const bioContent = Array.isArray(bio.long)
-				? bio.long.map((p) => `<p>${p}</p>`).join("")
-				: `<p>${bio.long}</p>`;
-			text.innerHTML = `${bioContent}
-                <p class="font-mono status-block">
-                    > LOCATION: ${profile.location.toUpperCase()}<br>
-                    > STATUS: ${profile.status.toUpperCase()}
-                </p>`;
-			wrapper.appendChild(text);
-			container.appendChild(wrapper);
+	loadIntro(roleElement, taglineElement, premiseElement) {
+		const p = this._data.profile;
+		if (roleElement) roleElement.textContent = `${p.shortRole} · ${p.location}`;
+		if (taglineElement) {
+			taglineElement.innerHTML = `<strong>${p.tagline.lead}</strong> ${p.tagline.rest}`;
 		}
+		if (premiseElement) premiseElement.textContent = p.premise;
+	},
+
+	loadNav(container, current) {
+		if (!container) return;
+		const links = this._featured()
+			.map((project) => {
+				if (project.slug === current) {
+					return `<a href="${project.slug}.html" class="is-active" aria-current="page">${project.title}</a>`;
+				}
+				const href = current ? `${project.slug}.html` : `#${project.slug}`;
+				return `<a href="${href}">${project.title}</a>`;
+			})
+			.join("");
+		container.innerHTML = `${links}<a href="resume.html" class="nav-resume">${this._data.ui.nav.resume}</a>`;
+	},
+
+	loadJournal(container) {
+		if (!container) return;
+		const labels = this._data.ui.work;
+		container.innerHTML = this._featured()
+			.map((project, index) => {
+				const page = `${project.slug}.html`;
+				return `
+					<li class="entry" id="${project.slug}">
+						<div class="entry-meta font-mono">${this._meta(project)}</div>
+						<h2 class="entry-title"><a href="${page}">${project.title}</a></h2>
+						<div class="entry-main">
+							${this._shots(project, page, { eager: index === 0 })}
+							<div class="entry-side">
+								<p class="entry-pitch">${project.pitch}</p>
+								<div class="bench">
+									<span class="label font-mono">${labels.bench}</span>
+									<p class="bench-question">${project.question}</p>
+									<span class="bench-models font-mono">${project.models}</span>
+								</div>
+								<div class="entry-links font-mono">
+									<a class="text-link" href="${page}">${labels.read}</a>
+									${this._liveLink(project)}
+								</div>
+							</div>
+						</div>
+					</li>
+				`;
+			})
+			.join("");
+	},
+
+	loadColophon(container) {
+		if (!container) return;
+		const { career, ui } = this._data;
+		container.innerHTML = `
+			<div>
+				<h2 class="label font-mono">${ui.sections.career}</h2>
+				<p>${career.text}</p>
+			</div>
+			<a class="text-link font-mono" href="resume.html">${ui.nav.fullResume}</a>
+		`;
+	},
+
+	loadProject(container, slug) {
+		if (!container) return;
+		const projects = this._featured();
+		const index = projects.findIndex((project) => project.slug === slug);
+		if (index === -1) return;
+		const project = projects[index];
+		const next = projects[(index + 1) % projects.length];
+		const labels = this._data.ui.work;
+		container.innerHTML = `
+			<a class="text-link font-mono project-back" href="index.html">${labels.all}</a>
+			<div class="entry-meta font-mono">${this._meta(project)}</div>
+			<h1 class="project-title">${project.title}</h1>
+			<div class="project-body">
+				<div class="project-lead">
+					<p class="project-pitch">${project.pitch}</p>
+					${this._shots(project, project.link, { external: true, eager: true })}
+				</div>
+				<div class="story">
+					<section>
+						<h2 class="label font-mono">${labels.idea}</h2>
+						<p>${project.story.idea}</p>
+					</section>
+					<section>
+						<h2 class="label font-mono">${labels.iterations}</h2>
+						<p>${project.story.iterations}</p>
+					</section>
+					<section>
+						<h2 class="label font-mono">${labels.bench}</h2>
+						<p class="bench-question">${project.question}</p>
+						<p>${project.story.bench}</p>
+						<span class="bench-models font-mono">${project.models}</span>
+					</section>
+					<div class="entry-links font-mono">${this._liveLink(project)}</div>
+				</div>
+			</div>
+			<a class="project-next" href="${next.slug}.html">
+				<span class="label font-mono">${labels.next}</span>
+				<span class="project-next-title">${next.title}</span>
+			</a>
+		`;
+	},
+
+	loadOrigin(element) {
+		if (element) element.textContent = this._data.career.origin;
+	},
+
+	loadBio(container) {
+		if (!container) return;
+		container.innerHTML = `<p>${this._data.bio.short}</p>`;
+	},
+
+	loadMethod(container) {
+		if (!container) return;
+		container.innerHTML = this._data.method
+			.map((rule) => `<li>${rule}</li>`)
+			.join("");
 	},
 
 	loadExperience(container) {
 		if (!container) return;
-		container.innerHTML = "";
-		this._data.resume.experience.forEach((job) => {
-			const item = document.createElement("div");
-			item.className = "experience-item";
-			let detailsHtml = "";
-			if (job.description) detailsHtml += `<p><em>${job.description}</em></p>`;
-			if (job.details?.length)
-				detailsHtml += `<ul>${job.details.map((d) => `<li>${d}</li>`).join("")}</ul>`;
-			item.innerHTML = `
-                <h3>${job.role}</h3>
-                <span class="meta">${job.company} | ${job.period} | ${job.location}</span>
-                ${detailsHtml}
-            `;
-			container.appendChild(item);
-		});
+		container.innerHTML = this._data.resume.experience
+			.map((job) => {
+				const summary = job.summary ? `<p>${job.summary}</p>` : "";
+				const details = job.details?.length
+					? `<ul>${job.details.map((detail) => `<li>${detail}</li>`).join("")}</ul>`
+					: "";
+				return `
+					<div class="experience-item">
+						<h3>${job.role}</h3>
+						<span class="meta">${job.company} | ${job.period} | ${job.location}</span>
+						${summary}${details}
+					</div>
+				`;
+			})
+			.join("");
 	},
 
-	loadExperienceForMain(container) {
+	loadSkills(container) {
 		if (!container) return;
-		container.innerHTML = "";
-		this._data.resume.experience.forEach((job) => {
-			const li = document.createElement("li");
-			li.className = "project-item spotlight-item";
-			const duration = this._formatDuration(job.start, job.end);
-			li.innerHTML = `
-                <div class="project-meta font-mono">
-                    <span class="company-name">${job.company}</span>
-                    <span class="meta-period">${job.period}${duration ? ` <span class="meta-duration">· ${duration}</span>` : ""}</span>
-                </div>
-                <div class="project-body">
-                    <h4>${job.role}</h4>
-                    ${job.description ? `<p class="project-description">${job.description}</p>` : ""}
-                    ${
-											job.details?.length
-												? `
-                        <ul class="details-list">
-                            ${job.details.map((d) => `<li class="details-item">${d}</li>`).join("")}
-                        </ul>
-                    `
-												: ""
-										}
-                </div>
-            `;
-			container.appendChild(li);
-		});
-	},
-
-	loadSkills(container, format = "resume") {
-		if (!container) return;
-		container.innerHTML = "";
-		const skills = this._data.skills;
-		const labels = this._data.ui.skillLabels;
-
-		const categories = [
-			{ key: "soft", label: labels.soft },
-			{ key: "ai", label: labels.ai },
-			{ key: "tech", label: labels.tech },
+		const { skills, ui } = this._data;
+		const languages = skills.languages.map((language) =>
+			`${language.name} (${language.level})`.toUpperCase(),
+		);
+		const rows = [
+			...["product", "ai", "tech"].map((key) => [
+				ui.skillLabels[key],
+				skills[key],
+			]),
+			[ui.resume.languages, languages],
 		];
-
-		if (format === "resume") {
-			categories.forEach((cat) => {
-				if (!skills[cat.key]) return;
-				const div = document.createElement("div");
-				div.className = "skill-category";
-				const label = document.createElement("strong");
-				label.className = "skill-label";
-				label.textContent = cat.label;
-				div.appendChild(label);
-				const content = document.createElement("div");
-				content.className = "skill-content";
-				content.textContent = skills[cat.key].join(" · ");
-				div.appendChild(content);
-				container.appendChild(div);
-			});
-		} else {
-			// Main page: lean, readable stack — tech + AI only, as flowing lists.
-			// Soft skills and languages stay in the data (used by JSON-LD) but are
-			// not surfaced here to keep the section legible and meaningful.
-			const mainCategories = [
-				{ key: "tech", label: labels.tech },
-				{ key: "ai", label: labels.ai },
-			];
-			mainCategories.forEach((cat) => {
-				if (!skills[cat.key]?.length) return;
-				const row = document.createElement("div");
-				row.className = "skill-row";
-				const label = document.createElement("span");
-				label.className = "skill-cat font-mono";
-				label.textContent = cat.label.toUpperCase();
-				const items = document.createElement("div");
-				items.className = "skill-items";
-				skills[cat.key].forEach((s) => {
-					const tag = document.createElement("span");
-					tag.className = "skill-tag";
-					tag.textContent = s;
-					items.appendChild(tag);
-				});
-				row.appendChild(label);
-				row.appendChild(items);
-				container.appendChild(row);
-			});
-		}
+		container.innerHTML = rows
+			.map(
+				([label, items]) => `
+					<div class="skill-category">
+						<strong class="skill-label">${label}</strong>
+						<div class="skill-content">${items.join(" · ")}</div>
+					</div>
+				`,
+			)
+			.join("");
 	},
 
 	loadTeaching(container) {
@@ -245,62 +318,31 @@ const DataLoader = {
 		});
 	},
 
-	loadOpenSource(container) {
-		if (!container) return;
-		container.innerHTML = "";
-		this._data.opensource.forEach((project) => {
-			const li = document.createElement("li");
-			li.className = "project-item spotlight-item";
-			const stack = (project.stack || []).join(" · ");
-			let host = project.link;
-			try {
-				host = new URL(project.link).host.replace(/^www\./, "");
-			} catch {}
-			const body = `
-                    <div class="project-meta font-mono">
-                        <span>${project.year}</span>
-                    </div>
-                    <h4>${project.title}</h4>
-                    <p class="project-description">${project.description}</p>
-                    ${stack ? `<p class="project-stack font-mono">${stack}</p>` : ""}
-            `;
-			// Projects without a public URL yet render as plain, non-clickable items.
-			li.innerHTML = project.link
-				? `<a href="${project.link}" target="_blank" rel="noopener noreferrer">${body}
-                    <span class="project-link font-mono">${host}</span>
-                </a>`
-				: `<div class="project-item-static">${body}</div>`;
-			container.appendChild(li);
-		});
-	},
-
-	// Compact, print-friendly variant of the project list for the resume.
 	loadProjects(container) {
 		if (!container) return;
-		container.innerHTML = "";
-		this._data.opensource.forEach((project) => {
-			const div = document.createElement("div");
-			div.className = "experience-item";
-			const meta = [project.year, (project.stack || []).join(" · ")]
-				.filter(Boolean)
-				.join(" | ");
-			const title = project.link
-				? `<a href="${project.link}" target="_blank" rel="noopener noreferrer">${project.title}</a>`
-				: project.title;
-			div.innerHTML = `<h3>${title}</h3><span class="meta">${meta}</span><p>${project.description}</p>`;
-			container.appendChild(div);
-		});
-	},
-
-	loadLanguages(container) {
-		if (!container) return;
-		container.innerHTML = "";
-		this._data.skills.languages.forEach((lang) => {
-			const div = document.createElement("div");
-			div.className = "experience-item";
-			div.innerHTML = `<h3>${lang.name}</h3><span class="meta">${lang.level}</span>`;
-			container.appendChild(div);
-		});
+		const { resume, work } = this._data.ui;
+		const items = this._featured()
+			.map((project) => {
+				const title = project.link
+					? `<a href="${project.link}" target="_blank" rel="noopener noreferrer">${project.title}</a>`
+					: project.title;
+				const host = project.link
+					? new URL(project.link).host
+					: `${project.host} (${work[project.status].toLowerCase()})`;
+				return `
+					<div class="experience-item">
+						<h3>${title}</h3>
+						<span class="meta">${project.year} | ${host}</span>
+						<p>${project.pitch}</p>
+						<span class="meta">${project.stack.join(" · ")}</span>
+					</div>
+				`;
+			})
+			.join("");
+		container.innerHTML = `
+			<p class="section-intro">${resume.projectsIntro}</p>
+			<div class="project-grid">${items}</div>
+		`;
 	},
 
 	// Met à jour les éléments data-i18n dans le DOM

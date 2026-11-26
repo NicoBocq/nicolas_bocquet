@@ -1,0 +1,31 @@
+---
+import { site } from '../data/site'
+import { type Lang, path, resolve } from '../i18n'
+import Mark from './Mark.astro'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const { career, profile, ui } = resolve(site, lang)
+const [user, domain] = profile.email.split('@')
+---
+
+<footer id="contact">
+  <ul class="contact-list font-mono">
+    <li><a href="#" id="emailLink" data-user={user} data-domain={domain} aria-label="Copy Email Address">EMAIL</a></li>
+    <li>
+      <a href="https://github.com/NicoBocq" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile (opens in new tab)">GITHUB</a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/bocquetnicolas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LINKEDIN</a>
+    </li>
+    <li class="separator footer-separator">|</li>
+    <li><a href={path(lang, 'resume')} aria-label="View Resume" class="resume-link">{ui.nav.resume}</a></li>
+  </ul>
+  <div class="footer-side">
+    <p class="footer-origin" id="origin">{career.origin}</p>
+    <span class="footer-brand font-mono"><Mark />© 2026 — 1h12.com</span>
+  </div>
+</footer>

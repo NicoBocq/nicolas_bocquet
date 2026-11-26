@@ -1,0 +1,58 @@
+{
+  "order": 3,
+  "title": "Bulle",
+  "link": "https://bulle.1h12.com",
+  "host": "bulle.1h12.com",
+  "stack": ["Go", "PostgreSQL", "Next.js", "Connect RPC"],
+  "year": "2026",
+  "date": "2026-06",
+  "status": "live",
+  "pitch": {
+    "en": "Talk about films, series, games and books in private, invite-only circles, with one thread per title.",
+    "fr": "Parler de films, séries, jeux et livres dans des cercles privés sur invitation, avec un fil par œuvre."
+  },
+  "question": {
+    "en": "Can you ship a backend in a language you can't write?",
+    "fr": "Peut-on livrer un backend dans un langage qu'on ne sait pas écrire ?"
+  },
+  "models": "Claude · Go",
+  "story": {
+    "idea": {
+      "en": "In a group chat, a film recommendation drowns within ten messages and someone ends up giving away the ending. Bulle gives each title its own thread, in a private circle, with spoilers hidden.",
+      "fr": "Dans un groupe de messagerie, une recommandation de film se noie en dix messages et quelqu'un finit par raconter la fin. Bulle donne à chaque œuvre son propre fil, dans un cercle privé, avec les spoilers masqués."
+    },
+    "iterations": {
+      "en": "Every feature faces one test: could this exist as-is in WhatsApp? Several did not survive: the “seen” status, a discussions hub removed after six days, up and down votes. The spoiler was reworked eight times.",
+      "fr": "Chaque fonctionnalité passe un test : est-ce que ça pourrait exister tel quel dans WhatsApp ? Plusieurs n'ont pas survécu : le statut « vu », un hub de discussions retiré au bout de six jours, les votes pour et contre. Le spoiler, lui, a été retravaillé huit fois."
+    },
+    "bench": {
+      "en": "I can't write Go. I picked it to see whether Claude could hold a backend I am unable to review line by line. What I control is the API contract and the behaviour, through end-to-end tests.",
+      "fr": "Je ne sais pas écrire de Go. J'ai choisi ce langage pour voir si Claude pouvait tenir un backend que je ne peux pas relire ligne à ligne. Ce que je contrôle, c'est le contrat d'API et le comportement, par des tests de bout en bout."
+    }
+  },
+  "format": "phone",
+  "ogImage": "/img/work/bulle.webp",
+  "shots": [
+    {
+      "src": "../../assets/work/bulle-1.webp",
+      "alt": {
+        "en": "A demo circle in Bulle: the list of shared titles",
+        "fr": "Une bulle de démonstration : la liste des œuvres partagées"
+      }
+    },
+    {
+      "src": "../../assets/work/bulle-2.webp",
+      "alt": {
+        "en": "A film's page, with its recommendation and reactions",
+        "fr": "La fiche d'un film, avec sa recommandation et ses réactions"
+      }
+    },
+    {
+      "src": "../../assets/work/bulle-3.webp",
+      "alt": {
+        "en": "A film's discussion thread, with a hidden spoiler",
+        "fr": "Le fil de discussion d'un film, avec un spoiler masqué"
+      }
+    }
+  ]
+}

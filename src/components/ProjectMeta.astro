@@ -1,0 +1,27 @@
+---
+import { site } from '../data/site'
+import { dayNumber } from '../day'
+import { formatMonth, type Lang, resolve } from '../i18n'
+import type { Project } from '../projects'
+
+interface Props {
+  project: Project
+  lang: Lang
+}
+
+const { project, lang } = Astro.props
+const labels = resolve(site.ui.work, lang)
+const { date, status, launched } = project.data
+---
+
+<div class="entry-meta font-mono">
+  <span class="entry-date">{formatMonth(date, lang)}</span>
+  <span>{labels[status]}</span>
+  {
+    launched && (
+      <span data-launched={launched} data-label={labels.quiz}>
+        {labels.quiz} {dayNumber(launched)}
+      </span>
+    )
+  }
+</div>

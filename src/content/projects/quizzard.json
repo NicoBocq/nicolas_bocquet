@@ -1,0 +1,57 @@
+{
+  "order": 1,
+  "title": "Quizzard",
+  "host": "quizzard.1h12.com",
+  "stack": ["React", "TypeScript", "Vite", "PWA"],
+  "year": "2026",
+  "date": "2026-11",
+  "status": "soon",
+  "pitch": {
+    "en": "A pixel-art RPG where you fight by answering questions, then staking how sure you are. Made for my daughter, open to everyone.",
+    "fr": "Un RPG en pixel art où l'on se bat en répondant à des questions, puis en misant sa certitude. Fait pour ma fille, ouvert à tout le monde."
+  },
+  "question": {
+    "en": "Can one agent check another's work?",
+    "fr": "Un agent peut-il relire le travail d'un autre ?"
+  },
+  "models": "Claude Fable 5.2 · Opus 5.5 · Haiku 5.5",
+  "story": {
+    "idea": {
+      "en": "A game for my daughter, who is in sixth grade: a role-playing game where every fight is a question, and where you bet on your own answer.",
+      "fr": "Un jeu pour ma fille, en 6e : un jeu de rôle où chaque combat est une question, et où l'on parie sur sa propre réponse."
+    },
+    "iterations": {
+      "en": "It started as a revision tool for maths and English. Three days in, school questions were handed to the villain and the worlds became general knowledge: it had to be a game before being a holiday workbook.",
+      "fr": "Le jeu est parti comme un outil de révision de maths et d'anglais. Au bout de trois jours, les questions de cours ont été confiées au méchant et les mondes sont devenus de la culture générale : il fallait un jeu avant un cahier de vacances."
+    },
+    "bench": {
+      "en": "The 620 questions are written by AI. A second agent rereads them without knowing the right answer, and a third tries to prove the facts wrong.",
+      "fr": "Les 620 questions sont écrites par IA. Un second agent les relit sans connaître la bonne réponse, et un troisième cherche à prendre les faits en défaut."
+    }
+  },
+  "format": "phone",
+  "ogImage": "/img/work/quizzard.webp",
+  "shots": [
+    {
+      "src": "../../assets/work/quizzard-1.webp",
+      "alt": {
+        "en": "Quizzard title screen in pixel art: a wizard facing a ghost",
+        "fr": "L'écran titre de Quizzard en pixel art : un magicien face à un fantôme"
+      }
+    },
+    {
+      "src": "../../assets/work/quizzard-2.webp",
+      "alt": {
+        "en": "The world map: five realms around the Quiz Tower",
+        "fr": "La carte du monde : cinq royaumes autour de la Tour de Quiz"
+      }
+    },
+    {
+      "src": "../../assets/work/quizzard-3.webp",
+      "alt": {
+        "en": "A fight: the question, the chosen answer and the certainty stake",
+        "fr": "Un combat : la question, la réponse choisie et la mise de certitude"
+      }
+    }
+  ]
+}

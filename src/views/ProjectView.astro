@@ -1,0 +1,63 @@
+---
+import LiveLink from '../components/LiveLink.astro'
+import ProjectMeta from '../components/ProjectMeta.astro'
+import Shots from '../components/Shots.astro'
+import { site } from '../data/site'
+import { type Lang, path, resolve, t } from '../i18n'
+import Site from '../layouts/Site.astro'
+import { getProjects } from '../projects'
+
+interface Props {
+  lang: Lang
+  slug: string
+}
+
+const { lang, slug } = Astro.props
+const projects = await getProjects()
+const index = projects.findIndex((candidate) => candidate.id === slug)
+const project = projects[index]
+const next = projects[(index + 1) % projects.length]
+if (!project || !next) throw new Error(`Unknown project: ${slug}`)
+
+const labels = resolve(site.ui.work, lang)
+const { title, link, models, ogImage } = project.data
+const pitch = t(project.data.pitch, lang)
+const story = resolve(project.data.story, lang)
+---
+
+<Site lang={lang} title={`${title} - Nicolas Bocquet`} description={pitch} route={slug} image={ogImage} ogType="article" current={slug}>
+  <main class="project" id="project">
+    <a class="text-link font-mono project-back" href={path(lang)}>{labels.all}</a>
+    <ProjectMeta project={project} lang={lang} />
+    <h1 class="project-title">{title}</h1>
+    <div class="project-body">
+      <div class="project-lead">
+        <p class="project-pitch">{pitch}</p>
+        <Shots project={project} lang={lang} href={link} external eager />
+      </div>
+      <div class="story">
+        <section>
+          <h2 class="label font-mono">{labels.idea}</h2>
+          <p>{story.idea}</p>
+        </section>
+        <section>
+          <h2 class="label font-mono">{labels.iterations}</h2>
+          <p>{story.iterations}</p>
+        </section>
+        <section>
+          <h2 class="label font-mono">{labels.bench}</h2>
+          <p class="bench-question">{t(project.data.question, lang)}</p>
+          <p>{story.bench}</p>
+          <span class="bench-models font-mono">{models}</span>
+        </section>
+        <div class="entry-links font-mono">
+          <LiveLink project={project} />
+        </div>
+      </div>
+    </div>
+    <a class="project-next" href={path(lang, next.id)}>
+      <span class="label font-mono">{labels.next}</span>
+      <span class="project-next-title">{next.data.title}</span>
+    </a>
+  </main>
+</Site>

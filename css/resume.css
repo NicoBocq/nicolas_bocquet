@@ -36,17 +36,16 @@ h2 {
   letter-spacing: 0.05em;
   border-bottom: 1px solid black;
   padding-bottom: 0.5rem;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
 }
 
 h3 {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   font-weight: 700;
   margin: 0;
 }
 
-/* Project titles link out, but stay monochrome like the rest of the CV. */
 h3 a {
   color: inherit;
   text-decoration: none;
@@ -64,11 +63,19 @@ h3 a:hover {
   display: block;
 }
 
-.meta {
+.status {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--color-dim);
-  margin-bottom: 0.5rem;
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-dim);
+  margin-bottom: 0.4rem;
   display: block;
 }
 
@@ -78,17 +85,25 @@ li {
   color: #333;
 }
 
+p {
+  margin: 0 0 0.5rem;
+}
+
 ul {
   padding-left: 1.2rem;
-  margin: 0.5rem 0;
+  margin: 0.4rem 0 0;
 }
 
 li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
+}
+
+li strong {
+  color: var(--color-text);
 }
 
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -147,6 +162,13 @@ li {
   content: 'EN';
 }
 
+.back-link:hover,
+.lang-toggle:hover,
+.print-btn:hover {
+  background: black;
+  color: white;
+}
+
 .contact-info {
   font-family: var(--font-mono);
   font-size: 0.875rem;
@@ -161,33 +183,102 @@ li {
   border-bottom: 1px solid transparent;
 }
 
-.experience-item {
-  margin-bottom: 2rem;
+.about-container p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  text-wrap: pretty;
 }
 
-.skills-grid {
+.method {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.method li {
+  margin: 0 0 0.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.section-intro {
+  margin-bottom: 1.25rem;
+  color: var(--color-dim);
+}
+
+.experience-item {
+  margin-bottom: 1.25rem;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-item p:last-child {
+  margin-bottom: 0;
+}
+
+.experience-item p + .meta {
+  margin: 0.4rem 0 0;
+}
+
+.project-grid,
+.resume-foot {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 0.5rem;
+  gap: 1.5rem 2.5rem;
+}
+
+.project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resume-foot {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+
+.project-grid .experience-item {
+  margin-bottom: 0;
+}
+
+.skill-category {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0 1rem;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
   font-family: var(--font-mono);
+}
+
+.skill-category:last-child {
+  margin-bottom: 0;
+}
+
+.skill-label {
   font-size: 0.875rem;
 }
 
-.back-link:hover,
-.lang-toggle:hover,
-.print-btn:hover {
-  background: black;
-  color: white;
+.skill-content {
+  font-size: 0.8125rem;
+  color: #333;
 }
 
 @media print {
-  body {
-    padding: 2rem;
-  }
-
   @page {
     margin: 0;
-    size: auto;
+    size: A4;
+  }
+
+  html {
+    font-size: 13.5px;
+  }
+
+  body {
+    max-width: none;
+    padding: 12mm 16mm;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
   .no-print,
@@ -197,10 +288,16 @@ li {
     display: none;
   }
 
-  .header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+  h2 {
+    margin-top: 1.75rem;
+    break-after: avoid;
+  }
+
+  .experience-item,
+  .skill-category,
+  .method,
+  .resume-foot {
+    break-inside: avoid;
   }
 
   .resume-image {
@@ -208,30 +305,6 @@ li {
     width: 100px;
     height: 100px;
   }
-}
-
-.about-container {
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #333;
-}
-
-.skill-category {
-  margin-bottom: 1rem;
-}
-
-.skill-label {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.skill-content {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: #333;
 }
 
 @media screen and (max-width: 768px) {
@@ -259,5 +332,15 @@ li {
   .resume-image {
     width: 80px;
     height: 80px;
+  }
+
+  .project-grid,
+  .resume-foot,
+  .skill-category {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .resume-foot {
+    gap: 0;
   }
 }

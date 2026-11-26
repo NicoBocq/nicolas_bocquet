@@ -6,121 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicolas Bocquet - Product Engineer</title>
     <meta name="description"
-        content="Nicolas Bocquet, Product Engineer based in Marseille. TypeScript / React / Node. 12 years in journalism and project management before coding.">
+        content="Nicolas Bocquet, product engineer in Marseille. This is what I make on the side: games and apps, none hand-coded, each one a test bench for the AI models of its day.">
     <meta name="author" content="Nicolas Bocquet">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://1h12.com">
     <meta property="og:title" content="Nicolas Bocquet - Product Engineer">
     <meta property="og:description"
-        content="Product Engineer based in Marseille. TypeScript / React / Node. Builds products, not just features.">
+        content="What I make on the side: games and apps, none hand-coded, each one a test bench for the AI models of its day.">
     <meta property="og:image" content="https://1h12.com/img/og-image.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://1h12.com">
     <meta property="twitter:title" content="Nicolas Bocquet - Product Engineer">
     <meta property="twitter:description"
-        content="Nicolas Bocquet, Product Engineer based in Marseille. TypeScript / React / Node. 12 years in journalism and project management before coding.">
+        content="What I make on the side: games and apps, none hand-coded, each one a test bench for the AI models of its day.">
     <meta property="twitter:image" content="https://1h12.com/img/og-image.png">
 
     <link rel="alternate" hreflang="en"        href="https://1h12.com/?lang=en">
     <link rel="alternate" hreflang="fr"        href="https://1h12.com/?lang=fr">
     <link rel="alternate" hreflang="x-default" href="https://1h12.com/">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg?v=20260725">
-    <link rel="stylesheet" href="css/style.css?v=20260725">
+    <link rel="stylesheet" href="css/style.css?v=20261126f">
 </head>
 
 <body>
 
     <div class="container">
 
-        <header class="topbar">
-            <span class="logo-mark font-mono">
-                <svg viewBox="0 0 100 100" aria-hidden="true">
-                    <rect width="100" height="100" rx="22" fill="var(--color-text)"/>
-                    <line x1="50" y1="53" x2="61.8" y2="36.8" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
-                    <line x1="50" y1="53" x2="78.5" y2="43.7" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
-                    <circle cx="50" cy="53" r="6" fill="var(--color-bg)"/>
-                </svg>1h12</span>
-            <div class="header-controls">
-                <button class="lang-toggle" id="langToggle" aria-label="Toggle language" type="button"></button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" type="button"></button>
+        <header class="topbar" id="topbar"></header>
+
+        <section class="intro" id="hero">
+            <div>
+                <h1 class="hero-name" aria-label="Nicolas Bocquet">
+                    <span class="hero-line" data-text="NICOLAS"></span>
+                    <span class="hero-line" data-text="BOCQUET"></span>
+                </h1>
+                <p class="intro-role font-mono" id="profile-role"></p>
             </div>
-        </header>
-
-        <nav class="section-index" aria-label="Sections">
-            <a href="#about" data-i18n="sections.about">About</a>
-            <a href="#experience" data-i18n="sections.experience">Experience</a>
-            <a href="#projects" data-i18n="sections.projects">Projects</a>
-            <a href="#skills" data-i18n="sections.skills">Skills</a>
-            <a href="resume.html" class="nav-resume" data-i18n="nav.resume">RESUME</a>
-        </nav>
-
-        <section class="hero" id="hero">
-            <h1 class="hero-name" aria-label="Nicolas Bocquet">
-                <span class="hero-line" data-text="NICOLAS"></span>
-                <span class="hero-line" data-text="BOCQUET"></span>
-            </h1>
-            <p class="hero-role font-mono" id="profile-role"></p>
+            <div>
+                <p class="intro-statement" id="profile-tagline"></p>
+                <p class="intro-premise" id="profile-premise"></p>
+            </div>
         </section>
 
         <main id="main-content">
-            <section class="section" id="about">
-                <div class="section-head">
-                    <h2 class="section-title" data-i18n="sections.about">About</h2>
-                </div>
-                <div id="about-container" class="about-container"></div>
-            </section>
-
-            <section class="section" id="experience">
-                <div class="section-head">
-                    <h2 class="section-title" data-i18n="sections.experience">Experience</h2>
-                </div>
-                <div class="content-wrapper">
-                    <ul class="project-list spotlight-group" id="main-experience-list"></ul>
-                </div>
-            </section>
-
-            <section class="section" id="projects">
-                <div class="section-head">
-                    <h2 class="section-title" data-i18n="sections.projects">Projects</h2>
-                </div>
-                <div class="content-wrapper">
-                    <ul class="project-list" id="opensource-list"></ul>
-                </div>
-            </section>
-            <section class="section" id="skills">
-                <div class="section-head">
-                    <h2 class="section-title" data-i18n="sections.skills">Skills</h2>
-                </div>
-                <div class="content-wrapper" id="skills-container"></div>
-            </section>
+            <ol class="journal" id="journal"></ol>
+            <section class="colophon" id="colophon"></section>
         </main>
 
-        <footer id="contact">
-            <ul class="contact-list font-mono">
-                <li><a href="#" id="emailLink" data-user="nicolas" data-domain="1h12.com"
-                        aria-label="Copy Email Address">EMAIL</a></li>
-                <li><a href="https://github.com/NicoBocq" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile (opens in new tab)">GITHUB</a></li>
-                <li><a href="https://www.linkedin.com/in/bocquetnicolas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LINKEDIN</a></li>
-                <li class="separator footer-separator">|</li>
-                <li><a href="resume.html" aria-label="View Resume" class="resume-link" data-i18n="nav.resume">RESUME</a></li>
-            </ul>
-            <span class="footer-brand font-mono">
-                <svg viewBox="0 0 100 100" aria-hidden="true">
-                    <rect width="100" height="100" rx="22" fill="var(--color-text)"/>
-                    <line x1="50" y1="53" x2="61.8" y2="36.8" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
-                    <line x1="50" y1="53" x2="78.5" y2="43.7" stroke="var(--color-bg)" stroke-width="10" stroke-linecap="round"/>
-                    <circle cx="50" cy="53" r="6" fill="var(--color-bg)"/>
-                </svg>
-                © 2026 — 1h12.com
-            </span>
-        </footer>
+        <footer id="contact"></footer>
     </div>
 
-    <script src="js/data.js?v=20260725"></script>
-    <script src="js/utils.js?v=20260725"></script>
-    <script src="js/main.js?v=20260722"></script>
+    <script src="js/data.js?v=20261126f"></script>
+    <script src="js/utils.js?v=20261126f"></script>
+    <script src="js/shell.js?v=20261126f"></script>
+    <script src="js/main.js?v=20261126f"></script>
     <script src="js/hero.js?v=20260725"></script>
     <script defer src="https://analytics.1h12.com/script.js" data-website-id="d6d7c72d-5201-4122-8adb-5b667f87d7b0"></script>
 </body>

@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets'
+import { type Lang, t } from '../i18n'
+import type { Project } from '../projects'
+
+interface Props {
+  project: Project
+  lang: Lang
+  href?: string
+  external?: boolean
+  eager?: boolean
+}
+
+const LAYOUTS = {
+  phone: { widths: [280, 540, 780], sizes: '(max-width: 699px) 62vw, (max-width: 999px) 31vw, 262px' },
+  wide: { widths: [400, 800, 1600], sizes: '(max-width: 699px) 88vw, (max-width: 999px) 46vw, 395px' },
+}
+
+const { project, lang, href, external = false, eager = false } = Astro.props
+const { format, shots } = project.data
+const { widths, sizes } = LAYOUTS[format]
+const Tag = href ? 'a' : 'div'
+const link = href ? { href, ...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {}) } : {}
+---
+
+<Tag class:list={['shots', `shots-${format}`]} {...link}>
+  {
+    shots.map((shot) => (
+      <Image src={shot.src} alt={t(shot.alt, lang)} widths={widths} sizes={sizes} quality={86} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    ))
+  }
+</Tag>

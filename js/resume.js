@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		DataLoader.loadProfile(
 			{
 				name: document.getElementById("resume-name"),
-				useShortRole: false,
+				status: document.getElementById("resume-status"),
 			},
 			document.getElementById("resume-role"),
 			document.getElementById("resume-email"),
@@ -20,17 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			img.style.display = "block";
 		}
 
-		DataLoader.loadBio(document.getElementById("about-container"), "short");
+		DataLoader.loadBio(document.getElementById("about-container"));
+		DataLoader.loadMethod(document.getElementById("method-list"));
 		DataLoader.loadExperience(document.getElementById("experience-list"));
-
-		const skillsContainer = document.getElementById("skills-list");
-		DataLoader.loadSkills(skillsContainer, "resume");
-		if (skillsContainer) skillsContainer.style.display = "block";
-
 		DataLoader.loadProjects(document.getElementById("projects-list"));
+		DataLoader.loadSkills(document.getElementById("skills-list"));
 		DataLoader.loadTeaching(document.getElementById("teaching-list"));
 		DataLoader.loadEducation(document.getElementById("education-list"));
-		DataLoader.loadLanguages(document.getElementById("languages-list"));
 		DataLoader.applyI18n();
 	}
 

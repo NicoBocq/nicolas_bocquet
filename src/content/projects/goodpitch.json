@@ -1,0 +1,59 @@
+{
+  "order": 2,
+  "title": "GoodPitch",
+  "link": "https://goodpitch.1h12.com",
+  "host": "goodpitch.1h12.com",
+  "stack": ["TanStack Start", "PostgreSQL"],
+  "year": "2026",
+  "date": "2026-07",
+  "status": "live",
+  "launched": "2026-07-16",
+  "pitch": {
+    "en": "Guess a film from its official synopsis, revealed sentence by sentence. Five quizzes a day, the same for everyone, one attempt.",
+    "fr": "Deviner un film à partir de son synopsis officiel, dévoilé phrase par phrase. Cinq quiz par jour, les mêmes pour tout le monde, un seul essai."
+  },
+  "question": {
+    "en": "How long from an idea to a live product?",
+    "fr": "Combien de temps entre une idée et un produit en ligne ?"
+  },
+  "models": "Claude Fable 5 · Opus 4.8",
+  "story": {
+    "idea": {
+      "en": "It came from a film quiz whose principle I liked more than its execution. I wanted the same game, with nothing in the way.",
+      "fr": "L'envie est venue d'un quiz de cinéma dont j'aimais le principe plus que l'exécution. Je voulais le même jeu, sans rien qui gêne."
+    },
+    "iterations": {
+      "en": "The first version built fake animated trailers. Three days later only bare text on a flat colour was left, and the game was better for it. The timer and the streak counter went the same way.",
+      "fr": "La première version fabriquait de fausses bandes-annonces animées. Trois jours plus tard il ne restait que du texte nu sur un aplat de couleur, et le jeu y a gagné. Le chronomètre et le compteur de séries ont suivi le même chemin."
+    },
+    "bench": {
+      "en": "Four days between the first commit and the first published quiz. Since late July the game has published five quizzes a day without me touching it.",
+      "fr": "Quatre jours entre le premier commit et le premier quiz publié. Depuis fin juillet, le jeu publie cinq quiz par jour sans que j'y touche."
+    }
+  },
+  "format": "phone",
+  "ogImage": "/img/work/goodpitch.webp",
+  "shots": [
+    {
+      "src": "../../assets/work/goodpitch-1.webp",
+      "alt": {
+        "en": "GoodPitch home: the quiz of the day and four more",
+        "fr": "L'accueil de GoodPitch : le quiz du jour et quatre autres"
+      }
+    },
+    {
+      "src": "../../assets/work/goodpitch-2.webp",
+      "alt": {
+        "en": "A pitch in progress: one sentence, two names redacted",
+        "fr": "Un pitch en cours : une phrase, deux noms masqués"
+      }
+    },
+    {
+      "src": "../../assets/work/goodpitch-3.webp",
+      "alt": {
+        "en": "The final score: 9 titles found out of 10, with the list of films",
+        "fr": "Le score final : 9 titres trouvés sur 10, avec la liste des films"
+      }
+    }
+  ]
+}
