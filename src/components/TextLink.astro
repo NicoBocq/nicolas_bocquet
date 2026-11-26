@@ -16,9 +16,21 @@ const link = cva('text-foreground', {
   defaultVariants: { variant: 'solid' },
 })
 
-interface Props extends HTMLAttributes<'a'>, VariantProps<typeof link> {}
+type Variants = VariantProps<typeof link>
+type Props = (Variants & { as?: 'a' } & HTMLAttributes<'a'>) | (Variants & { as: 'button' } & HTMLAttributes<'button'>)
 
-const { variant, class: className, ...attrs } = Astro.props
+const { as = 'a', variant, class: className, ...attrs } = Astro.props
+const classes = [link({ variant }), as === 'button' && 'cursor-pointer', className]
 ---
 
-<a class:list={[link({ variant }), className]} {...attrs}><slot /></a>
+{
+  as === 'button' ? (
+    <button class:list={classes} {...(attrs as HTMLAttributes<'button'>)}>
+      <slot />
+    </button>
+  ) : (
+    <a class:list={classes} {...(attrs as HTMLAttributes<'a'>)}>
+      <slot />
+    </a>
+  )
+}

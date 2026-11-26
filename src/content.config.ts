@@ -16,7 +16,7 @@ const projects = defineCollection({
       year: z.string(),
       date: z.string().regex(/^\d{4}-\d{2}$/),
       status: z.enum(['live', 'soon']),
-      launched: z.iso.date().optional(),
+      category: localized,
       pitch: localized,
       question: localized,
       models: z.string(),

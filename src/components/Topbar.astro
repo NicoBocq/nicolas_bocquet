@@ -1,9 +1,11 @@
 ---
 import { site } from '../data/site'
-import { type Lang, otherLang, path, resolve } from '../i18n'
+import { type Lang, path, resolve } from '../i18n'
 import { getProjects } from '../projects'
+import LangSwitch from './LangSwitch.astro'
 import Mark from './Mark.astro'
 import TextLink from './TextLink.astro'
+import ThemeToggle from './ThemeToggle.astro'
 
 interface Props {
   lang: Lang
@@ -14,17 +16,12 @@ interface Props {
 const { lang, route = '', current } = Astro.props
 const nav = resolve(site.ui.nav, lang)
 const projects = await getProjects()
-const other = otherLang(lang)
 const isHome = route === ''
 
 const navClass =
   'flex items-center gap-7 font-mono text-xs font-medium tracking-wide whitespace-nowrap uppercase max-lg:order-3 max-lg:mt-5 max-lg:flex-none max-lg:basis-full max-lg:gap-6 max-lg:overflow-x-auto max-lg:overscroll-x-contain max-lg:border-t max-lg:py-2 max-lg:text-2xs max-lg:transition-border max-lg:scrollbar-none max-md:mt-4'
 const resumeClass =
   'pl-7 font-bold before:absolute before:top-1/2 before:left-0 before:h-3 before:w-px before:-translate-y-1/2 before:bg-border before:opacity-35 after:left-7 max-lg:pl-6 max-lg:after:left-6'
-const toggleClass =
-  'cursor-pointer font-mono text-sm text-foreground uppercase opacity-60 transition-opacity duration-200 hover:opacity-100 focus-visible:opacity-100'
-const langLabel = other === 'fr' ? "after:content-['[_FR_]']" : "after:content-['[_EN_]']"
-const themeLabel = "after:content-['[_DARK_]'] max-md:after:content-['[_DK_]'] dark:after:content-['[_LIGHT_]'] dark:max-md:after:content-['[_LT_]']"
 ---
 
 <header class="sticky top-0 z-10 flex flex-wrap items-center gap-x-10 border-b bg-background py-5 transition-colors max-lg:pb-0 max-md:pt-4" id="topbar">
@@ -41,8 +38,8 @@ const themeLabel = "after:content-['[_DARK_]'] max-md:after:content-['[_DK_]'] d
     }
     <TextLink variant="reveal" href={path(lang, 'resume')} class={resumeClass}>{nav.resume}</TextLink>
   </nav>
-  <div class="flex items-center justify-end gap-6 max-md:gap-4">
-    <a class:list={[toggleClass, langLabel]} id="langToggle" href={path(other, route)} hreflang={other} data-lang-target={other} aria-label="Toggle language"></a>
-    <button class:list={[toggleClass, themeLabel]} id="themeToggle" aria-label="Toggle theme" aria-pressed="false" type="button"></button>
+  <div class="flex items-center justify-end gap-4 max-md:gap-2">
+    <LangSwitch lang={lang} route={route} />
+    <ThemeToggle />
   </div>
 </header>

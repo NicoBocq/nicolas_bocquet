@@ -47,7 +47,7 @@ interface Site {
   resume: { experience: Job[]; education: Degree[]; teaching: Course[] }
   ui: {
     sections: { method: Localized; career: Localized }
-    work: Record<'live' | 'soon' | 'quiz' | 'bench' | 'idea' | 'iterations' | 'read' | 'all' | 'next', Localized>
+    work: Record<'live' | 'soon' | 'bench' | 'idea' | 'iterations' | 'read' | 'all' | 'next', Localized>
     resume: Record<'about' | 'experience' | 'skills' | 'projects' | 'projectsIntro' | 'teaching' | 'education' | 'languages', Localized>
     skillLabels: { product: Localized; ai: Localized; tech: string }
     nav: Record<'back' | 'print' | 'resume' | 'fullResume', Localized>
@@ -315,10 +315,6 @@ export const site: Site = {
         en: 'Launching soon',
         fr: 'Bientôt en ligne',
       },
-      quiz: {
-        en: 'Quiz no.',
-        fr: 'Quiz n°',
-      },
       bench: {
         en: 'Test bench',
         fr: "Banc d'essai",
@@ -391,8 +387,8 @@ export const site: Site = {
     },
     nav: {
       back: {
-        en: '← Back',
-        fr: '← Retour',
+        en: 'Back',
+        fr: 'Retour',
       },
       print: {
         en: 'Print / Save as PDF',

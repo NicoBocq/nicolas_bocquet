@@ -7,7 +7,10 @@
   "year": "2026",
   "date": "2026-07",
   "status": "live",
-  "launched": "2026-07-16",
+  "category": {
+    "en": "Daily quiz",
+    "fr": "Quiz quotidien"
+  },
   "pitch": {
     "en": "Guess a film from its official synopsis, revealed sentence by sentence. Five quizzes a day, the same for everyone, one attempt.",
     "fr": "Deviner un film à partir de son synopsis officiel, dévoilé phrase par phrase. Cinq quiz par jour, les mêmes pour tout le monde, un seul essai."

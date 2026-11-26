@@ -1,4 +1,3 @@
-import { dayNumber } from '../day'
 import { bindLangToggle } from './lang'
 
 type Theme = 'dark' | 'light'
@@ -51,18 +50,10 @@ function measureTopbar() {
   document.documentElement.style.setProperty('--topbar-h', `${topbar.offsetHeight}px`)
 }
 
-function updateDayCounters() {
-  for (const counter of document.querySelectorAll<HTMLElement>('[data-launched]')) {
-    const { launched, label } = counter.dataset
-    if (launched) counter.textContent = `${label} ${dayNumber(launched)}`
-  }
-}
-
 export function initSite() {
   bindLangToggle()
   bindEmail()
   bindTheme()
   measureTopbar()
   window.addEventListener('resize', measureTopbar, { passive: true })
-  updateDayCounters()
 }

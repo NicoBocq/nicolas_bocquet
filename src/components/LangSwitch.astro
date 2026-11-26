@@ -1,0 +1,35 @@
+---
+import { LANGS, type Lang, otherLang, path } from '../i18n'
+
+interface Props {
+  lang: Lang
+  route?: string
+}
+
+const NAMES: Record<Lang, string> = { en: 'English', fr: 'Français' }
+
+const { lang, route = '' } = Astro.props
+const other = otherLang(lang)
+---
+
+<a
+  class="group flex h-8 items-center gap-1.5 font-mono text-xs font-medium tracking-wide text-foreground uppercase"
+  id="langToggle"
+  href={path(other, route)}
+  hreflang={other}
+  data-lang-target={other}
+  aria-label={NAMES[other]}
+>
+  {
+    LANGS.map((code, index) => (
+      <>
+        {index > 0 && (
+          <span class="opacity-35" aria-hidden="true">
+            /
+          </span>
+        )}
+        <span class:list={['transition-opacity duration-200', code === lang ? 'mouse:group-hover:opacity-50' : 'opacity-50 mouse:group-hover:opacity-100']}>{code}</span>
+      </>
+    ))
+  }
+</a>

@@ -26,8 +26,8 @@ TypeScript is pinned to version 6 because `astro check` does not support TypeScr
 - `src/views/`: `HomeView`, `ProjectView` and `ResumeView` hold the markup and take a `lang` prop.
 - `src/pages/`: thin files only, one per route and per language (`pages/x.astro` and `pages/fr/x.astro`), each rendering a view. `sitemap.xml.ts` generates the sitemap.
 - `src/layouts/Base.astro`: the single `<head>` (meta, Open Graph, canonical, hreflang), the language redirect and the theme init. `Site.astro` adds the topbar and the footer.
-- `src/components/`: `Topbar`, `Footer`, `Shots` (capture gallery), `ProjectMeta`, `LiveLink`, `Mark`, `TextLink` (the one underlined link), `Label`, and `ResumeSection` / `ResumeEntry` for the resume.
-- `src/scripts/`: the only client-side JavaScript (theme toggle, email, scroll-spy menu, kinetic hero letters, daily quiz counter).
+- `src/components/`: `Topbar`, `Footer`, `Shots` (capture gallery), `ProjectMeta`, `LiveLink`, `Mark`, `TextLink` (the one underlined link), `Label`, `LangSwitch` and `ThemeToggle` (language and theme controls), and `ResumeSection` / `ResumeEntry` for the resume.
+- `src/scripts/`: the only client-side JavaScript (theme toggle, email, scroll-spy menu, kinetic hero letters).
 - `src/styles/`: `global.css` is the Tailwind entry, imported once by `Base.astro`: design tokens in `@theme`, the dark palette, base rules and a few named utilities. `resume.css` only holds the print page geometry. `fonts.css` declares the two font faces. See Styling below.
 - `public/`: served as-is. Holds the Open Graph images and the redirect pages for the former `.html` addresses.
 
@@ -45,7 +45,7 @@ Tailwind CSS v4 through `@tailwindcss/vite`. Styles are utility classes in the m
 - **Spacing**: the default Tailwind scale. Values with no scale are named once in `global.css` instead of being written as arbitrary values: text measures (`max-w-tagline`, `max-w-lede`, `max-w-story`…), `max-w-site`, `max-w-a4`, grid templates (`grid-cols-intro`, `grid-cols-feature`, `grid-cols-skills`, `grid-cols-resume-foot`), `auto-cols-phone` / `auto-cols-wide`, `transition-border`, `scrollbar-none`.
 - **Variants**: `dark:` follows `data-theme`, `mouse:` applies only with a hover-capable fine pointer, `is-active:` matches the class the scroll-spy script toggles.
 - **Transitions** default to 300ms `ease`. Elements with a border use `transition-border`, so the border fades with the theme without slowing the text colour inherited from `<body>`.
-- **Links**: every underlined link is `TextLink`, built with cva, with `variant` `solid` (always underlined, accent on hover), `reveal` (topbar menu) or `hairline` (footer).
+- **Links**: every underlined link is `TextLink`, built with cva, with `variant` `solid` (always underlined, accent on hover), `reveal` (topbar menu) or `hairline` (footer). `as="button"` gives a button the same look (the resume print action).
 - **Script hooks**: the classes `entry`, `hero-name`, `kinetic-letter` and `is-active` are read or toggled by `src/scripts/`. Keep them when editing the markup.
 - **Class detection**: Tailwind only scans `src/components`, `src/layouts`, `src/views` and `src/pages` (`source(none)` plus `@source`). A class written anywhere else is not generated.
 - **Resume print**: `resume.css` sets `@page` with zero margin, a 13.5px root font size and the per-page padding cloned on `<body>`. Everything else is `print:` utilities. Sizes in rem therefore shrink in print.

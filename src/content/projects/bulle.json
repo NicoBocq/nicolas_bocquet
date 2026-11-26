@@ -7,6 +7,10 @@
   "year": "2026",
   "date": "2026-06",
   "status": "live",
+  "category": {
+    "en": "Private social network",
+    "fr": "Réseau social privé"
+  },
   "pitch": {
     "en": "Talk about films, series, games and books in private, invite-only circles, with one thread per title.",
     "fr": "Parler de films, séries, jeux et livres dans des cercles privés sur invitation, avec un fil par œuvre."

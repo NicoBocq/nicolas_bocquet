@@ -6,6 +6,10 @@
   "year": "2026",
   "date": "2026-11",
   "status": "soon",
+  "category": {
+    "en": "Role-playing game",
+    "fr": "Jeu de rôle"
+  },
   "pitch": {
     "en": "A pixel-art RPG where you fight by answering questions, then staking how sure you are. Made for my daughter, open to everyone.",
     "fr": "Un RPG en pixel art où l'on se bat en répondant à des questions, puis en misant sa certitude. Fait pour ma fille, ouvert à tout le monde."

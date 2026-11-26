@@ -1,7 +1,5 @@
 ---
-import { site } from '../data/site'
-import { dayNumber } from '../day'
-import { formatMonth, type Lang, resolve } from '../i18n'
+import { formatMonth, type Lang, t } from '../i18n'
 import type { Project } from '../projects'
 
 interface Props {
@@ -10,18 +8,10 @@ interface Props {
 }
 
 const { project, lang } = Astro.props
-const labels = resolve(site.ui.work, lang)
-const { date, status, launched } = project.data
+const { date, category } = project.data
 ---
 
 <div class="flex flex-wrap gap-x-6 gap-y-1.5 font-mono text-xs tracking-wide text-muted uppercase">
   <span class="font-bold text-foreground">{formatMonth(date, lang)}</span>
-  <span>{labels[status]}</span>
-  {
-    launched && (
-      <span data-launched={launched} data-label={labels.quiz}>
-        {labels.quiz} {dayNumber(launched)}
-      </span>
-    )
-  }
+  <span>{t(category, lang)}</span>
 </div>

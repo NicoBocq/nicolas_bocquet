@@ -1,10 +1,12 @@
 ---
 import { Image } from 'astro:assets'
 import profileImage from '../assets/profile.jpeg'
+import LangSwitch from '../components/LangSwitch.astro'
 import ResumeEntry from '../components/ResumeEntry.astro'
 import ResumeSection from '../components/ResumeSection.astro'
+import TextLink from '../components/TextLink.astro'
 import { site } from '../data/site'
-import { type Lang, otherLang, path, resolve, t } from '../i18n'
+import { type Lang, path, resolve, t } from '../i18n'
 import Base from '../layouts/Base.astro'
 import { getProjects } from '../projects'
 import '../styles/resume.css'
@@ -16,7 +18,6 @@ interface Props {
 const { lang } = Astro.props
 const { bio, method, profile, resume, skills, ui } = resolve(site, lang)
 const projects = await getProjects()
-const other = otherLang(lang)
 const [emailUser, emailDomain] = profile.email.split('@')
 const languages = skills.languages.map((language) => `${language.name} (${language.level})`.toUpperCase())
 const skillRows: [string, string[]][] = [
@@ -25,17 +26,17 @@ const skillRows: [string, string[]][] = [
   [ui.skillLabels.tech, skills.tech],
   [ui.resume.languages, languages],
 ]
-const buttonClass =
-  'cursor-pointer border bg-background px-4 py-2 font-mono text-sm text-foreground uppercase transition-all duration-200 hover:bg-foreground hover:text-background'
-const langLabel = other === 'fr' ? "after:content-['FR']" : "after:content-['EN']"
+const toolsClass = 'flex h-10 items-center gap-5 bg-background px-3 max-md:bg-transparent max-md:px-0'
 ---
 
 <Base lang={lang} title={ui.meta.resume.title} description={ui.meta.resume.description} route="resume" ogType="profile" bodyClass="light mx-auto max-w-a4 bg-background p-16 text-foreground max-md:p-6 max-md:pt-24">
-  <div class="fixed inset-x-8 top-8 flex items-center justify-between max-md:inset-x-0 max-md:top-0 max-md:z-100 max-md:border-b max-md:border-border/10 max-md:bg-background/95 max-md:px-6 max-md:py-4 max-md:backdrop-blur-xs print:hidden">
-    <a href={path(lang)} class={buttonClass}>{ui.nav.back}</a>
-    <div class="flex items-center gap-4">
-      <a class:list={[buttonClass, langLabel]} id="langToggle" href={path(other, 'resume')} hreflang={other} data-lang-target={other} aria-label="Toggle language"></a>
-      <button onclick="window.print()" class={buttonClass} type="button">{ui.nav.print}</button>
+  <div class="fixed inset-x-5 top-6 flex items-center justify-between max-md:inset-x-0 max-md:top-0 max-md:z-100 max-md:border-b max-md:border-border/10 max-md:bg-background/95 max-md:px-6 max-md:py-2 max-md:backdrop-blur-xs print:hidden">
+    <div class={toolsClass}>
+      <TextLink href={path(lang)}>{ui.nav.back}</TextLink>
+    </div>
+    <div class={toolsClass}>
+      <LangSwitch lang={lang} route="resume" />
+      <TextLink as="button" type="button" onclick="window.print()">{ui.nav.print}</TextLink>
     </div>
   </div>
 
